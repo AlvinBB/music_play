@@ -1,0 +1,446 @@
+/***********公共样式********/
+body{
+  font:8px "microsoft yahei",Arial,Helvetica,sans-serif;
+  margin:0;
+  padding:0;
+}
+p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+a{
+  text-decoration:none;
+}
+
+.left{
+  float:left;
+}
+.right{
+  float:right;
+}
+.clear{
+  clear:both;
+}
+.scroll-bar-control{
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb{
+    border-radius:4px;
+  }
+}
+
+/***********基础样式********/
+
+body{
+  width:100%;
+  height:100%;
+  i.fa{
+    font-size:16px;
+    vertical-align: middle;
+  }
+
+  //头部样式
+  #header{
+    height:50px;
+    line-height:50px;
+    #logo{
+      margin-left:20px;
+      font:1.2rem Helvetica;
+      font-style:italic;
+      a{
+        color:#fff;
+        text-decoration:none;
+        line-height:50px;
+        height:50px;
+      }
+      img{
+        vertical-align:middle;
+        width:25px;
+      }
+    }
+    .search-music{
+      //float:left;
+      height:20px;
+      width:220px;
+      line-height:20px;
+      margin-left:100px;
+      padding-left:10px;
+      border-radius:10px;
+      margin-top:15px;
+      #search{
+        padding:0;
+        font-size:10px;
+        border:none;
+        outline:none;
+        width:195px;
+      }
+      #searchBtn{
+        cursor:pointer;
+        font-size:14px;
+      }
+      #searchBtn:hover{
+        color:#fff;
+      }
+    }
+    .tool-bar{
+      width:450px;
+      margin-right:20px;
+      height:50px;
+      .tool-bar-setting{
+        padding:0 20px;
+        width:240px;
+        li{
+          float:left;
+          margin-left:25px;
+        }
+        li:first-child{
+          a{
+            float:left;
+            font-size:12px;
+          }
+          a:hover{
+            color:#fff;
+          }
+          a:hover i:last-child{
+            color:#fff;
+          }
+          .fa-user-circle-o{
+            font-size:25px;
+            border-radius:50%;
+            color:#ccc;
+            background:#ddd;
+          }
+        }
+      }
+      .tool-bar-cut{
+        border-left:2px solid #A82828;
+        padding:6px 0;
+      }
+      .tool-bar-tool{
+        padding:0;
+        width:160px;
+        li{
+          float:left;
+          margin-left:25px;
+        }
+      }
+    }
+  }
+
+  //主体样式
+  #main{
+    font-size:13px;
+    height:600px;
+    .music-tool-bar{
+      height:100%;
+      box-sizing:border-box;
+      .music-tool{
+        width:200px;
+        height:91%;
+        overflow-x:hidden;
+        overflow-y:auto;
+      }
+      .music-tool-control{
+        padding:10px;
+      }
+      .music-tool-control-do{
+        height:20px;
+        i.fa{
+          padding-left:80px;
+        }
+      }
+      .music-tool-control-do.active+ul{
+        display:none;
+      }
+      .music-tool-list{
+        padding-bottom:10px;
+        li a{
+          display:block;
+          padding-left:20px;
+          box-sizing:border-box;
+          width:100%;
+          overflow:hidden;
+          height:29px;
+          line-height:29px;
+        }
+        li.active{
+          border-left:2px solid #C62F2F;
+        }
+      }
+    }
+    .music-preview:hover .music-preview-extension{
+      display:block;
+    }
+    .music-preview{
+      width:200px;
+      height:50px;
+      box-sizing:border-box;
+      padding:5px;
+      position:relative;
+      .music-preview-pic{
+        width:100px;
+        height:40px;
+        font-size:12px;
+        img{
+          width:40px;
+          float:left;
+        }
+        span{
+          float:left;
+          margin-left:5px;
+          width:40px;
+          height:20px;
+          line-height:20px;
+        }
+      }
+      .music-preview-pic:hover{
+        cursor:pointer;
+      }
+      .music-preview-extension{
+        display:none;
+        cursor:pointer;
+        position:absolute;
+        top:5px;
+        left:5px;
+        width:40px;
+        height:40px;
+        background:rgba(0,0,0,0.3);
+        padding:8px;
+        text-align:center;
+        box-sizing:border-box;
+        i.fa{
+          color:#fff;
+          opacity:0.6;
+          font-size:26px;
+        }
+      }
+      .music-preview-tool{
+        width:30px;
+        height:40px;
+        a{
+          text-align:center;
+          display:block;
+          width:30px;
+          height:20px;
+          line-height:20px;
+          i.fa{
+            font-size:12px;
+          }
+        }
+      }
+    }
+
+    .display-area{
+      margin-left:200px;
+      height:100%;
+      overflow-x:hidden;
+      overflow-y:auto;
+      padding:0 20px 0 20px;
+      .nav-bar{
+        padding:0 10%;
+        li{
+          display:inline-block;
+          padding:10px;
+          width:16%;
+          box-sizing:border-box;
+          a{
+            text-align:center;
+            display:block;
+            font-size:16px;
+          }
+        }
+        li.active{
+
+        }
+      }
+      #findMusic{
+        .findMusic-display-area{
+          max-width:1050px;
+          margin:0 auto;
+        }
+        #personalizedRecommendation{
+          .banner{
+            ul.banner-show{
+              position:relative;
+              height:250px;
+              li{
+                position:absolute;
+                bottom:0;
+                opacity:0;
+                width:400px;
+                height:184px;
+                left:250px;
+                z-index:auto;
+                transition:all 0.2s linear;
+                a{
+                  display:block;
+                  img{
+                    width:100%;
+                  }
+                }
+              }
+              li.active{
+                left:200px;
+                opacity:1;
+                //right:0;
+                z-index:2;
+                width:500px;
+                height:230px;
+                img{
+                  width:100%;
+                }
+              }
+              li.pre{
+                width:400px;
+                height:184px;
+                opacity:1.5;
+                left:0;
+                z-index:1;
+                img{
+                  width:100%;
+                }
+              }
+              li.next{
+                z-index:1;
+                width:400px;
+                height:184px;
+                left:500px;
+                opacity:1.5;
+                img{
+                  width:100%;
+                }
+              }
+            }
+            ul.banner-index{
+              width:200px;
+              margin:10px auto;
+              li{
+                float:left;
+                width:10%;
+                margin:0 1%;
+                a{
+                  display:block;
+                  height:2px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #main:after{
+    content:'';
+    clear:both;
+    display:block;
+  }
+
+  //底部样式
+  #footer{
+    width:100%;
+    height:50px;
+    line-height:50px;
+    box-sizing:border-box;
+    span{
+      cursor:pointer;
+    }
+
+    //进度条样式
+    .progress-container{
+      display:inline-block;
+      width:82%;
+      margin:0 1%;
+      height:6px;
+      border-radius:3px;
+      .play-progress{
+        height:6px;
+        border-radius:3px;
+        width:50%;
+      }
+      .progress-point{
+        box-sizing:border-box;
+        width:17px;
+        height:17px;
+        padding:4px 5px 0 0;
+        border-radius:50%;
+        margin:-5px 0 0 0;
+        background:#fff;
+        position:relative;
+        text-align:center;
+        span{
+          position:absolute;
+          width:6px;
+          height:6px;
+          border-radius:50%;
+        }
+      }
+    }
+
+    .footer-left{
+      width:200px;
+      height:48px;
+      span{
+        display:inline-block;
+        width:28px;
+        height:28px;
+        line-height:26px;
+        margin:9px 16px;
+        border-radius:50%;
+        text-align:center;
+        i.fa{
+          color:#fff;
+        }
+      }
+      .play-pause{
+        width:34px;
+        height:34px;
+        line-height:32px;
+        margin:7px 16px;
+      }
+    }
+    .footer-right{
+      width:300px;
+      height:48px;
+      .progress-sound{
+        width:120px;
+      }
+      .footer-tool-right{
+        margin-left:20px;
+      }
+      .footer-tool-right-list{
+        cursor:pointer;
+        font-size:12px;
+        margin:17px 20px 0 0;
+        width:50px;
+        height:15px;
+        line-height:15px;
+        border-top-right-radius:10px;
+        border-bottom-right-radius:10px;
+        vertical-align: bottom;
+        padding-bottom:2px;
+        .list-count{
+          margin-left:10px;
+        }
+      }
+    }
+    .footer-center{
+      height:48px;
+      line-height:48px;
+      margin-left:200px;
+      margin-right:300px;
+      .progress-time{
+        display:inline-block;
+        width:6%;
+        font-size:12px;
+        text-align:center;
+      }
+    }
+  }
+}
+body:after{
+  content:'';
+  clear:both;
+  display:block;
+}

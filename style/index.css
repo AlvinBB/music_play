@@ -1,0 +1,428 @@
+/***********公共样式********/
+body {
+  font: 8px "microsoft yahei", Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.clear {
+  clear: both;
+}
+.scroll-bar-control ::-webkit-scrollbar {
+  width: 8px;
+}
+.scroll-bar-control ::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+}
+/***********基础样式********/
+body {
+  width: 100%;
+  height: 100%;
+}
+body i.fa {
+  font-size: 16px;
+  vertical-align: middle;
+}
+body #header {
+  height: 50px;
+  line-height: 50px;
+}
+body #header #logo {
+  margin-left: 20px;
+  font: 1.2rem Helvetica;
+  font-style: italic;
+}
+body #header #logo a {
+  color: #fff;
+  text-decoration: none;
+  line-height: 50px;
+  height: 50px;
+}
+body #header #logo img {
+  vertical-align: middle;
+  width: 25px;
+}
+body #header .search-music {
+  height: 20px;
+  width: 220px;
+  line-height: 20px;
+  margin-left: 100px;
+  padding-left: 10px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+body #header .search-music #search {
+  padding: 0;
+  font-size: 10px;
+  border: none;
+  outline: none;
+  width: 195px;
+}
+body #header .search-music #searchBtn {
+  cursor: pointer;
+  font-size: 14px;
+}
+body #header .search-music #searchBtn:hover {
+  color: #fff;
+}
+body #header .tool-bar {
+  width: 450px;
+  margin-right: 20px;
+  height: 50px;
+}
+body #header .tool-bar .tool-bar-setting {
+  padding: 0 20px;
+  width: 240px;
+}
+body #header .tool-bar .tool-bar-setting li {
+  float: left;
+  margin-left: 25px;
+}
+body #header .tool-bar .tool-bar-setting li:first-child a {
+  float: left;
+  font-size: 12px;
+}
+body #header .tool-bar .tool-bar-setting li:first-child a:hover {
+  color: #fff;
+}
+body #header .tool-bar .tool-bar-setting li:first-child a:hover i:last-child {
+  color: #fff;
+}
+body #header .tool-bar .tool-bar-setting li:first-child .fa-user-circle-o {
+  font-size: 25px;
+  border-radius: 50%;
+  color: #ccc;
+  background: #ddd;
+}
+body #header .tool-bar .tool-bar-cut {
+  border-left: 2px solid #A82828;
+  padding: 6px 0;
+}
+body #header .tool-bar .tool-bar-tool {
+  padding: 0;
+  width: 160px;
+}
+body #header .tool-bar .tool-bar-tool li {
+  float: left;
+  margin-left: 25px;
+}
+body #main {
+  font-size: 13px;
+  height: 600px;
+}
+body #main .music-tool-bar {
+  height: 100%;
+  box-sizing: border-box;
+}
+body #main .music-tool-bar .music-tool {
+  width: 200px;
+  height: 91%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+body #main .music-tool-bar .music-tool-control {
+  padding: 10px;
+}
+body #main .music-tool-bar .music-tool-control-do {
+  height: 20px;
+}
+body #main .music-tool-bar .music-tool-control-do i.fa {
+  padding-left: 80px;
+}
+body #main .music-tool-bar .music-tool-control-do.active + ul {
+  display: none;
+}
+body #main .music-tool-bar .music-tool-list {
+  padding-bottom: 10px;
+}
+body #main .music-tool-bar .music-tool-list li a {
+  display: block;
+  padding-left: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  height: 29px;
+  line-height: 29px;
+}
+body #main .music-tool-bar .music-tool-list li.active {
+  border-left: 2px solid #C62F2F;
+}
+body #main .music-preview:hover .music-preview-extension {
+  display: block;
+}
+body #main .music-preview {
+  width: 200px;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 5px;
+  position: relative;
+}
+body #main .music-preview .music-preview-pic {
+  width: 100px;
+  height: 40px;
+  font-size: 12px;
+}
+body #main .music-preview .music-preview-pic img {
+  width: 40px;
+  float: left;
+}
+body #main .music-preview .music-preview-pic span {
+  float: left;
+  margin-left: 5px;
+  width: 40px;
+  height: 20px;
+  line-height: 20px;
+}
+body #main .music-preview .music-preview-pic:hover {
+  cursor: pointer;
+}
+body #main .music-preview .music-preview-extension {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px;
+  text-align: center;
+  box-sizing: border-box;
+}
+body #main .music-preview .music-preview-extension i.fa {
+  color: #fff;
+  opacity: 0.6;
+  font-size: 26px;
+}
+body #main .music-preview .music-preview-tool {
+  width: 30px;
+  height: 40px;
+}
+body #main .music-preview .music-preview-tool a {
+  text-align: center;
+  display: block;
+  width: 30px;
+  height: 20px;
+  line-height: 20px;
+}
+body #main .music-preview .music-preview-tool a i.fa {
+  font-size: 12px;
+}
+body #main .display-area {
+  margin-left: 200px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0 20px 0 20px;
+}
+body #main .display-area .nav-bar {
+  padding: 0 10%;
+}
+body #main .display-area .nav-bar li {
+  display: inline-block;
+  padding: 10px;
+  width: 16%;
+  box-sizing: border-box;
+}
+body #main .display-area .nav-bar li a {
+  text-align: center;
+  display: block;
+  font-size: 16px;
+}
+body #main .display-area #findMusic .findMusic-display-area {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show {
+  position: relative;
+  height: 250px;
+}
+body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li {
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  width: 400px;
+  height: 184px;
+  left: 250px;
+  z-index: auto;
+  transition: all 0.2s linear;
+}
+body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li a {
+  display: block;
+}
+body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li a img {
+  width: 100%;
+}
+body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li.active {
+  left: 200px;
+  opacity: 1;
+  z-index: 2;
+  width: 500px;
+  height: 230px;
+}
+body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li.active img {
+  width: 100%;
+}
+body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li.pre {
+  width: 400px;
+  height: 184px;
+  opacity: 1.5;
+  left: 0;
+  z-index: 1;
+}
+body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li.pre img {
+  width: 100%;
+}
+body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li.next {
+  z-index: 1;
+  width: 400px;
+  height: 184px;
+  left: 500px;
+  opacity: 1.5;
+}
+body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li.next img {
+  width: 100%;
+}
+body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-index {
+  width: 200px;
+  margin: 10px auto;
+}
+body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-index li {
+  float: left;
+  width: 10%;
+  margin: 0 1%;
+}
+body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-index li a {
+  display: block;
+  height: 2px;
+}
+body #main:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+body #footer {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  box-sizing: border-box;
+}
+body #footer span {
+  cursor: pointer;
+}
+body #footer .progress-container {
+  display: inline-block;
+  width: 82%;
+  margin: 0 1%;
+  height: 6px;
+  border-radius: 3px;
+}
+body #footer .progress-container .play-progress {
+  height: 6px;
+  border-radius: 3px;
+  width: 50%;
+}
+body #footer .progress-container .progress-point {
+  box-sizing: border-box;
+  width: 17px;
+  height: 17px;
+  padding: 4px 5px 0 0;
+  border-radius: 50%;
+  margin: -5px 0 0 0;
+  background: #fff;
+  position: relative;
+  text-align: center;
+}
+body #footer .progress-container .progress-point span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+body #footer .footer-left {
+  width: 200px;
+  height: 48px;
+}
+body #footer .footer-left span {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  line-height: 26px;
+  margin: 9px 16px;
+  border-radius: 50%;
+  text-align: center;
+}
+body #footer .footer-left span i.fa {
+  color: #fff;
+}
+body #footer .footer-left .play-pause {
+  width: 34px;
+  height: 34px;
+  line-height: 32px;
+  margin: 7px 16px;
+}
+body #footer .footer-right {
+  width: 300px;
+  height: 48px;
+}
+body #footer .footer-right .progress-sound {
+  width: 120px;
+}
+body #footer .footer-right .footer-tool-right {
+  margin-left: 20px;
+}
+body #footer .footer-right .footer-tool-right-list {
+  cursor: pointer;
+  font-size: 12px;
+  margin: 17px 20px 0 0;
+  width: 50px;
+  height: 15px;
+  line-height: 15px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  vertical-align: bottom;
+  padding-bottom: 2px;
+}
+body #footer .footer-right .footer-tool-right-list .list-count {
+  margin-left: 10px;
+}
+body #footer .footer-center {
+  height: 48px;
+  line-height: 48px;
+  margin-left: 200px;
+  margin-right: 300px;
+}
+body #footer .footer-center .progress-time {
+  display: inline-block;
+  width: 6%;
+  font-size: 12px;
+  text-align: center;
+}
+body:after {
+  content: '';
+  clear: both;
+  display: block;
+}
