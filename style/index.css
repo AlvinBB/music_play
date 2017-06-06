@@ -101,15 +101,55 @@ body #header .tool-bar .tool-bar-setting li {
   float: left;
   margin-left: 25px;
 }
-body #header .tool-bar .tool-bar-setting li:first-child a {
+body #header .tool-bar .tool-bar-setting li:first-child {
+  position: relative;
+}
+body #header .tool-bar .tool-bar-setting li:first-child a#headPortrait {
+  float: left;
+  width: 30px;
+  height: 30px;
+  margin: 10px 10px 0 0;
+}
+body #header .tool-bar .tool-bar-setting li:first-child a#headPortrait img {
+  width: 30px;
+  border-radius: 15px;
+}
+body #header .tool-bar .tool-bar-setting li:first-child .dialog-user {
+  display: none;
+  width: 250px;
+  height: 400px;
+  z-index: 10;
+  top: 50px;
+  left: -60px;
+  position: absolute;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+}
+body #header .tool-bar .tool-bar-setting li:first-child .dialog-user :before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: -4px;
+  left: 48%;
+  transform: rotate(45deg);
+}
+body #header .tool-bar .tool-bar-setting li:first-child #dialogUserControl.active + .dialog-user {
+  display: block;
+}
+body #header .tool-bar .tool-bar-setting li:first-child span {
   float: left;
   font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
 }
-body #header .tool-bar .tool-bar-setting li:first-child a:hover {
-  color: #fff;
+body #header .tool-bar .tool-bar-setting li:first-child span i {
+  font-style: normal;
 }
-body #header .tool-bar .tool-bar-setting li:first-child a:hover i:last-child {
+body #header .tool-bar .tool-bar-setting li:first-child span:hover i {
   color: #fff;
+  font-style: normal;
 }
 body #header .tool-bar .tool-bar-setting li:first-child .fa-user-circle-o {
   font-size: 25px;
@@ -318,6 +358,70 @@ body #main .display-area #findMusic #personalizedRecommendation .banner ul.banne
 body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-index li a {
   display: block;
   height: 2px;
+}
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block {
+  margin-top: 30px;
+}
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block :after {
+  content: '';
+  clear: both;
+  display: block;
+}
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-header span:first-child {
+  font-size: 16px;
+}
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-header:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body {
+  width: 100%;
+}
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl {
+  width: 18.4%;
+  margin-right: 2%;
+  float: left;
+  margin-bottom: 20px;
+}
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl dt {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl dt span.recommend-block-cover {
+  background: rgba(0, 0, 0, 0.5);
+  color: #eee;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  padding: 6% 2% 6% 4%;
+  font-size: 12px;
+  height: 32px;
+  overflow: hidden;
+  transition: top 0.5s linear;
+}
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl dt a {
+  display: block;
+}
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl dt a img {
+  width: 100%;
+}
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl dt dd {
+  float: left;
+  height: 50px;
+}
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl:hover span.recommend-block-cover {
+  top: 0;
+}
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl:nth-child(5),
+body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl:nth-child(10) {
+  margin: 0;
 }
 body #main:after {
   content: '';

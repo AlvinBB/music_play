@@ -96,15 +96,53 @@ body{
           margin-left:25px;
         }
         li:first-child{
-          a{
+          position:relative;
+          a#headPortrait{
+            float:left;
+            width:30px;
+            height:30px;
+            margin:10px 10px 0 0;
+            img{
+              width:30px;
+              border-radius:15px;
+            }
+          }
+          .dialog-user{
+            display:none;
+            :before{
+              content:'';
+              display:block;
+              width:10px;
+              height:10px;
+              position:absolute;
+              top:-4px;
+              left:48%;
+              transform:rotate(45deg);
+            }
+            width:250px;
+            height:400px;
+            z-index:10;
+            top:50px;
+            left:-60px;
+            position:absolute;
+            border-radius:5px;
+            box-shadow: 0 0 10px #ccc;
+          }
+          #dialogUserControl.active+.dialog-user{
+            display:block;
+          }
+          span {
             float:left;
             font-size:12px;
+            font-weight:400;
+            cursor:pointer;
           }
-          a:hover{
-            color:#fff;
+          span i{
+            font-style:normal;
           }
-          a:hover i:last-child{
+          span:hover i{
             color:#fff;
+            font-style:normal;
           }
           .fa-user-circle-o{
             font-size:25px;
@@ -324,6 +362,69 @@ body{
                   display:block;
                   height:2px;
                 }
+              }
+            }
+          }
+          .recommend-block{
+            margin-top:30px;
+            :after{
+              content:'';
+              clear:both;
+              display:block;
+            }
+            .recommend-block-header{
+              padding-bottom:10px;
+              border-bottom:1px solid #ddd;
+              margin-bottom:10px;
+              span:first-child{
+                font-size:16px;
+              }
+            }
+            .recommend-block-header:after{
+              content:'';
+              clear:both;
+              display:block;
+            }
+            .recommend-block-body{
+              width:100%;
+              dl{
+                width:18.4%;
+                margin-right:2%;
+                float:left;
+                margin-bottom:20px;
+                dt{
+                  width:100%;
+                  position:relative;
+                  overflow: hidden;
+                  span.recommend-block-cover{
+                    background:rgba(0,0,0,0.5);
+                    color:#eee;
+                    position:absolute;
+                    top:-100px;
+                    left:0;
+                    padding:6% 2% 6% 4%;
+                    font-size:12px;
+                    height:32px;
+                    overflow:hidden;
+                    transition:top 0.5s linear;
+                  }
+                  a{
+                    display:block;
+                    img{
+                      width:100%;
+                    }
+                  }
+                  dd{
+                    float:left;
+                    height:50px;
+                  }
+                }
+              }
+              dl:hover span.recommend-block-cover{
+                top:0;
+              }
+              dl:nth-child(5),dl:nth-child(10){
+                margin:0;
               }
             }
           }

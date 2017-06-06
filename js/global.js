@@ -63,11 +63,62 @@ function getStyle(elem,style){
     return s;
 }
 
-//添加class
+//添加,移除,切换class
 function addClass(elem,className){
     if(elem.className){
         elem.className=elem.className+" "+className;
     }else{
         elem.className=className;
+    }
+}
+
+function removeClass(elem,className){
+    var allClassNames=elem.className;
+    elem.className=allClassNames.replace(className,"");
+}
+
+function toggleClass(elem,className){
+    var allClassNames=elem.className;
+    if(allClassNames.indexOf(className)>=0){
+        removeClass(elem,className)
+    }else{
+        addClass(elem,className)
+    }
+}
+
+//列表项之间点击切换
+function toggleActive(containerElem,targetElem,event){
+    event=event||'click';
+    if(!containerElem||!targetElem){
+        console.log("ReferenceError:arguments is requested");
+        return;
+    }
+    var targetElems=containerElem.querySelectorAll(targetElem);
+    var len=targetElems.length;
+    containerElem.addEventListener(event,function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(e.target.tagName!="A")return;
+        for(var i=0;i<len;i++){
+            targetElems[i].className='';
+            e.target.parentNode.className='active';
+        }
+    })
+}
+//自身点击切换class
+function toggleSelf(elem,className,event){
+    event=event||'click';
+    if(elem.length){
+        for(var i=0;i<elem.length;i++){
+            elem[i].addEventListener(event,function(e){
+                e.preventDefault();
+                toggleClass(this,className)
+            })
+        }
+    }else{
+        elem.addEventListener(event,function(e){
+            e.preventDefault();
+            toggleClass(this,className)
+        })
     }
 }

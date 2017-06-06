@@ -2,6 +2,9 @@
  * Created by 76419 on 2017/6/4.
  */
 //计算banner的left值
+//导航栏切换
+toggleActive($("#findMusic .nav-bar"),'li');
+/******banner部分********/
 function getBannerLeft(){
     var container=$("#personalizedRecommendation");
     var activeBanner=container.querySelector("ul.banner-show li.active");
