@@ -296,11 +296,17 @@ body #main .display-area #findMusic .findMusic-display-area {
   max-width: 1050px;
   margin: 0 auto;
 }
-body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show {
+body #main .display-area #findMusic .findMusic-display-area-block.active {
+  display: block;
+}
+body #main .display-area #findMusic .findMusic-display-area-block {
+  display: none;
+}
+body #main .display-area #findMusic .findMusic-display-area-block .banner ul.banner-show {
   position: relative;
   height: 250px;
 }
-body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li {
+body #main .display-area #findMusic .findMusic-display-area-block .banner ul.banner-show li {
   position: absolute;
   bottom: 0;
   opacity: 0;
@@ -310,91 +316,91 @@ body #main .display-area #findMusic #personalizedRecommendation .banner ul.banne
   z-index: auto;
   transition: all 0.2s linear;
 }
-body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li a {
+body #main .display-area #findMusic .findMusic-display-area-block .banner ul.banner-show li a {
   display: block;
 }
-body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li a img {
+body #main .display-area #findMusic .findMusic-display-area-block .banner ul.banner-show li a img {
   width: 100%;
 }
-body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li.active {
+body #main .display-area #findMusic .findMusic-display-area-block .banner ul.banner-show li.active {
   left: 200px;
   opacity: 1;
   z-index: 2;
   width: 500px;
   height: 230px;
 }
-body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li.active img {
+body #main .display-area #findMusic .findMusic-display-area-block .banner ul.banner-show li.active img {
   width: 100%;
 }
-body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li.pre {
+body #main .display-area #findMusic .findMusic-display-area-block .banner ul.banner-show li.pre {
   width: 400px;
   height: 184px;
   opacity: 1.5;
   left: 0;
   z-index: 1;
 }
-body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li.pre img {
+body #main .display-area #findMusic .findMusic-display-area-block .banner ul.banner-show li.pre img {
   width: 100%;
 }
-body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li.next {
+body #main .display-area #findMusic .findMusic-display-area-block .banner ul.banner-show li.next {
   z-index: 1;
   width: 400px;
   height: 184px;
   left: 500px;
   opacity: 1.5;
 }
-body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-show li.next img {
+body #main .display-area #findMusic .findMusic-display-area-block .banner ul.banner-show li.next img {
   width: 100%;
 }
-body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-index {
+body #main .display-area #findMusic .findMusic-display-area-block .banner ul.banner-index {
   width: 200px;
   margin: 10px auto;
 }
-body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-index li {
+body #main .display-area #findMusic .findMusic-display-area-block .banner ul.banner-index li {
   float: left;
   width: 10%;
   margin: 0 1%;
 }
-body #main .display-area #findMusic #personalizedRecommendation .banner ul.banner-index li a {
+body #main .display-area #findMusic .findMusic-display-area-block .banner ul.banner-index li a {
   display: block;
   height: 2px;
 }
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block {
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block {
   margin-top: 30px;
 }
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block :after {
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block :after {
   content: '';
   clear: both;
   display: block;
 }
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-header {
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block .recommend-block-header {
   padding-bottom: 10px;
   border-bottom: 1px solid #ddd;
   margin-bottom: 10px;
 }
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-header span:first-child {
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block .recommend-block-header span:first-child {
   font-size: 16px;
 }
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-header:after {
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block .recommend-block-header:after {
   content: '';
   clear: both;
   display: block;
 }
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body {
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block .recommend-block-body {
   width: 100%;
 }
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl {
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block .recommend-block-body dl {
   width: 18.4%;
   margin-right: 2%;
   float: left;
   margin-bottom: 20px;
 }
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl dt {
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block .recommend-block-body dl dt {
   width: 100%;
   position: relative;
   overflow: hidden;
 }
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl dt span.recommend-block-cover {
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block .recommend-block-body dl dt span.recommend-block-cover {
   background: rgba(0, 0, 0, 0.5);
   color: #eee;
   position: absolute;
@@ -406,22 +412,25 @@ body #main .display-area #findMusic #personalizedRecommendation .recommend-block
   overflow: hidden;
   transition: top 0.5s linear;
 }
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl dt a {
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block .recommend-block-body dl dt a {
   display: block;
 }
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl dt a img {
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block .recommend-block-body dl dt a img {
   width: 100%;
 }
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl dt dd {
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block .recommend-block-body dl dt dd {
   float: left;
   height: 50px;
 }
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl:hover span.recommend-block-cover {
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block .recommend-block-body dl:hover span.recommend-block-cover {
   top: 0;
 }
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl:nth-child(5),
-body #main .display-area #findMusic #personalizedRecommendation .recommend-block .recommend-block-body dl:nth-child(10) {
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block .recommend-block-body dl:nth-child(5),
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block .recommend-block-body dl:nth-child(10) {
   margin: 0;
+}
+body #main .display-area #findMusic .findMusic-display-area-block .recommend-block .recommend-block-body .row > dl:last-child {
+  margin-right: 0;
 }
 body #main:after {
   content: '';

@@ -65,16 +65,34 @@ function getStyle(elem,style){
 
 //添加,移除,切换class
 function addClass(elem,className){
-    if(elem.className){
-        elem.className=elem.className+" "+className;
+    function add(elem){
+        if(elem.className){
+            elem.className=elem.className+" "+className;
+        }else{
+            elem.className=className;
+        }
+    }
+    if(elem.length!==undefined){
+        for(var i=0;i<elem.length;i++){
+            addClass(elem[i]);
+        }
     }else{
-        elem.className=className;
+        add(elem);
     }
 }
 
 function removeClass(elem,className){
-    var allClassNames=elem.className;
-    elem.className=allClassNames.replace(className,"");
+    function remove(elem){
+        var allClassNames=elem.className;
+        elem.className=allClassNames.replace(className,"");
+    }
+    if(elem.length!==undefined){
+        for(var i=0;i<elem.length;i++){
+            remove(elem[i]);
+        }
+    }else{
+        remove(elem)
+    }
 }
 
 function toggleClass(elem,className){
@@ -84,6 +102,11 @@ function toggleClass(elem,className){
     }else{
         addClass(elem,className)
     }
+}
+
+//查找兄弟元素
+function getElemSiblings(elem){
+    return elem.parentNode.children;
 }
 
 //列表项之间点击切换
@@ -121,4 +144,44 @@ function toggleSelf(elem,className,event){
             toggleClass(this,className)
         })
     }
+}
+
+//点击切换页面
+function togglePages(containerElem,targetElem,event){
+    event=event||'click';
+    if(!containerElem||!targetElem){
+        console.log("ReferenceError:arguments is requested");
+        return;
+    }
+    var targetElems=containerElem.querySelectorAll(targetElem);
+    var len=targetElems.length;
+    containerElem.addEventListener(event,function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(e.target.tagName!="A")return;
+        var src=e.target.href;
+        var index=src.indexOf("#");
+        var id=src.slice(index);
+        if(id==="#")return;
+        var siblings=getElemSiblings($(id));
+        removeClass(siblings,'active')
+        addClass($(id),'active');
+    })
+}
+
+//input元素placeholder
+function togglePlaceholder(elem,placeholder){
+    var value='';
+    elem.addEventListener('focus',function(){
+        value=elem.value;
+        if(value===placeholder){
+            elem.value='';
+        }
+    });
+    elem.addEventListener('blur',function(){
+        value=elem.value;
+        if(value===""){
+            elem.value=placeholder;
+        }
+    });
 }

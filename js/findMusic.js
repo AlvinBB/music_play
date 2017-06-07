@@ -4,6 +4,7 @@
 //计算banner的left值
 //导航栏切换
 toggleActive($("#findMusic .nav-bar"),'li');
+togglePages($("#findMusic .nav-bar"),'li a');
 /******banner部分********/
 function getBannerLeft(){
     var container=$("#personalizedRecommendation");

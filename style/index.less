@@ -298,7 +298,11 @@ body{
           max-width:1050px;
           margin:0 auto;
         }
-        #personalizedRecommendation{
+        .findMusic-display-area-block.active{
+          display:block;
+        }
+        .findMusic-display-area-block{
+          display:none;
           .banner{
             ul.banner-show{
               position:relative;
@@ -425,6 +429,9 @@ body{
               }
               dl:nth-child(5),dl:nth-child(10){
                 margin:0;
+              }
+              .row>dl:last-child{
+                margin-right:0;
               }
             }
           }
