@@ -1,10 +1,11 @@
 /**
- * Created by 76419 on 2017/6/4.
+ * Created by 76419 on 2017/6/8.
  */
+
 //计算banner的left值
 //导航栏切换
-toggleActive($("#findMusic .nav-bar"),'li');
-togglePages($("#findMusic .nav-bar"),'li a');
+$("#findMusic .nav-bar").toggleActive('li');
+$("#findMusic .nav-bar").togglePages('li a');
 /******banner部分********/
 function getBannerLeft(){
     var container=$("#personalizedRecommendation");
@@ -117,4 +118,3 @@ function responseCarousel() {
     })
 }
 responseCarousel();
-let banner
