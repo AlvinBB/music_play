@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="144e99f1-468f-4fc7-88fd-c87fdb0ab292" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/indexrebuilt.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rebuilt/banner.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rebuilt/header.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rebuilt/musicTool.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rebuilt/rebuilt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/findMusic.js" afterPath="$PROJECT_DIR$/js/findMusic.js" />
-    </list>
+    <list default="true" id="144e99f1-468f-4fc7-88fd-c87fdb0ab292" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -32,8 +21,8 @@
       <file leaf-file-name="indexrebuilt.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indexrebuilt.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="798">
-              <caret line="838" column="45" lean-forward="false" selection-start-line="838" selection-start-column="45" selection-end-line="838" selection-end-column="45" />
+            <state relative-caret-position="171">
+              <caret line="777" column="48" lean-forward="true" selection-start-line="777" selection-start-column="48" selection-end-line="777" selection-end-column="48" />
               <folding>
                 <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -334,15 +323,15 @@
       <updated>1496411909984</updated>
       <workItem from="1496411911127" duration="21576000" />
       <workItem from="1496477435577" duration="57227000" />
-      <workItem from="1496674065619" duration="30890000" />
+      <workItem from="1496674065619" duration="31084000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109693000" />
+    <option name="totallyTimeSpent" value="109887000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="257" y="64" width="1327" height="761" extended-state="1" />
+    <frame x="257" y="64" width="1327" height="761" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.171123" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -931,8 +920,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/indexrebuilt.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="838" column="45" lean-forward="false" selection-start-line="838" selection-start-column="45" selection-end-line="838" selection-end-column="45" />
+        <state relative-caret-position="171">
+          <caret line="777" column="48" lean-forward="true" selection-start-line="777" selection-start-column="48" selection-end-line="777" selection-end-column="48" />
           <folding>
             <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />

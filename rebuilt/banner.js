@@ -7,114 +7,137 @@
 $("#findMusic .nav-bar").toggleActive('li');
 $("#findMusic .nav-bar").togglePages('li a');
 /******banner部分********/
-function getBannerLeft(){
-    var container=$("#personalizedRecommendation");
-    var activeBanner=container.querySelector("ul.banner-show li.active");
-    var nextBanner=container.querySelector("ul.banner-show li.next");
-    var containerWidth=getStyle(container,'width');
-    var normalBannerWidth=getStyle(nextBanner,'width');
-    var activeBannerWidth=getStyle(activeBanner,'width');
-    var normalBannerLeft=(containerWidth-normalBannerWidth)/2+'px';
-    var activeBannerLeft=(containerWidth-activeBannerWidth)/2+'px';
-    var nextBannerLeft=(containerWidth-normalBannerWidth)+'px';
-    return {
-        'normalBannerLeft':normalBannerLeft,
-        'activeBannerLeft':activeBannerLeft,
-        'nextBannerLeft':nextBannerLeft
-    }
-}
-//初始化banner位置
-function resizeBanner(){
-    //获取left值
-    var bannerLefts=getBannerLeft();
-    var normalBannerLeft=bannerLefts.normalBannerLeft;
-    var activeBannerLeft=bannerLefts.activeBannerLeft;
-    var nextBannerLeft=bannerLefts.nextBannerLeft;
-    //查询需要设置left值的元素
-    var activeBanner=$("#personalizedRecommendation ul.banner-show li.active");
-    var nextBanner=$("#personalizedRecommendation ul.banner-show li.next");
-    var normalBanners=$("#personalizedRecommendation ul.banner-show>[class='']");
-    //修改元素left值
-    activeBanner.style.left=activeBannerLeft;
-    nextBanner.style.left=nextBannerLeft;
-    for(var i=0;i<normalBanners.length;i++){
-        normalBanners[i].style.left=normalBannerLeft;
-    }
-}
-addLoadEvent(resizeBanner);
-addResizeEvent(resizeBanner);
-
-function responseCarousel() {
-    var timer = null;
-
-    function carousel(interval) {
-        interval = interval || 4000;
-        var bannerLefts = getBannerLeft();
-        var normalBannerLeft = bannerLefts.normalBannerLeft;
-        var activeBannerLeft = bannerLefts.activeBannerLeft;
-        var nextBannerLeft = bannerLefts.nextBannerLeft;
-        var liLists = $("#personalizedRecommendation ul.banner-show li");
-        var liIndexLists=$("#personalizedRecommendation ul.banner-index li");
-        var len = liLists.length;
-
-        var index = 0;
-        var prev = null;
-        var next = null;
-        var active = null;
-        var activeIndex=null;
-
-        function task() {
-            for (var i = 0; i < len; i++) {
-                liLists[i].className = "";
-                liIndexLists[i].className="";
-            }
-            (index >= len) && (index = 0);
-            active = liLists[index];
-            activeIndex=liIndexLists[index];
-            if (index === 0) {
-                prev = liLists[len - 1];
-                next = liLists[index + 1];
-            } else if (index === len - 1) {
-                prev = liLists[index - 1];
-                next = liLists[0];
-            } else {
-                prev = liLists[index - 1];
-                next = liLists[index + 1];
-            }
-            addClass(active, 'active');
-            active.style.left = activeBannerLeft;
-            addClass(prev, 'pre');
-            prev.style.left = '0px';
-            addClass(next, 'next');
-            next.style.left = nextBannerLeft;
-            addClass(activeIndex,'active');
-            index++;
+(()=>{
+    class banner{
+        constructor(){
+            //包裹div
+            this.container="#personalizedRecommendation";
+            //此处可进一步做初始化,在此之前动态添加active,next,pre的class
+            this.active="#personalizedRecommendation ul.banner-show li.active";
+            this.next="#personalizedRecommendation ul.banner-show li.next";
+            this.normal="#personalizedRecommendation ul.banner-show>[class='']";
+            //所有轮播图列表项
+            this.allShowLists="#personalizedRecommendation ul.banner-show li";
+            //轮播下方点击按钮
+            this.bannerIndexContainer="#personalizedRecommendation ul.banner-index";
+            this.allIndexLists="#personalizedRecommendation ul.banner-index li";
+            //定时器
+            this.timer=null;
+            //轮播当前index
+            this.index=0;
         }
 
-        function clickBannerIndex(){
-            var bannerIndex=$("#personalizedRecommendation ul.banner-index");
-            bannerIndex.onclick=function(e){
+        //获取元素left值
+        getBannerLeft(){
+            var container=$(this.container).$;
+            var activeBanner=$(this.active).$;
+            var nextBanner=$(this.next).$;
+            var containerWidth=$(container).getStyle('width');
+            var normalBannerWidth=$(nextBanner).getStyle('width');
+            var activeBannerWidth=$(activeBanner).getStyle('width');
+            var normalBannerLeft=(containerWidth-normalBannerWidth)/2+'px';
+            var activeBannerLeft=(containerWidth-activeBannerWidth)/2+'px';
+            var nextBannerLeft=(containerWidth-normalBannerWidth)+'px';
+            return {
+                'normalBannerLeft':normalBannerLeft,
+                'activeBannerLeft':activeBannerLeft,
+                'nextBannerLeft':nextBannerLeft
+            }
+        }
+        //初始化banner中各个元素位置
+        resizeBanner(){
+            //获取left值
+            var bannerLefts=this.getBannerLeft();
+            var normalBannerLeft=bannerLefts.normalBannerLeft;
+            var activeBannerLeft=bannerLefts.activeBannerLeft;
+            var nextBannerLeft=bannerLefts.nextBannerLeft;
+            //查询需要设置left值的元素
+            var activeBanner=$(this.active).$;
+            var nextBanner=$(this.next).$;
+            var normalBanners=$(this.normal);
+            //修改元素left值
+            $(activeBanner).setStyle('left',activeBannerLeft);
+            $(nextBanner).setStyle('left',nextBannerLeft);
+            for(var i=0;i<normalBanners.length;i++){
+                $(normalBanners.get[i]).setStyle('left',normalBannerLeft);
+            }
+        }
+
+        //点击后切换当前轮播图片
+        clickBannerIndex(task,self,interval){
+            var bannerIndex=$(self.bannerIndexContainer).$;
+            bannerIndex.addEventListener('click',(e)=>{
                 e.stopPropagation();
                 e.preventDefault();
-                index=parseInt(e.target.getAttribute("href"))
-                clearInterval(timer);
-                timer=null;
+                self.index=parseInt(e.target.getAttribute("href"))
+                clearInterval(self.timer);
+                self.timer=null;
                 task();
-                timer=setInterval(task, interval)
+                self.timer=setInterval(task, interval)
+            })
+        }
+        //轮播
+        carousel(interval) {
+            var self=this;
+            interval = interval || 4000;
+            var bannerLefts = this.getBannerLeft();
+            var normalBannerLeft = bannerLefts.normalBannerLeft;
+            var activeBannerLeft = bannerLefts.activeBannerLeft;
+            var nextBannerLeft = bannerLefts.nextBannerLeft;
+            var liLists = $(this.allShowLists).$;
+            var liIndexLists=$(this.allIndexLists).$;
+            var len = liLists.length;
+
+            //var index = 0;
+            var prev = null;
+            var next = null;
+            var active = null;
+            var activeIndex=null;
+
+            //切换class，轮播定时器的任务函数
+            let task=()=> {
+                for (var i = 0; i < len; i++) {
+                    liLists[i].className = "";
+                    liIndexLists[i].className="";
+                }
+                (this.index >= len) && (this.index = 0);
+                active = liLists[this.index];
+                activeIndex=liIndexLists[this.index];
+                if (this.index === 0) {
+                    prev = liLists[len - 1];
+                    next = liLists[this.index + 1];
+                } else if (this.index === len - 1) {
+                    prev = liLists[this.index - 1];
+                    next = liLists[0];
+                } else {
+                    prev = liLists[this.index - 1];
+                    next = liLists[this.index + 1];
+                }
+                $(active).addClass( 'active');
+                active.style.left = activeBannerLeft;
+                $(prev).addClass( 'pre');
+                prev.style.left = '0px';
+                $(next).addClass( 'next');
+                next.style.left = nextBannerLeft;
+                $(activeIndex).addClass('active');
+                this.index++;
             }
+
+            this.timer = setInterval(task, interval);
+            this.clickBannerIndex(task,self,interval);
         }
 
-        clickBannerIndex();
-        timer = setInterval(task, interval);
+        //初始化响应式banner
+        initialResponseBanner(){
+            this.resizeBanner();
+            this.carousel();
+        }
     }
-
-    addLoadEvent(carousel);
-    addResizeEvent(function () {
-        clearInterval(timer);
-        timer = null;
-        if (timer === null) {
-            carousel();
-        }
-    })
-}
-responseCarousel();
+    var ban=new banner();
+    $f.addLoadEvent(()=>{ban.initialResponseBanner()});
+    $f.addResizeEvent(()=>{
+        clearInterval(ban.timer)
+        ban.timer=null;
+        ban.initialResponseBanner()
+    });
+})()
