@@ -456,7 +456,7 @@ body #footer .progress-container {
 body #footer .progress-container .play-progress {
   height: 6px;
   border-radius: 3px;
-  width: 50%;
+  width: 0%;
 }
 body #footer .progress-container .progress-point {
   box-sizing: border-box;

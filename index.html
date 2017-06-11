@@ -140,7 +140,7 @@
                         </a>
                     </li>
                 </ul>
-                <div class="music-tool-control music-tool-control-do">
+                <div class="music-tool-control music-tool-control-do" id="createdMusicLists">
                     创建的歌单
                     <i class="fa fa-angle-right"></i>
                 </div>
@@ -164,7 +164,7 @@
                         </a>
                     </li>
                 </ul>
-                <div class="music-tool-control music-tool-control-do">
+                <div class="music-tool-control music-tool-control-do" id="collectedMusicLists">
                     收藏的歌单
                     <i class="fa fa-angle-right"></i>
                 </div>
@@ -790,12 +790,13 @@
         </div>
     </div>
     <div id="footer" class="clear">
+        <audio src="medias/music.mp3" autoplay id="music"></audio>
         <div class="footer-left left">
             <span href="#">
                 <i class="fa fa-step-backward"></i>
             </span>
-            <span href="#" class="play-pause">
-                <i class="fa fa-play"></i>
+            <span href="#" class="play-pause" id="play_pause">
+                <i class="fa fa-pause"></i>
             </span>
             <span href="#">
                 <i class="fa fa-step-forward"></i>
@@ -821,7 +822,7 @@
             </div>
         </div>
         <div class="footer-center">
-            <span id="playDuration" class="progress-time">02:09</span>
+            <span id="musicCurrentTime" class="progress-time">00:00</span>
             <div class="progress-container">
                 <div id="playProgress" class="play-progress left">
                     <span class="progress-point right">
@@ -829,14 +830,15 @@
                     </span>
                 </div>
             </div>
-            <span id="playTotalTime" class="progress-time">04:18</span>
+            <span id="musicDuration" class="progress-time">00:00</span>
         </div>
     </div>
 
-    <script src="js/global.js"></script>
-    <script src="js/header.js"></script>
-    <script src="js/musicTool.js"></script>
-    <script src="js/findMusic.js"></script>
-    <script src="js/index.js"></script>
+    <script src="rebuilt/rebuilt.js"></script>
+    <script src="rebuilt/header.js"></script>
+    <script src="rebuilt/footer.js"></script>
+    <script src="rebuilt/musicTool.js"></script>
+    <script src="rebuilt/banner.js"></script>
+    <script src="rebuilt/index.js"></script>
 </body>
 </html>
