@@ -790,7 +790,7 @@
         </div>
     </div>
     <div id="footer" class="clear">
-        <audio src="medias/许美静%20-%20倾城.mp3" autoplay id="music"></audio>
+        <audio src="medias/许美静%20-%20倾城.mp3" autoplay id="music" loop></audio>
         <div class="footer-left left">
             <span href="#">
                 <i class="fa fa-step-backward"></i>
@@ -806,8 +806,8 @@
             <span>
                 <i class="fa fa-volume-up"></i>
             </span>
-            <div class="progress-container progress-sound">
-                <div id="soundProgress" class="play-progress left"></div>
+            <div class="progress-container progress-sound" id="volumeContainer">
+                <div id="volumeControl" class="play-progress left"></div>
             </div>
             <span class="footer-tool-right">
                 <i class="fa fa-repeat"></i>
@@ -823,9 +823,9 @@
         </div>
         <div class="footer-center">
             <span id="musicCurrentTime" class="progress-time">00:00</span>
-            <div class="progress-container">
+            <div class="progress-container" id="progressContainer">
                 <div id="playProgress" class="play-progress left">
-                    <span class="progress-point right">
+                    <span class="progress-point right" id="progressControl">
                         <span></span>
                     </span>
                 </div>
@@ -836,7 +836,7 @@
 
     <script src="rebuilt/rebuilt.js"></script>
     <script src="rebuilt/header.js"></script>
-    <script src="rebuilt/footer.js"></script>
+    <script src="rebuilt/footer_oop.js"></script>
     <script src="rebuilt/musicTool.js"></script>
     <script src="rebuilt/banner.js"></script>
     <script src="rebuilt/index.js"></script>

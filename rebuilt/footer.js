@@ -43,6 +43,7 @@ class player{
         s=s>9?s:(s>0?("0"+s):"00");
         return (m+":"+s)
     }
+    //更新总时长
     updateDuration(){
         var duration=Math.ceil(this.music.duration);
         var durationStr=this.timeToString(duration);
@@ -56,6 +57,7 @@ class player{
             this.updateDuration()
         })
     }
+    //获取当前时长
     getCurrentTime(currentTime){
         return this.timeToString(currentTime)
     }
