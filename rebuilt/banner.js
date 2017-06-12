@@ -8,6 +8,7 @@ $("#findMusic .nav-bar").toggleActive('li');
 $("#findMusic .nav-bar").togglePages('li a');
 /******banner部分********/
 (()=>{
+    'use strict';
     class banner{
         constructor(){
             //包裹div

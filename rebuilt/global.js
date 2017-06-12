@@ -3,6 +3,7 @@
  */
 
 ((global)=>{
+    'use strict';
     class myQuery {
         constructor(query){
             if(typeof query==='string'){
