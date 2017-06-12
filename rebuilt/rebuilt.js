@@ -71,8 +71,6 @@
             //暂不支持多元素toggle
             var elem=this.$;
             let toggleFunc=(elem)=>{
-                //console.log(this)
-                //console.log(elem)
                 var allClassNames=elem.className;
                 if(allClassNames.indexOf(className)>=0){
                     this.removeClass.call($(elem),className)

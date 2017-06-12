@@ -1,0 +1,152 @@
+@themeColor:#43BD7E;
+@themeFontColor:#666;
+@searchColor:overlay(@themeColor,#333);
+@faColor:#C5ECD3;
+@headerFontColor:overlay(@faColor,#333);
+@mainFontColor:#5e5e5e;
+@mainFontColorHover:overlay(@mainFontColor,#000);
+@musicToolBackgroundColor:#F5F5F7;
+@musicToolActive:overlay(@musicToolBackgroundColor,#000);
+@displayAreaBackground:#FAFAFA;
+@footerPlay:overlay(@themeColor,#bbb);
+
+/***********公共样式********/
+.scroll-bar-control{
+  ::-webkit-scrollbar {
+  }
+  ::-webkit-scrollbar-thumb{
+    background:@musicToolActive;
+  }
+  scrollbar-arrow-color:@musicToolBackgroundColor;
+  scrollbar-base-color:@musicToolActive;
+  scrollbar-highlight-color:@musicToolBackgroundColor;
+}
+
+
+
+body{
+  color:@themeFontColor;
+  #header{
+    a{
+      color:@faColor;
+    }
+    i.fa{
+      color:@faColor;
+    }
+    i.fa:hover{
+      color:#fff;
+    }
+    background:@themeColor;
+    color:@headerFontColor;
+    .search-music{
+      background:@searchColor;
+      #search{
+        color:@headerFontColor;
+        background:@searchColor;
+      }
+      #searchBtn{
+        color:@headerFontColor;
+      }
+    }
+    .tool-bar{
+      .tool-bar-setting{
+        .dialog{
+          background:@displayAreaBackground;
+        }
+        .dialog:before{
+          background:@displayAreaBackground;
+        }
+      }
+      .tool-bar-cut{
+        border-left:2px solid @searchColor;
+      }
+    }
+  }
+
+  #main{
+    color:@mainFontColor;
+    a{
+      color:@mainFontColor;
+    }
+    a:hover{
+      color:@mainFontColorHover;
+    }
+    .music-tool-bar{
+      background:@musicToolBackgroundColor;
+      border-right:1px solid @musicToolActive;
+      li.active{
+        background:@musicToolActive;
+        border-left:2px solid @themeColor;
+      }
+      .music-preview{
+        border-top:1px solid @musicToolActive;
+      }
+      .music-tool-list {
+        li.active {
+          border-left: 2px solid @themeColor;
+        }
+      }
+    }
+
+    .display-area{
+      background:@displayAreaBackground;
+      .nav-bar{
+        border-bottom:1px solid @musicToolActive;
+        li{
+          a:hover{
+            color:@footerPlay;
+          }
+        }
+        li.active{
+          border-bottom:2px solid @footerPlay;
+          a{
+            color:@footerPlay;
+          }
+        }
+      }
+      .banner{
+        ul.banner-index{
+          li{
+            a{
+              background:#ddd;
+            }
+          }
+          li.active{
+            a{
+              background:@footerPlay;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #footer{
+    border-top:1px solid @musicToolActive;
+    border-bottom:1px solid @musicToolActive;
+    background:@musicToolBackgroundColor;
+    //进度条样式
+    .progress-container{
+      background:@musicToolActive;
+      .play-progress{
+        background:@footerPlay;
+      }
+      .progress-point{
+        border:1px solid #bbb;
+        span{
+          background:@footerPlay;
+        }
+      }
+    }
+    .footer-left{
+      span{
+        background:@footerPlay;
+      }
+    }
+    .footer-right{
+      .footer-tool-right-list{
+        background:#ddd;
+      }
+    }
+  }
+}

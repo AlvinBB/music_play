@@ -100,21 +100,22 @@ body #header .tool-bar .tool-bar-setting {
 body #header .tool-bar .tool-bar-setting li {
   float: left;
   margin-left: 25px;
-}
-body #header .tool-bar .tool-bar-setting li:first-child {
   position: relative;
 }
-body #header .tool-bar .tool-bar-setting li:first-child a#headPortrait {
-  float: left;
-  width: 30px;
-  height: 30px;
-  margin: 10px 10px 0 0;
+body #header .tool-bar .tool-bar-setting i.fa {
+  cursor: pointer;
 }
-body #header .tool-bar .tool-bar-setting li:first-child a#headPortrait img {
-  width: 30px;
-  border-radius: 15px;
+body #header .tool-bar .tool-bar-setting .dialog:before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: -4px;
+  left: 48%;
+  transform: rotate(45deg);
 }
-body #header .tool-bar .tool-bar-setting li:first-child .dialog-user {
+body #header .tool-bar .tool-bar-setting .dialog {
   display: none;
   width: 250px;
   height: 400px;
@@ -125,18 +126,88 @@ body #header .tool-bar .tool-bar-setting li:first-child .dialog-user {
   border-radius: 5px;
   box-shadow: 0 0 10px #ccc;
 }
-body #header .tool-bar .tool-bar-setting li:first-child .dialog-user :before {
-  content: '';
-  display: block;
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  top: -4px;
-  left: 48%;
-  transform: rotate(45deg);
+body #header .tool-bar .tool-bar-setting .dialog-theme {
+  width: 400px;
+  height: 250px;
+  left: -190px;
 }
-body #header .tool-bar .tool-bar-setting li:first-child #dialogUserControl.active + .dialog-user {
+body #header .tool-bar .tool-bar-setting .dialog-theme ul {
+  width: 100%;
+  height: 100%;
+  padding: 30px 15px 0 15px;
+  box-sizing: border-box;
+}
+body #header .tool-bar .tool-bar-setting .dialog-theme ul li {
+  float: left;
+  width: 30%;
+  margin-left: 3%;
+  height: 90px;
+  margin-bottom: 10px;
+}
+body #header .tool-bar .tool-bar-setting .dialog-theme ul li a {
   display: block;
+  width: 100%;
+  height: 90px;
+  line-height: 90px;
+  color: #fff;
+  text-align: center;
+  vertical-align: bottom;
+  font-size: 12px;
+}
+body #header .tool-bar .tool-bar-setting .dialog-theme ul li:nth-child(1) a {
+  background: #292C32;
+}
+body #header .tool-bar .tool-bar-setting .dialog-theme ul li:nth-child(1) a:hover {
+  outline: 2px solid #000;
+}
+body #header .tool-bar .tool-bar-setting .dialog-theme ul li:nth-child(2) a {
+  background: #CF3C38;
+}
+body #header .tool-bar .tool-bar-setting .dialog-theme ul li:nth-child(2) a:hover {
+  outline: 2px solid #a41313;
+}
+body #header .tool-bar .tool-bar-setting .dialog-theme ul li:nth-child(3) a {
+  background: #EE9ABD;
+}
+body #header .tool-bar .tool-bar-setting .dialog-theme ul li:nth-child(3) a:hover {
+  outline: 2px solid #ffccdd;
+}
+body #header .tool-bar .tool-bar-setting .dialog-theme ul li:nth-child(4) a {
+  background: #93DEFF;
+}
+body #header .tool-bar .tool-bar-setting .dialog-theme ul li:nth-child(4) a:hover {
+  outline: 2px solid #ccddFF;
+}
+body #header .tool-bar .tool-bar-setting .dialog-theme ul li:nth-child(5) a {
+  background: #43A565;
+}
+body #header .tool-bar .tool-bar-setting .dialog-theme ul li:nth-child(5) a:hover {
+  outline: 2px solid #88A565;
+}
+body #header .tool-bar .tool-bar-setting .dialog-theme ul li:nth-child(6) a {
+  background: #FBD790;
+}
+body #header .tool-bar .tool-bar-setting .dialog-theme ul li:nth-child(6) a:hover {
+  outline: 2px solid #ffff90;
+}
+body #header .tool-bar .tool-bar-setting .dialog-message {
+  width: 500px;
+  min-height: 300px;
+  max-height: 800px;
+  left: -235px;
+}
+body #header .tool-bar .tool-bar-setting .dialog-control.active + .dialog {
+  display: block;
+}
+body #header .tool-bar .tool-bar-setting li:first-child a#headPortrait {
+  float: left;
+  width: 30px;
+  height: 30px;
+  margin: 10px 10px 0 0;
+}
+body #header .tool-bar .tool-bar-setting li:first-child a#headPortrait img {
+  width: 30px;
+  border-radius: 15px;
 }
 body #header .tool-bar .tool-bar-setting li:first-child span {
   float: left;

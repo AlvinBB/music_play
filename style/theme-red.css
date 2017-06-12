@@ -33,10 +33,10 @@ body #header .search-music #search {
 body #header .search-music #searchBtn {
   color: #d9746c;
 }
-body #header .tool-bar .tool-bar-setting .dialog-user {
+body #header .tool-bar .tool-bar-setting .dialog {
   background: #FAFAFA;
 }
-body #header .tool-bar .tool-bar-setting .dialog-user :before {
+body #header .tool-bar .tool-bar-setting .dialog:before {
   background: #FAFAFA;
 }
 body #main {

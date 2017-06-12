@@ -1,0 +1,111 @@
+/***********公共样式********/
+.scroll-bar-control {
+  scrollbar-arrow-color: #F5F5F7;
+  scrollbar-base-color: #ebebef;
+  scrollbar-highlight-color: #F5F5F7;
+}
+.scroll-bar-control ::-webkit-scrollbar-thumb {
+  background: #ebebef;
+}
+body {
+  color: #666;
+}
+body #header {
+  background: #53B2FA;
+  color: #aadcff;
+}
+body #header a {
+  color: #CAE9FF;
+}
+body #header i.fa {
+  color: #CAE9FF;
+}
+body #header i.fa:hover {
+  color: #fff;
+}
+body #header .search-music {
+  background: #2184f7;
+}
+body #header .search-music #search {
+  color: #aadcff;
+  background: #2184f7;
+}
+body #header .search-music #searchBtn {
+  color: #aadcff;
+}
+body #header .tool-bar .tool-bar-setting .dialog {
+  background: #FAFAFA;
+}
+body #header .tool-bar .tool-bar-setting .dialog:before {
+  background: #FAFAFA;
+}
+body #header .tool-bar .tool-bar-cut {
+  border-left: 2px solid #2184f7;
+}
+body #main {
+  color: #5e5e5e;
+}
+body #main a {
+  color: #5e5e5e;
+}
+body #main a:hover {
+  color: #000000;
+}
+body #main .music-tool-bar {
+  background: #F5F5F7;
+  border-right: 1px solid #ebebef;
+}
+body #main .music-tool-bar li.active {
+  background: #ebebef;
+  border-left: 2px solid #53B2FA;
+}
+body #main .music-tool-bar .music-preview {
+  border-top: 1px solid #ebebef;
+}
+body #main .music-tool-bar .music-tool-list li.active {
+  border-left: 2px solid #53B2FA;
+}
+body #main .display-area {
+  background: #FAFAFA;
+}
+body #main .display-area .nav-bar {
+  border-bottom: 1px solid #ebebef;
+}
+body #main .display-area .nav-bar li a:hover {
+  color: #7ad6fc;
+}
+body #main .display-area .nav-bar li.active {
+  border-bottom: 2px solid #7ad6fc;
+}
+body #main .display-area .nav-bar li.active a {
+  color: #7ad6fc;
+}
+body #main .display-area .banner ul.banner-index li a {
+  background: #ddd;
+}
+body #main .display-area .banner ul.banner-index li.active a {
+  background: #7ad6fc;
+}
+body #footer {
+  border-top: 1px solid #ebebef;
+  border-bottom: 1px solid #ebebef;
+  background: #F5F5F7;
+}
+body #footer .progress-container {
+  background: #ebebef;
+}
+body #footer .progress-container .play-progress {
+  background: #7ad6fc;
+}
+body #footer .progress-container .progress-point {
+  border: 1px solid #bbb;
+}
+body #footer .progress-container .progress-point span {
+  background: #7ad6fc;
+}
+body #footer .footer-left span {
+  background: #7ad6fc;
+}
+body #footer .footer-right .footer-tool-right-list {
+  background: #ddd;
+}

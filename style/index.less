@@ -94,9 +94,119 @@ body{
         li{
           float:left;
           margin-left:25px;
+          position:relative;
+        }
+        i.fa{
+          cursor:pointer;
+        }
+        .dialog:before{
+          content:'';
+          display:block;
+          width:10px;
+          height:10px;
+          position:absolute;
+          top:-4px;
+          left:48%;
+          transform:rotate(45deg);
+        }
+        .dialog{
+          display:none;
+          width:250px;
+          height:400px;
+          z-index:10;
+          top:50px;
+          left:-60px;
+          position:absolute;
+          border-radius:5px;
+          box-shadow: 0 0 10px #ccc;
+        }
+        .dialog-theme{
+          width:400px;
+          height:250px;
+          left:-190px;
+          ul{
+            width:100%;
+            height:100%;
+            padding:30px 15px 0 15px;
+            box-sizing:border-box;
+            li{
+              float:left;
+              width:30%;
+              margin-left:3%;
+              height:90px;
+              margin-bottom:10px;
+              a{
+                display:block;
+                width:100%;
+                height:90px;
+                line-height:90px;
+                color:#fff;
+                text-align:center;
+                vertical-align:bottom;
+                font-size:12px;
+              }
+
+            }
+            li:nth-child(1){
+              a{
+                background:#292C32;
+              }
+              a:hover{
+                outline:2px solid #000;
+              }
+            }
+            li:nth-child(2){
+              a{
+                background:#CF3C38;
+              }
+              a:hover{
+                outline:2px solid #a41313;
+              }
+            }
+            li:nth-child(3){
+              a{
+                background:#EE9ABD;
+              }
+              a:hover{
+                outline:2px solid #ffccdd;
+              }
+            }
+            li:nth-child(4){
+              a{
+                background:#93DEFF;
+              }
+              a:hover{
+                outline:2px solid #ccddFF;
+              }
+            }
+            li:nth-child(5){
+              a{
+                background:#43A565;
+              }
+              a:hover{
+                outline:2px solid #88A565;
+              }
+            }
+            li:nth-child(6){
+              a{
+                background:#FBD790;
+              }
+              a:hover{
+                outline:2px solid #ffff90;
+              }
+            }
+          }
+        }
+        .dialog-message{
+          width:500px;
+          min-height:300px;
+          max-height:800px;
+          left:-235px;
+        }
+        .dialog-control.active+.dialog{
+          display:block;
         }
         li:first-child{
-          position:relative;
           a#headPortrait{
             float:left;
             width:30px;
@@ -106,30 +216,6 @@ body{
               width:30px;
               border-radius:15px;
             }
-          }
-          .dialog-user{
-            display:none;
-            :before{
-              content:'';
-              display:block;
-              width:10px;
-              height:10px;
-              position:absolute;
-              top:-4px;
-              left:48%;
-              transform:rotate(45deg);
-            }
-            width:250px;
-            height:400px;
-            z-index:10;
-            top:50px;
-            left:-60px;
-            position:absolute;
-            border-radius:5px;
-            box-shadow: 0 0 10px #ccc;
-          }
-          #dialogUserControl.active+.dialog-user{
-            display:block;
           }
           span {
             float:left;

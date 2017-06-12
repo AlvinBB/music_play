@@ -1,7 +1,7 @@
-@themeColor:#C62F2F;
+@themeColor:#F9D594;
 @themeFontColor:#666;
 @searchColor:overlay(@themeColor,#333);
-@faColor:#E7A8A3;
+@faColor:#FBEDD4;
 @headerFontColor:overlay(@faColor,#333);
 @mainFontColor:#5e5e5e;
 @mainFontColorHover:overlay(@mainFontColor,#000);
@@ -50,12 +50,15 @@ body{
     }
     .tool-bar{
       .tool-bar-setting{
-        .dialog-user{
+        .dialog{
           background:@displayAreaBackground;
-          :before{
-            background:@displayAreaBackground;
-          }
         }
+        .dialog:before{
+          background:@displayAreaBackground;
+        }
+      }
+      .tool-bar-cut{
+        border-left:2px solid @searchColor;
       }
     }
   }
@@ -77,6 +80,11 @@ body{
       }
       .music-preview{
         border-top:1px solid @musicToolActive;
+      }
+      .music-tool-list {
+        li.active {
+          border-left: 2px solid @themeColor;
+        }
       }
     }
 
