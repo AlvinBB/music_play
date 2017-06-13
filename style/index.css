@@ -573,6 +573,13 @@ body #footer .footer-right {
   width: 300px;
   height: 48px;
 }
+body #footer .footer-right .volume-silence {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 48px;
+  line-height: 48px;
+  width: 15px;
+}
 body #footer .footer-right .progress-sound {
   width: 120px;
 }

@@ -66,8 +66,8 @@ $("#findMusic .nav-bar").togglePages('li a');
 
         //点击后切换当前轮播图片
         clickBannerIndex(task,self,interval){
-            var bannerIndex=$(self.bannerIndexContainer).$;
-            bannerIndex.addEventListener('click',(e)=>{
+            //var bannerIndex=$(self.bannerIndexContainer).$;
+            $(self.bannerIndexContainer).bindEvent('click',(e)=>{
                 e.stopPropagation();
                 e.preventDefault();
                 self.index=parseInt(e.target.getAttribute("href"))

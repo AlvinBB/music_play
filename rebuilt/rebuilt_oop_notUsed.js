@@ -1,21 +1,16 @@
 /**
+ * Created by Web on 2017/6/11.
+ */
+/**
  * Created by Web on 2017/6/8.
  */
 
 ((global)=>{
-    'use strict';
-    class myQuery {
-        constructor(query){
-            if(typeof query==='string'){
-                this.$=this.query(query);
-                this.get=this.$;
-                this.length=this.$.length||0;   //è¿™é‡Œlengthä¸º0æŒ‡çš„æ˜¯æŸ¥è¯¢åˆ°çš„domå¯¹è±¡åªæœ‰ä¸€ä¸ª
-            }else{
-                this.$=query;
-                this.length=this.$.length||0;
-            }
-        }
-        query(query){
+    var myQuery={
+        sayName:()=>{
+            console.log(this.$)
+        },
+        query:(query)=>{
             var elem=document.querySelectorAll(query);
             if(elem.length===1){
                 elem=elem[0];
@@ -24,9 +19,9 @@
                 return;
             }
             return elem;
-        }
-        //å¾ªçŽ¯
-        forEach(func){
+        },
+        //Ñ­»·
+        forEach:(func)=>{
             var dom=null;
             if(this.length===0){
                 return;
@@ -35,10 +30,11 @@
                 dom=this.$[i];
                 func(i,dom)
             }
-        }
-        //æ·»åŠ ï¼Œç§»é™¤ï¼Œåˆ‡æ¢class
-        addClass(className){
+        },
+        //Ìí¼Ó£¬ÒÆ³ý£¬ÇÐ»»class
+        addClass:(className)=>{
             var elem=this.$;
+            console.log(this)
             let add=(elem)=>{
                 if(elem.className){
                     elem.className=elem.className+" "+className;
@@ -53,8 +49,8 @@
             }else{
                 add(elem);
             }
-        }
-        removeClass(className,elem){
+        },
+        removeClass:(className,elem)=>{
             var elem=elem||this.$;
             let remove=(elem)=>{
                 var allClassNames=elem.className;
@@ -67,11 +63,13 @@
             }else{
                 remove(elem)
             }
-        }
-        toggleClass(className){
-            //æš‚ä¸æ”¯æŒå¤šå…ƒç´ toggle
+        },
+        toggleClass:(className)=>{
+            //ÔÝ²»Ö§³Ö¶àÔªËØtoggle
             var elem=this.$;
             let toggleFunc=(elem)=>{
+                //console.log(this)
+                //console.log(elem)
                 var allClassNames=elem.className;
                 if(allClassNames.indexOf(className)>=0){
                     this.removeClass.call($(elem),className)
@@ -87,10 +85,10 @@
             }else{
                 toggleFunc(elem)
             }
-        }
-        //èŽ·å–æ ·å¼ï¼Œè®¾ç½®æ ·å¼
-        getStyle(styleProps){
-            //å¤šä¸ªå…ƒç´ èŽ·å–æ ·å¼æ—¶åªèŽ·å–ç¬¬ä¸€ä¸ªå…ƒç´ æ ·å¼
+        },
+        //»ñÈ¡ÑùÊ½£¬ÉèÖÃÑùÊ½
+        getStyle:(styleProps)=>{
+            //¶à¸öÔªËØ»ñÈ¡ÑùÊ½Ê±Ö»»ñÈ¡µÚÒ»¸öÔªËØÑùÊ½
             var elem=this.$;
             if(this.length>0){
                 elem=this.get[0]
@@ -100,8 +98,8 @@
                 s=parseInt(s);
             }
             return s;
-        }
-        setStyle(styleProps,style){
+        },
+        setStyle:(styleProps,style)=>{
             var elem=this.$;
             if(this.length===0){
                 elem.style[styleProps]=style;
@@ -110,9 +108,9 @@
                     dom.style[styleProps]=style;
                 })
             }
-        }
-        //èŽ·å–å…„å¼Ÿå…ƒç´ 
-        siblings(tagName){
+        },
+        //»ñÈ¡ÐÖµÜÔªËØ
+        siblings:(tagName)=>{
             var siblingsAll= this.$.parentNode.children;
             var siblings=[];
             tagName=tagName||null;
@@ -130,18 +128,10 @@
                 }
             }
             return siblings;
-        }
+        },
 
-        /***ä»¥ä¸‹ä¸ºäº‹ä»¶è¡Œä¸ºå‡½æ•°***/
-        //ç»‘å®šäº‹ä»¶
-        bindEvent(event,func){
-            this.$.addEventListener(event,func)
-        }
-        //è§£ç»‘äº‹ä»¶
-        unBindEvent(event){
-            this.$.removeEventListener(event)
-        }
-        toggleActive(targetElem,event){
+        /***ÒÔÏÂÎªÊÂ¼þÐÐÎªº¯Êý***/
+        toggleActive:(targetElem,event)=>{
             event=event||'click';
             var elem=this.$;
             if(!targetElem){
@@ -159,19 +149,19 @@
                     e.target.parentNode.className='active';
                 }
             })
-        }
-        //è‡ªèº«ç‚¹å‡»åˆ‡æ¢class
-        toggleSelf(className,event){
-            //æš‚ä¸æ”¯æŒå¤šä¸ªå¯¹è±¡
+        },
+        //×ÔÉíµã»÷ÇÐ»»class
+        toggleSelf:(className,event)=>{
+            //ÔÝ²»Ö§³Ö¶à¸ö¶ÔÏó
             event=event||'click';
             var elem=this.$;
             elem.addEventListener(event,(e)=>{
                 e.preventDefault();
                 this.toggleClass(className)
             })
-        }
-        //ç‚¹å‡»åˆ‡æ¢é¡µé¢
-        togglePages(targetElem,event){
+        },
+        //µã»÷ÇÐ»»Ò³Ãæ
+        togglePages:(targetElem,event)=>{
             event=event||'click';
             var elem=this.$;
             if(!targetElem){
@@ -192,9 +182,9 @@
                 $(siblings).removeClass('active');
                 $(id).addClass('active');
             })
-        }
-        //input åˆ‡æ¢placeholder
-        togglePlaceholder(placeholder){
+        },
+        //input ÇÐ»»placeholder
+        togglePlaceholder:(placeholder)=>{
             var value='';
             var elem=this.$;
             elem.addEventListener('focus',()=>{
@@ -209,16 +199,29 @@
                     elem.value=placeholder;
                 }
             });
-        }
-        responseHeight(offset){
+        },
+        responseHeight:(offset)=>{
             offset=offset||100;
             var scrollHeight=document.documentElement.clientHeight;
             this.setStyle('height',((scrollHeight-offset)+'px'));
         }
     }
-    //åœ¨globalå¯¹è±¡ä¸Šæ³¨å†Œ$ç±»,è¯¥ç±»æŸ¥è¯¢èŠ‚ç‚¹çš„æ–¹å¼ä¸ºdocument.querySelectorAll()
+    class Query{
+        constructor(query){
+            if(typeof query==='string'){
+                this.$=this.query(query);
+                this.get=this.$;
+                this.length=this.$.length||0;   //ÕâÀïlengthÎª0Ö¸µÄÊÇ²éÑ¯µ½µÄdom¶ÔÏóÖ»ÓÐÒ»¸ö
+            }else{
+                this.$=query;
+                this.length=this.$.length||0;
+            }
+        };
+    }
+    Object.setPrototypeOf(Query.prototype,myQuery);
+    //ÔÚglobal¶ÔÏóÉÏ×¢²á$Àà,¸ÃÀà²éÑ¯½ÚµãµÄ·½Ê½Îªdocument.querySelectorAll()
     global.$=(query)=>{
-        return (new myQuery(query))
+        return (new Query(query))
     };
     global.$f={
         addLoadEvent:(func)=>{

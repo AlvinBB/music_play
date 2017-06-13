@@ -7,7 +7,17 @@
     'use strict';
     let player={
         music:$("#music").$,
+        /********歌曲切换*********/
+        currentSongSRC:"许美静%20-%20倾城.mp3",
+        //暂停播放
         play_pause:"#play_pause",
+        //前一首后一首
+        prevMusicBtn:"#prevMusic",
+        nextMusicBtn:"#nextMusic",
+        //循环状态,1表示列表循环,2表示单曲循环
+        playStatus:1,
+
+        /********歌曲进度*********/
         durationSpan:"#musicDuration",
         currentTimeSpan:"#musicCurrentTime",
         progressContainer:"#progressContainer",
@@ -23,28 +33,85 @@
         volumeDiv:"#volumeControl",
         volume:1,
         timer:null,
-        //点击播放，暂定
+        volumeSilence:"#volumeSilence",
+        volumeSilenceIcon:"#volumeSilence i",
+        /**********播放暂停前一首后一首*********/
+        //根据SRC更新歌曲
+        updateCurrentSong:function(){
+            this.music.src="medias/"+this.currentSongSRC;
+        },
+        //切换播放暂停图标
+        togglePlayPauseIcon(isPaused){
+            var icon=$(this.play_pause+" i.fa");
+            if(isPaused){
+                icon.removeClass('fa-play')
+                icon.removeClass('fa-pause')
+                icon.addClass('fa-pause')
+            }else{
+                icon.removeClass('fa-pause')
+                icon.removeClass('fa-play')
+                icon.addClass('fa-play')
+            }
+        },
+        //点击播放，暂停
         clickPlayPause:function(){
-            var play_pause=$(this.play_pause).$;
+            var play_pause=$(this.play_pause);
             var music=this.music;
-            var icon=$(play_pause.querySelector("i.fa"));
-            play_pause.addEventListener('click',()=>{
+            play_pause.bindEvent('click',()=>{
                 if(music.paused){
-                    music.play()
-                    icon.removeClass('fa-play')
-                    icon.addClass('fa-pause')
+                    music.play();
+                    this.togglePlayPauseIcon(true);
                     this.setCurrentTime();
+                    this.setCurrentTimeInterval();
                 }else{
-                    music.pause()
-                    icon.removeClass('fa-pause')
-                    icon.addClass('fa-play')
-                    clearInterval(this.timer)
+                    music.pause();
+                    this.togglePlayPauseIcon(false);
+                    clearInterval(this.timer);
                     this.timer=null;
                 }
             })
         },
+        //获取后一首歌曲SRC
+        getNextSongSRC:function(){
+            return "music.mp3";
+        },
+        //跳转歌曲,若当前歌曲暂停，则切换后自动播放
+        jumpToSong:function(elem,func,isPaused){
+            $(elem).bindEvent('click',(e)=>{
+                //若此时暂停，则跳转歌曲后开始更新进度条
+                if(this.music.paused){
+                    this.setCurrentTimeInterval();
+                }
+                this.currentSongSRC=func.call(this);    //func隐式解绑，需要绑定this
+                this.updateCurrentSong();
+                //点击后更新一次进度条，避免延迟
+                this.setCurrentTime();
+                this.togglePlayPauseIcon(isPaused);
+            })
+        },
+        jumpToNextSong:function(){
+            this.jumpToSong(
+                this.nextMusicBtn,
+                this.getNextSongSRC,
+                true
+            )
+        },
+        jumpToPrevSong:function(){
+            this.jumpToSong(
+                this.prevMusicBtn,
+                this.getNextSongSRC,
+                true
+            )
+        },
+        //自动跳转歌曲，用于每次播放结束后自动播放下一曲
+        autoJumpToNextSong:function(){
+            if((this.currentTime/this.duration)>0.992&&(this.playStatus===1)){
+                this.currentSongSRC=this.getNextSongSRC();
+                this.updateCurrentSong()
+            }
+        },
 
-        /****歌曲进度控制等设置****/
+        /***********歌曲进度控制等设置***********/
         //时长转换为歌曲时长显示格式
         timeToString:function(duration){
             var m=Math.floor(duration/60);
@@ -63,7 +130,7 @@
             }
         },
         setDuration:function(){
-            this.music.addEventListener('loadedmetadata',()=>{      //duration加载完成事件，若直接取duration取到的值为NaN
+            $(this.music).bindEvent('loadedmetadata',()=>{      //duration加载完成事件，若直接取duration取到的值为NaN
                 this.updateDuration()
             })
         },
@@ -86,6 +153,7 @@
             var self=this;
             this.timer=setInterval(()=>{
                 self.setCurrentTime()
+                self.autoJumpToNextSong()
             },1000)
         },
         //获取进度条总长度（宽度）
@@ -96,15 +164,14 @@
         progressControl:function(){
             var elem=this.progressContainer;
             this.musicTotalWidth=this.getWidth(elem);
-            var self=this;
             //点击进度条框获取鼠标X位置，并切换进度条
-            $(elem).$.addEventListener('click',(e)=>{
-                clearInterval(self.timer)
-                self.timer=null;
-                self.music.currentTime=Math.floor(e.offsetX/this.musicTotalWidth*self.duration);
+            $(elem).bindEvent('click',(e)=>{
+                clearInterval(this.timer)
+                this.timer=null;
+                this.music.currentTime=Math.floor(e.offsetX/this.musicTotalWidth*this.duration);
                 //点击后立即更新一次进度，避免进度条显示延迟1秒
-                self.setCurrentTime();
-                self.setCurrentTimeInterval();
+                this.setCurrentTime();
+                this.setCurrentTimeInterval();
             })
         },
 
@@ -118,23 +185,64 @@
             this.updateVolume();
             var elem=this.volumeContainer;
             this.volumeTotalWidth=this.getWidth(elem);
-            var self=this;
             //点击音量条框获取鼠标X位置，并切换音量
-            $(elem).$.addEventListener('click',(e)=>{
-                self.music.volume=e.offsetX/this.volumeTotalWidth;
-                self.updateVolume();
+            $(elem).bindEvent('click',(e)=>{
+                this.music.volume=e.offsetX/this.volumeTotalWidth;
+                if(this.volume===0){
+                    //切换音量图标状态
+                    $(this.volumeSilenceIcon).removeClass('fa-volume-off');
+                    $(this.volumeSilenceIcon).addClass('fa-volume-up');
+                }
+                this.updateVolume();
+            })
+        },
+        //控制静音
+        toggleSilence:function(){
+            $(this.volumeSilence).bindEvent('click',(e)=>{
+                e.preventDefault();
+                e.stopPropagation();
+                let target=e.target;
+                if(target.nodeName!=='I')return;
+                if(this.volume>0){
+                    target.model=this.volume;
+                    this.music.volume=0;
+                    //此处样式为分离
+                    $(target).removeClass('fa-volume-up');
+                    $(target).addClass('fa-volume-off');
+                }else{
+                    this.music.volume=target.model;
+                    $(target).removeClass('fa-volume-off');
+                    $(target).addClass('fa-volume-up');
+                }
+                this.updateVolume()
             })
         },
         initialPlayer:function(){
+            /******播放暂停前进后退*****/
+            this.jumpToNextSong()
+            this.jumpToPrevSong()
             this.clickPlayPause()
-            //音乐播放进度
+            /******音乐播放进度*****/
             this.setDuration()
             this.updateDuration()
             this.setCurrentTimeInterval()
             this.progressControl()
-            //声音控制
+            /******声音*****/
             this.setVolume()
+            this.toggleSilence()
         }
+        //destroyPlayer:function(){
+        //    $(this.play_pause).unBindEvent('click');
+        //    $(this.nextMusicBtn).unBindEvent('click');
+        //    $(this.prevMusicBtn).unBindEvent('click');
+        //    $(this.progressContainer).unBindEvent('click');
+        //    $(this.volumeContainer).unBindEvent('click');
+        //    $(this.volumeSilence).unBindEvent('click');
+        //    $(this.volumeSilence).unBindEvent('click');
+        //}
     }
     $f.addLoadEvent(()=>{player.initialPlayer()});
+    //$f.addResizeEvent(()=>{
+    //    player.destroyPlayer();
+    //})
 })()
