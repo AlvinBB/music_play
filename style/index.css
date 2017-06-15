@@ -244,6 +244,67 @@ body #main {
   font-size: 13px;
   height: 600px;
 }
+body #main .music-stage {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #FAFAFA;
+  z-index: 20;
+  display: none;
+}
+body #main .music-stage .shrink-stage {
+  position: fixed;
+  top: 80px;
+  right: 30px;
+  width: 50px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+}
+body #main .music-stage .shrink-stage i.fa {
+  font-size: 20px;
+}
+body #main .music-stage .stage-container {
+  margin: 0 70px;
+  height: 2000px;
+}
+body #main .music-stage .stage-container .canvas-area {
+  width: 500px;
+  height: 500px;
+  position: relative;
+}
+body #main .music-stage .stage-container .canvas-area .mid-disc {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  border: 50px solid rgba(30, 30, 30, 0.8);
+  border-radius: 50%;
+}
+body #main .music-stage .stage-container .canvas-area .out-disc {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 310px;
+  height: 310px;
+  border: 10px solid rgba(200, 200, 200, 0.3);
+  border-radius: 50%;
+}
+body #main .music-stage .stage-container .canvas-area #drawArea {
+  background: #ddd;
+}
+body #main .music-stage.active {
+  display: block;
+}
 body #main .music-tool-bar {
   height: 100%;
   box-sizing: border-box;

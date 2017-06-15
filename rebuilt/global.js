@@ -210,10 +210,11 @@
                 }
             });
         }
-        responseHeight(offset){
-            offset=offset||100;
-            var scrollHeight=document.documentElement.clientHeight;
-            this.setStyle('height',((scrollHeight-offset)+'px'));
+        responseSize(type,offset){
+            var prop=(type==="height"?"Height":"Width");
+            offset=offset||0;
+            var scrollSize=document.documentElement["client"+prop];
+            this.setStyle(type,((scrollSize-offset)+'px'));
         }
     }
     //在global对象上注册$类,该类查询节点的方式为document.querySelectorAll()

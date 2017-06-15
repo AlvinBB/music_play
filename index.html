@@ -107,7 +107,20 @@
             </ul>
         </div>
     </div>
+
     <div id="main" class="scroll-bar-control">
+        <div id="musicPlayingDetailStage" class="music-stage scroll-bar-control">
+            <div class="shrink-stage">
+                <i class="fa fa-compress"></i>
+            </div>
+            <div class="stage-container">
+                <div class="canvas-area">
+                    <div class="mid-disc"></div>
+                    <div class="out-disc"></div>
+                    <canvas id="drawArea" width="500" height="500"></canvas>
+                </div>
+            </div>
+        </div>
         <div class="music-tool-bar left">
             <div class="music-tool" id="musicTool">
                 <div class="music-tool-control">
@@ -222,6 +235,7 @@
                     <img src="images/singer_pic/singer01.jpg" alt="歌曲图片">
                     <span>倾城</span>
                     <span>许美静</span>
+
                 </div>
                 <div class="music-preview-extension left">
                     <i class="fa fa-expand"></i>
@@ -817,6 +831,7 @@
             </div>
         </div>
     </div>
+
     <div id="footer" class="clear">
         <audio src="medias/许美静%20-%20倾城.mp3" autoplay id="music" loop></audio>
         <div class="footer-left left">
@@ -868,5 +883,6 @@
     <script src="rebuilt/musicTool.js"></script>
     <script src="rebuilt/banner.js"></script>
     <script src="rebuilt/index.js"></script>
+    <script src="rebuilt/canvas.js"></script>
 </body>
 </html>

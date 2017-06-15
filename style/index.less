@@ -257,6 +257,63 @@ body{
   #main{
     font-size:13px;
     height:600px;
+    //音乐播放去样式
+    .music-stage{
+      position:absolute;
+      top:50px;
+      left:0;
+      width:100%;
+      overflow-x:hidden;
+      overflow-y:auto;
+      background:#FAFAFA;
+      z-index:20;
+      display:none;
+      .shrink-stage{
+        position:fixed;
+        top:80px;
+        right:30px;
+        width:50px;
+        height:30px;
+        line-height:30px;
+        text-align:center;
+        background:#fff;
+        border-radius:3px;
+        border:1px solid #ddd;
+        i.fa{font-size:20px;}
+      }
+      .stage-container{
+        margin:0 70px;
+        height:2000px;
+        .canvas-area{
+          width:500px;
+          height:500px;
+          position:relative;
+          .mid-disc{
+            position:absolute;
+            left:50%;top:50%;
+            transform:translate(-50%,-50%);
+            width:200px;height:200px;
+            border:50px solid rgba(30,30,30,0.8);
+            border-radius:50%;
+          }
+          .out-disc{
+            position:absolute;
+            left:50%;top:50%;
+            transform:translate(-50%,-50%);
+            width:310px;height:310px;
+            border:10px solid rgba(200,200,200,0.3);
+            border-radius:50%;
+          }
+          #drawArea{
+            background:#ddd;
+          }
+        }
+      }
+    }
+    .music-stage.active{
+      display:block;
+    }
+    //左侧工具栏样式
     .music-tool-bar{
       height:100%;
       box-sizing:border-box;
