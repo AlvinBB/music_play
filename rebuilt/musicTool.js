@@ -8,4 +8,5 @@ $f.addLoadEvent(()=>{
     $("#musicTool").toggleActive('ul.music-tool-list li');
     $("#createdMusicLists").toggleSelf('active');
     $("#collectedMusicLists").toggleSelf('active');
+
 })
