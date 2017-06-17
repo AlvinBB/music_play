@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="144e99f1-468f-4fc7-88fd-c87fdb0ab292" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/wyy_music.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rebuilt/canvas.js" afterPath="$PROJECT_DIR$/rebuilt/canvas_notUsed.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rebuilt/global.js" afterPath="$PROJECT_DIR$/rebuilt/global.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rebuilt/player.js" afterPath="$PROJECT_DIR$/rebuilt/player.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/style/index.css" afterPath="$PROJECT_DIR$/style/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/style/index.less" afterPath="$PROJECT_DIR$/style/index.less" />
-    </list>
+    <list default="true" id="144e99f1-468f-4fc7-88fd-c87fdb0ab292" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -390,12 +380,12 @@
       <workItem from="1497193989232" duration="3946000" />
       <workItem from="1497433557862" duration="319000" />
       <workItem from="1497522230186" duration="11777000" />
-      <workItem from="1497659397988" duration="23176000" />
+      <workItem from="1497659397988" duration="23368000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164145000" />
+    <option name="totallyTimeSpent" value="164337000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="240" y="236" width="1390" height="763" extended-state="0" />
