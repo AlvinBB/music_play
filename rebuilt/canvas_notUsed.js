@@ -27,6 +27,7 @@ let stage={
     },
     //绘制disc旋转动画
     discRotatingControl:function(){
+        this.degree=0;
         let drawCircle=(radius,line_width,color)=>{
             ctx.strokeStyle=color;
             ctx.lineWidth=line_width;
@@ -43,9 +44,6 @@ let stage={
 
         img_disc.src=this.singerPic;
         img_needle.src=this.needlePic;
-
-
-
 
         img_disc.onload=()=>{
             img_needle.onload=()=>{
@@ -108,12 +106,24 @@ let stage={
             }
         }
     },
+    //切换时销毁disc动画以便重新加载
+    changeCurrentDiscAnimation:function(){
+        if(this.timer!==null){
+            clearInterval(this.timer);
+            this.timer=null;
+            this.discRotatingControl()
+        }
+    },
+
     initialStage:function(){
         //音乐播放区显示、隐藏
         this.showMusicArea()
         this.hideMusicArea()
         //disc
         this.discRotatingControl()
+        //监听disc图片，变化后重新创建
+        $f.watch(stage,"singerPic",this.changeCurrentDiscAnimation.bind(stage))
+
     }
 }
 $f.addLoadEvent(()=>{stage.initialStage()})

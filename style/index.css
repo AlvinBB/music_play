@@ -245,6 +245,7 @@ body #main {
   height: 600px;
 }
 body #main .music-stage {
+  background: #fafafa;
   background: url("../images/music_area_bg.jpg") no-repeat 0 0;
   background-size: 100%;
   position: absolute;

@@ -221,6 +221,7 @@
     global.$=(query)=>{
         return (new myQuery(query))
     };
+    //属性监听函数
     global.$f={
         addLoadEvent:(func)=>{
             var oldonload=window.onload;
@@ -246,6 +247,19 @@
                 }
             }
             $f.addLoadEvent(resizeEvent)
+        },
+        watch:(obj,attr,func)=>{
+            var _value;
+            Object.defineProperty(obj,attr,{
+                get(){
+                    console.log("get")
+                    return _value;
+                },
+                set(val){
+                    _value=val;
+                    func()
+                }
+            })
         }
     }
 })(window);
