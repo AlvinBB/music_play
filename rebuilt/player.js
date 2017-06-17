@@ -14,9 +14,9 @@
         //前一首后一首
         prevMusicBtn:"#prevMusic",
         nextMusicBtn:"#nextMusic",
-        //循环状态,1表示列表循环,2表示单曲循环
+        //循环状态,1表示列表循环,2表示单曲循环，3表示随机
         playStatus:1,
-        playStatusControlBtn:"#playStatusControl",
+        playStatusControlBtn:"#playStatusControl i",
 
         /********歌曲进度*********/
         durationSpan:"#musicDuration",
@@ -216,14 +216,28 @@
                     $(target).removeClass('fa-volume-off');
                     $(target).addClass('fa-volume-up');
                 }
-                this.updateVolume()
+                this.updateVolume();
             })
+        },
+        //控制循环按钮样式
+        playStatusStyle:function(){
+            $(this.playStatusControlBtn).removeClass("fa-repeat");
+            $(this.playStatusControlBtn).removeClass("fa-random");
+            $(this.playStatusControlBtn).removeClass("fa-indent");
+            if(this.playStatus===1){
+                $(this.playStatusControlBtn).addClass("fa-indent");
+            }else if(this.playStatus===2){
+                $(this.playStatusControlBtn).addClass("fa-repeat");
+            }else{
+                $(this.playStatusControlBtn).addClass("fa-random");
+            }
         },
         //控制循环
         playStatusChange:function(){
             $(this.playStatusControlBtn).bindEvent('click',()=>{
                 this.playStatus++;
                 this.playStatus>3&&(this.playStatus=1);
+                this.playStatusStyle()
             })
         },
         initialPlayer:function(){

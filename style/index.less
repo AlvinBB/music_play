@@ -259,13 +259,14 @@ body{
     height:600px;
     //音乐播放去样式
     .music-stage{
+      background:url("../images/music_area_bg.jpg") no-repeat 0 0;
+      background-size:100%;
       position:absolute;
       top:50px;
       left:0;
       width:100%;
       overflow-x:hidden;
       overflow-y:auto;
-      background:#FAFAFA;
       z-index:3;
       display:none;
       .shrink-stage{
@@ -283,30 +284,25 @@ body{
         i.fa{font-size:20px;}
       }
       .stage-container{
-        margin:0 70px;
+        margin:0 80px;
         height:2000px;
         .canvas-area{
-          width:500px;
-          height:500px;
+          width:900px;
+          margin:0 auto;
+          height:430px;
           position:relative;
-          .mid-disc{
-            position:absolute;
-            left:50%;top:50%;
-            transform:translate(-50%,-50%);
-            width:200px;height:200px;
-            border:50px solid rgb(40,40,40);
-            border-radius:50%;
-          }
-          .out-disc{
-            position:absolute;
-            left:50%;top:50%;
-            transform:translate(-50%,-50%);
-            width:300px;height:300px;
-            border:15px solid rgba(200,200,200,0.3);
-            border-radius:50%;
-          }
-          #drawArea{
-            background:#ddd;
+          .lyric-container{
+            width:350px;
+            margin-top:20px;
+            .lyric-header{
+              margin:10px 0;
+            }
+            .lyric-area{
+              margin-top:10px;
+              height:400px;
+              overflow-y: scroll;
+              border-right:1px solid #ddd;
+            }
           }
         }
       }

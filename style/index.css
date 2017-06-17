@@ -245,13 +245,14 @@ body #main {
   height: 600px;
 }
 body #main .music-stage {
+  background: url("../images/music_area_bg.jpg") no-repeat 0 0;
+  background-size: 100%;
   position: absolute;
   top: 50px;
   left: 0;
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  background: #FAFAFA;
   z-index: 3;
   display: none;
 }
@@ -272,36 +273,27 @@ body #main .music-stage .shrink-stage i.fa {
   font-size: 20px;
 }
 body #main .music-stage .stage-container {
-  margin: 0 70px;
+  margin: 0 80px;
   height: 2000px;
 }
 body #main .music-stage .stage-container .canvas-area {
-  width: 500px;
-  height: 500px;
+  width: 900px;
+  margin: 0 auto;
+  height: 430px;
   position: relative;
 }
-body #main .music-stage .stage-container .canvas-area .mid-disc {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
-  border: 50px solid #282828;
-  border-radius: 50%;
+body #main .music-stage .stage-container .canvas-area .lyric-container {
+  width: 350px;
+  margin-top: 20px;
 }
-body #main .music-stage .stage-container .canvas-area .out-disc {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  height: 300px;
-  border: 15px solid rgba(200, 200, 200, 0.3);
-  border-radius: 50%;
+body #main .music-stage .stage-container .canvas-area .lyric-container .lyric-header {
+  margin: 10px 0;
 }
-body #main .music-stage .stage-container .canvas-area #drawArea {
-  background: #ddd;
+body #main .music-stage .stage-container .canvas-area .lyric-container .lyric-area {
+  margin-top: 10px;
+  height: 400px;
+  overflow-y: scroll;
+  border-right: 1px solid #ddd;
 }
 body #main .music-stage.active {
   display: block;
