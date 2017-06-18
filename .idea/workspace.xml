@@ -1,7 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="144e99f1-468f-4fc7-88fd-c87fdb0ab292" name="Default" comment="" />
+    <list default="true" id="144e99f1-468f-4fc7-88fd-c87fdb0ab292" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/banner/banner01.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/banner/banner02.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/banner/banner03.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/banner/banner04.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/banner/banner05.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/banner/banner06.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/banner/banner07.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/banner/banner08.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/loginHead.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/loginHeadUser.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/music_area_bg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/play_needle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/singer_pic/singer01.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/songLists/songList1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/songLists/songList10.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/songLists/songList2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/songLists/songList3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/songLists/songList4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/songLists/songList5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/songLists/songList6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/songLists/songList7.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/songLists/songList8.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/songLists/songList9.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/initial_js_notUsed/findMusic.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/initial_js_notUsed/footer_class.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/initial_js_notUsed/global.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/initial_js_notUsed/header.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/initial_js_notUsed/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/initial_js_notUsed/musicTool.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/medias/HappyNY.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/medias/Sleep Away.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/medias/music.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/medias/许美静 - 倾城.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rebuilt/banner.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rebuilt/canvas_notUsed.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rebuilt/footer_notUsed.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rebuilt/footer_oop.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rebuilt/global.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rebuilt/header.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rebuilt/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rebuilt/musicTool.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rebuilt/player.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rebuilt/rebuilt_oop_notUsed.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/HELP-US-OUT.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/css/font-awesome.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/css/font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/fonts/FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/fonts/fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/fonts/fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/fonts/fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/animated.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/bordered-pulled.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/core.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/fixed-width.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/font-awesome.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/font-awesome.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/icons.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/larger.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/list.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/mixins.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/mixins.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/path.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/rotated-flipped.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/screen-reader.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/stacked.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/variables.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/less/variables.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/scss/_animated.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/scss/_bordered-pulled.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/scss/_core.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/scss/_fixed-width.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/scss/_icons.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/scss/_larger.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/scss/_list.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/scss/_mixins.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/scss/_path.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/scss/_rotated-flipped.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/scss/_screen-reader.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/scss/_stacked.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/scss/_variables.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome-4.7.0/scss/font-awesome.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/index.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/theme-black.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/theme-black.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/theme-blue.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/theme-blue.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/theme-golden.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/theme-golden.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/theme-green.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/theme-green.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/theme-pink.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/theme-pink.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/theme-red.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/theme-red.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/theme.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/style/theme.less" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -17,95 +122,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="973" column="45" lean-forward="true" selection-start-line="973" selection-start-column="45" selection-end-line="973" selection-end-column="45" />
-              <folding>
-                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.less" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/style/index.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="263" column="26" lean-forward="true" selection-start-line="263" selection-start-column="26" selection-end-line="263" selection-end-column="26" />
-              <folding>
-                <element signature="e#7501#7789#0" expanded="false" />
-                <element signature="e#7820#7853#0" expanded="false" />
-                <element signature="e#7884#8252#0" expanded="false" />
-                <element signature="e#8278#8532#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="global.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rebuilt/global.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="223" column="12" lean-forward="false" selection-start-line="223" selection-start-column="12" selection-end-line="223" selection-end-column="12" />
-              <folding>
-                <element signature="e#789#1014#0" expanded="false" />
-                <element signature="e#1066#1517#0" expanded="false" />
-                <element signature="e#1553#1954#0" expanded="false" />
-                <element signature="e#1985#2626#0" expanded="false" />
-                <element signature="e#2675#2984#0" expanded="false" />
-                <element signature="e#3019#3285#0" expanded="false" />
-                <element signature="e#3328#3978#0" expanded="false" />
-                <element signature="e#4247#4912#0" expanded="false" />
-                <element signature="e#4970#5209#0" expanded="false" />
-                <element signature="e#5264#5993#0" expanded="false" />
-                <element signature="e#6062#6511#0" expanded="false" />
-                <element signature="e#6962#7254#0" expanded="false" />
-                <element signature="e#7287#7727#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rebuilt/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="8" column="59" lean-forward="true" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="banner.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rebuilt/banner.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="693">
-              <caret line="108" column="51" lean-forward="true" selection-start-line="108" selection-start-column="51" selection-end-line="108" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#40#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="player.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rebuilt/player.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-250">
-              <caret line="385" column="0" lean-forward="false" selection-start-line="385" selection-start-column="0" selection-end-line="385" selection-end-column="0" />
-              <folding>
-                <element signature="e#9148#12249#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -169,6 +186,7 @@
         <option value="$PROJECT_DIR$/rebuilt/canvas.js" />
         <option value="$PROJECT_DIR$/rebuilt/player.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -185,8 +203,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="240" />
-    <option name="y" value="236" />
+    <option name="x" value="507" />
+    <option name="y" value="429" />
     <option name="width" value="1390" />
     <option name="height" value="763" />
   </component>
@@ -205,8 +223,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -233,36 +249,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music_play" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music_play" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rebuilt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music_play" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music_play" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -381,20 +371,20 @@
       <workItem from="1497433557862" duration="319000" />
       <workItem from="1497522230186" duration="11777000" />
       <workItem from="1497659397988" duration="23368000" />
+      <workItem from="1497781951815" duration="243000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164337000" />
+    <option name="totallyTimeSpent" value="164580000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="240" y="236" width="1390" height="763" extended-state="0" />
-    <editor active="true" />
+    <frame x="507" y="429" width="1390" height="763" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23833819" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23833819" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3258786" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -406,6 +396,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -458,11 +449,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3168">
           <caret line="180" column="25" lean-forward="true" selection-start-line="180" selection-start-column="25" selection-end-line="180" selection-end-column="25" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -541,13 +528,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rebuilt/findMusic.js" />
     <entry file="file://$PROJECT_DIR$/indexrebuilt.html" />
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/style/font-awesome-4.7.0/css/font-awesome.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -608,7 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1221">
           <caret line="107" column="9" lean-forward="false" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -616,14 +595,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33">
           <caret line="1" column="1" lean-forward="false" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rebuilt/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="8" column="59" lean-forward="true" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
+          <caret line="8" column="59" lean-forward="false" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
           <folding />
         </state>
       </provider>
@@ -639,7 +617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1485">
           <caret line="246" column="8" lean-forward="true" selection-start-line="246" selection-start-column="8" selection-end-line="246" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -647,7 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="9" column="51" lean-forward="false" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -655,9 +631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-          <folding>
-            <element signature="e#82#1772#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -666,27 +639,12 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wyy_music.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="980">
-          <caret line="81" column="13" lean-forward="true" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/wyy_music.html" />
+    <entry file="file://$PROJECT_DIR$/test.html" />
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -697,46 +655,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rebuilt/global.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
+        <state relative-caret-position="2211">
           <caret line="223" column="12" lean-forward="false" selection-start-line="223" selection-start-column="12" selection-end-line="223" selection-end-column="12" />
-          <folding>
-            <element signature="e#789#1014#0" expanded="false" />
-            <element signature="e#1066#1517#0" expanded="false" />
-            <element signature="e#1553#1954#0" expanded="false" />
-            <element signature="e#1985#2626#0" expanded="false" />
-            <element signature="e#2675#2984#0" expanded="false" />
-            <element signature="e#3019#3285#0" expanded="false" />
-            <element signature="e#3328#3978#0" expanded="false" />
-            <element signature="e#4247#4912#0" expanded="false" />
-            <element signature="e#4970#5209#0" expanded="false" />
-            <element signature="e#5264#5993#0" expanded="false" />
-            <element signature="e#6062#6511#0" expanded="false" />
-            <element signature="e#6962#7254#0" expanded="false" />
-            <element signature="e#7287#7727#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/style/index.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="263" column="26" lean-forward="true" selection-start-line="263" selection-start-column="26" selection-end-line="263" selection-end-column="26" />
-          <folding>
-            <element signature="e#7501#7789#0" expanded="false" />
-            <element signature="e#7820#7853#0" expanded="false" />
-            <element signature="e#7884#8252#0" expanded="false" />
-            <element signature="e#8278#8532#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="33">
+          <caret line="263" column="26" lean-forward="false" selection-start-line="263" selection-start-column="26" selection-end-line="263" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rebuilt/player.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-250">
+        <state relative-caret-position="10164">
           <caret line="385" column="0" lean-forward="false" selection-start-line="385" selection-start-column="0" selection-end-line="385" selection-end-column="0" />
-          <folding>
-            <element signature="e#9148#12249#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -744,29 +681,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1815">
           <caret line="118" column="20" lean-forward="true" selection-start-line="118" selection-start-column="20" selection-end-line="118" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rebuilt/banner.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="108" column="51" lean-forward="true" selection-start-line="108" selection-start-column="51" selection-end-line="108" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="3498">
+          <caret line="108" column="51" lean-forward="false" selection-start-line="108" selection-start-column="51" selection-end-line="108" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="2" column="64" lean-forward="false" selection-start-line="2" selection-start-column="64" selection-end-line="2" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="973" column="45" lean-forward="true" selection-start-line="973" selection-start-column="45" selection-end-line="973" selection-end-column="45" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
+        <state relative-caret-position="254">
+          <caret line="973" column="45" lean-forward="false" selection-start-line="973" selection-start-column="45" selection-end-line="973" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
