@@ -11,7 +11,7 @@ let stage={
     timer:null,
     degree:0,
     needlePic:'images/play_needle.png',
-    singerPic:"images/singer_pic/singer01.jpg",
+    singerPic:"images/singer_pic/singerXMJ.jpg",
     musicArea:".music-stage",
 
     //展示，隐藏播放区

@@ -9,6 +9,11 @@
         //切换主题
         themeLink:"#themeCSS",
         dialogTheme:".tool-bar-setting .dialog-theme",
+        /**********用户登陆***********/
+        loginBtn:"#loginBtn",
+        unameInput:"#uname",
+        upwdInpue:"#upwd",
+
         //点击工具栏切换显示隐藏对话框
         toggleDialog:function(){
             $(this.barContainer).bindEvent('click',(e)=>{
@@ -46,9 +51,36 @@
             })
         },
         //初始化
+
+        /**********用户登陆***********/
+        login:function(){
+            let self=this;
+            $(this.loginBtn).bindEvent('click',()=>{
+                let un=$(self.unameInput).$.value;
+                let up=$(self.upwdInpue).$.value;
+                $f.ajax({
+                    type:'POST',
+                    url:'/Login',
+                    data:{uname:un,upwd:up},
+                    success:(result)=>{
+                        let data=JSON.parse(result)
+                        console.log(data)
+                        if(data.code===1){
+                            sessionStorage['uname']=data.uname;
+                            $("#nickname").$.innerHTML=data.uname;
+                            $("#headPortrait img").$.src="images/"+data.uhead;
+                        }else{
+                            $("#loginMsg").$.innerHTML="用户名或密码错误"
+                        }
+                    }
+                })
+            })
+        },
         initialTool:function(){
             this.toggleDialog()
             this.changeTheme()
+            //登陆
+            this.login()
         }
     }
     $f.addLoadEvent(()=>{

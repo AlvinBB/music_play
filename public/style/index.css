@@ -94,16 +94,77 @@ body #header .tool-bar {
   height: 50px;
 }
 body #header .tool-bar .tool-bar-setting {
-  padding: 0 20px;
-  width: 240px;
+  padding: 0 ;
+  width: 280px;
 }
 body #header .tool-bar .tool-bar-setting li {
-  float: left;
-  margin-left: 25px;
+  float: right;
+  margin-right: 25px;
   position: relative;
 }
 body #header .tool-bar .tool-bar-setting i.fa {
   cursor: pointer;
+}
+body #header .tool-bar .tool-bar-setting .form-login {
+  padding-top: 100px;
+  /* firefox 19+ */
+  /* ie */
+}
+body #header .tool-bar .tool-bar-setting .form-login ::-webkit-input-placeholder {
+  color: #ddd;
+  font-size: 12px;
+}
+body #header .tool-bar .tool-bar-setting .form-login ::-moz-placeholder {
+  color: #ddd;
+  font-size: 12px;
+}
+body #header .tool-bar .tool-bar-setting .form-login :-ms-input-placeholder {
+  color: #ddd;
+  font-size: 12px;
+}
+body #header .tool-bar .tool-bar-setting .form-login input:-moz-placeholder {
+  color: #ddd;
+  font-size: 12px;
+}
+body #header .tool-bar .tool-bar-setting .form-login input {
+  display: block;
+  margin: 0 auto;
+  outline: none;
+  border: 1px solid #ddd;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+body #header .tool-bar .tool-bar-setting .form-login #uname {
+  padding-left: 20px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+body #header .tool-bar .tool-bar-setting .form-login #upwd {
+  padding-left: 20px;
+  border-top: none;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+body #header .tool-bar .tool-bar-setting .form-login #loginMsg {
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 auto;
+  color: #EA4848;
+}
+body #header .tool-bar .tool-bar-setting .form-login #loginBtn {
+  border: none;
+  border-radius: 4px;
+  background: #EA4848;
+  cursor: pointer;
+  height: 40px;
+  color: #fff;
+}
+body #header .tool-bar .tool-bar-setting .form-login #loginBtn:hover {
+  background: #C62F2F;
 }
 body #header .tool-bar .tool-bar-setting .dialog:before {
   content: '';
@@ -138,6 +199,7 @@ body #header .tool-bar .tool-bar-setting .dialog-theme ul {
   box-sizing: border-box;
 }
 body #header .tool-bar .tool-bar-setting .dialog-theme ul li {
+  margin: 0;
   float: left;
   width: 30%;
   margin-left: 3%;
@@ -199,30 +261,30 @@ body #header .tool-bar .tool-bar-setting .dialog-message {
 body #header .tool-bar .tool-bar-setting .dialog-control.active + .dialog {
   display: block;
 }
-body #header .tool-bar .tool-bar-setting li:first-child a#headPortrait {
+body #header .tool-bar .tool-bar-setting li:last-child a#headPortrait {
   float: left;
   width: 30px;
   height: 30px;
   margin: 10px 10px 0 0;
 }
-body #header .tool-bar .tool-bar-setting li:first-child a#headPortrait img {
+body #header .tool-bar .tool-bar-setting li:last-child a#headPortrait img {
   width: 30px;
   border-radius: 15px;
 }
-body #header .tool-bar .tool-bar-setting li:first-child span {
+body #header .tool-bar .tool-bar-setting li:last-child span {
   float: left;
   font-size: 12px;
   font-weight: 400;
   cursor: pointer;
 }
-body #header .tool-bar .tool-bar-setting li:first-child span i {
+body #header .tool-bar .tool-bar-setting li:last-child span i {
   font-style: normal;
 }
-body #header .tool-bar .tool-bar-setting li:first-child span:hover i {
+body #header .tool-bar .tool-bar-setting li:last-child span:hover i {
   color: #fff;
   font-style: normal;
 }
-body #header .tool-bar .tool-bar-setting li:first-child .fa-user-circle-o {
+body #header .tool-bar .tool-bar-setting li:last-child .fa-user-circle-o {
   font-size: 25px;
   border-radius: 50%;
   color: #ccc;

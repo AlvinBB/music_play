@@ -2,7 +2,6 @@
  * Created by Web on 2017/6/18.
  */
 const pool = require("./pool")
-const qs = require("querystring")
 
 module.exports = {
     login:(req,res)=>{
@@ -19,10 +18,10 @@ module.exports = {
                         [uname,upwd],
                         (err,result)=>{
                             if(result.length){
-                                var str = `{"code":200,"uname":"${result[0].uname}"}`
+                                var str = `{"code":1,"uname":"${result[0].uname}","uhead":"${result[0].uhead}"}`
                                 res.json(str)
                             }else{
-                                res.json('{"code":100,"msg":"失败"}')
+                                res.json('{"code":-1,"msg":"失败"}')
                             }
                             conn.release();
                         }

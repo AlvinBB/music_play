@@ -24,14 +24,15 @@
         <div class="right tool-bar">
             <ul class="tool-bar-setting left">
                 <li>
-                    <a href="#" id="headPortrait">
-                        <img src="images/loginHeadUser.jpg" alt="">
+                    <a href="#">
+                        <i class="fa fa-cog"></i>
                     </a>
-                    <span class="dialog-control" id="loginBtn">
-                        <i>未登录</i>
-                        <i class="fa fa-caret-down"></i>
+                </li>
+                <li>
+                    <span class="dialog-control">
+                        <i class="fa fa-envelope-o"></i>
                     </span>
-                    <div class="dialog">
+                    <div class="dialog dialog-message">
                         <div></div>
                         <ul></ul>
                         <ul></ul>
@@ -65,22 +66,22 @@
                     </div>
                 </li>
                 <li>
+                    <a href="#" id="headPortrait">
+                        <img src="images/loginHead.png" alt="">
+                    </a>
                     <span class="dialog-control">
-                        <i class="fa fa-envelope-o"></i>
+                        <i id="nickname">未登录</i>
+                        <i class="fa fa-caret-down"></i>
                     </span>
-                    <div class="dialog dialog-message">
-                        <div></div>
-                        <ul></ul>
-                        <ul></ul>
+                    <div class="dialog">
+                        <form class="form-login">
+                            <input type="text" name="uname" id="uname" placeholder="请输入用户名">
+                            <input type="password" name="upwd" id="upwd" placeholder="请输入密码">
+                            <p id="loginMsg"></p>
+                            <input type="button" value="登陆" id="loginBtn">
+                        </form>
                     </div>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-cog"></i>
-                    </a>
-                </li>
-
-
             </ul>
             <span class="tool-bar-cut"></span>
             <ul class="tool-bar-tool right">
@@ -322,7 +323,7 @@
             </div>
             <div class="music-preview">
                 <div class="music-preview-pic left">
-                    <img src="images/singer_pic/singer01.jpg" alt="歌曲图片">
+                    <img src="images/singer_pic/singerXMJ.jpg" alt="歌曲图片">
                     <span>倾城</span>
                     <span>许美静</span>
 

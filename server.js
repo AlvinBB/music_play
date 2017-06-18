@@ -5,8 +5,9 @@
 const http = require("http")
 const express = require("express")
 //const qs = require("querystring")
-const pool = require("./pool.js")
+const pool = require("./pool")
 const user = require("./user")
+const music = require("./music")
 
 let app = express()
 let srv = http.createServer(app).listen(8080)
@@ -17,3 +18,4 @@ app.get('/',(req,res)=>{
     res.sendFile(__dirname+"/public/index.html")
 })
 app.post('/Login',user.login)
+app.post('/Lists',music.getListsSongs)

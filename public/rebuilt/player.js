@@ -8,6 +8,11 @@
     let player={
         music:$("#music").$,
         /********歌曲切换*********/
+        //歌单内所有歌曲
+        ListSongs:[],
+        ListLength:0,
+        ListIndex:0,
+
         currentSongSRC:"许美静%20-%20倾城.mp3",
         //暂停播放
         play_pause:"#play_pause",
@@ -46,7 +51,7 @@
         timer_disc:null,
         degree:0,
         needlePic:'images/play_needle.png',
-        singerPic:"images/singer_pic/singer01.jpg",
+        singerPic:"images/singer_pic/singerXMJ.jpg",
         musicArea:".music-stage",
 
         /**********播放暂停前一首后一首*********/
@@ -85,9 +90,33 @@
                 }
             })
         },
+        //获取歌单所有歌曲
+        getListsSongs:function(){
+            let self=this;
+            $f.ajax({
+                type:'POST',
+                url:'/Lists',
+                data:{lid:1},
+                success:(result)=>{
+                    let data=JSON.parse(result)
+                    console.log(data)
+                    self.ListSongs=data;
+                    self.ListLength=data.length;
+                }
+            })
+        },
         //获取后一首歌曲SRC
-        getNextSongSRC:function(){
-            return "music.mp3";
+        getNextSong:function(){
+            let song=this.ListSongs[this.ListIndex];
+            let picSRC=song.spic;
+            let songSRC=song.ssrc;
+            this.ListIndex++;
+            (this.ListIndex>=this.ListLength)&&(this.ListIndex=0);
+            console.log(this.ListIndex,this.ListLength)
+            return {
+                pic:picSRC,
+                song:songSRC
+            };
         },
         //跳转歌曲,若当前歌曲暂停，则切换后自动播放
         jumpToSong:function(elem,func,isPaused){
@@ -96,7 +125,10 @@
                 if(this.music.paused){
                     this.setCurrentTimeInterval();
                 }
-                this.currentSongSRC=func.call(this);    //func隐式解绑，需要绑定this
+                let obj=func.call(this);    //func隐式解绑，需要绑定this
+                this.currentSongSRC=obj.song;
+                this.singerPic="images/singer_pic/"+obj.pic;
+                console.log(this.singerPic)
                 this.updateCurrentSong();
                 //点击后更新一次进度条，避免延迟
                 this.setCurrentTime();
@@ -106,21 +138,21 @@
         jumpToNextSong:function(){
             this.jumpToSong(
                 this.nextMusicBtn,
-                this.getNextSongSRC,
+                this.getNextSong,
                 true
             )
         },
         jumpToPrevSong:function(){
             this.jumpToSong(
                 this.prevMusicBtn,
-                this.getNextSongSRC,
+                this.getNextSong,
                 true
             )
         },
         //自动跳转歌曲，用于每次播放结束后自动播放下一曲
         autoJumpToNextSong:function(){
             if((this.currentTime/this.duration)>0.992&&(this.playStatus===1)){
-                this.currentSongSRC=this.getNextSongSRC();
+                this.currentSongSRC=this.getNextSong().song;
                 this.updateCurrentSong()
             }
         },
@@ -286,7 +318,7 @@
 
             img_disc.src=this.singerPic;
             img_needle.src=this.needlePic;
-
+            console.log(img_disc)
             img_disc.onload=()=>{
                 img_needle.onload=()=>{
                     //唱片指针对象
@@ -359,6 +391,7 @@
 
         //初始化播放器
         initialPlayer:function(){
+            this.getListsSongs()
             /******播放暂停前进后退*****/
             this.jumpToNextSong()
             this.jumpToPrevSong()

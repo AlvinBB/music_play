@@ -9,7 +9,7 @@ let stage={
     hideBtn:".shrink-stage",
     //disc动画区(canvas)
     timer:null,
-    singerPic:"images/singer_pic/singer01.jpg",
+    singerPic:"images/singer_pic/singerXMJ.jpg",
     musicArea:".music-stage",
 
     //展示，隐藏播放区
