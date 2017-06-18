@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/pool.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rebuilt/canvas.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rebuilt/footer_notUsed.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rebuilt/player.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user.js" charset="UTF-8" />
+  </component>
+</project>

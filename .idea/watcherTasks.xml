@@ -20,6 +20,7 @@
         </array>
       </option>
       <option name="outputFromStdout" value="true" />
+      <option name="passParentEnvs" value="true" />
       <option name="program" value="D:/profession/nodejs/lessc.cmd" />
       <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="false" />
