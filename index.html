@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿写网易云音乐</title>
+    <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="style/theme-red.css" id="themeCSS">
+
+    <link rel="stylesheet" href="style/font-awesome-4.7.0/css/font-awesome.css">
+    <!--<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
+</head>
+<body>
+    <div id="header">
+        <div id="logo">
+            <a href="#" class="left">
+                <img src="images/logo.png" alt="logo" width="30">
+                我的音乐盒
+            </a>
+        </div>
+        <label class="search-music left">
+            <input type="text" value="搜索音乐，歌手，歌词，用户" id="search">
+            <i class="fa fa-search" id="searchBtn"></i>
+        </label>
+        <div class="right tool-bar">
+            <ul class="tool-bar-setting left">
+                <li>
+                    <a href="#" id="headPortrait">
+                        <img src="images/loginHeadUser.jpg" alt="">
+                    </a>
+                    <span class="dialog-control">
+                        <i>未登录</i>
+                        <i class="fa fa-caret-down"></i>
+                    </span>
+                    <div class="dialog">
+                        <div></div>
+                        <ul></ul>
+                        <ul></ul>
+                    </div>
+                </li>
+                <li>
+                    <span class="dialog-control">
+                        <i class="fa fa-th"></i>
+                    </span>
+                    <div class="dialog dialog-theme">
+                        <ul>
+                            <li>
+                                <a href="#black">炫酷黑</a>
+                            </li>
+                            <li>
+                                <a href="#red">官方红</a>
+                            </li>
+                            <li>
+                                <a href="#pink">可爱粉</a>
+                            </li>
+                            <li>
+                                <a href="#blue">天际蓝</a>
+                            </li>
+                            <li>
+                                <a href="#green">清新绿</a>
+                            </li>
+                            <li>
+                                <a href="#golden">土豪金</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <span class="dialog-control">
+                        <i class="fa fa-envelope-o"></i>
+                    </span>
+                    <div class="dialog dialog-message">
+                        <div></div>
+                        <ul></ul>
+                        <ul></ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-cog"></i>
+                    </a>
+                </li>
+
+
+            </ul>
+            <span class="tool-bar-cut"></span>
+            <ul class="tool-bar-tool right">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-external-link"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-minus"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-square-o"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/AlvinBB/music_play">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main" class="scroll-bar-control">
+        <div id="musicPlayingDetailStage" class="music-stage scroll-bar-control">
+            <div class="shrink-stage">
+                <i class="fa fa-compress"></i>
+            </div>
+            <div class="stage-container">
+                <div class="canvas-area">
+                    <canvas id="drawArea" width="500" height="430"></canvas>
+                    <div class="right lyric-container">
+                        <div class="lyric-header">
+                            <h1>倾城</h1>
+                        </div>
+                        <div class="lyric-area">
+                            <pre>
+作曲 : 陈佳明
+
+作词 : 黄伟文
+
+热情就算熄灭了
+
+分手这一晚也重要
+
+甜言蜜语谎话嬉笑
+
+多给我一点 不要缺少
+
+话题尽了也不紧要
+
+吻我至凄冷的深宵
+
+繁华闹市灯光普照
+
+然而共你已再没破晓
+
+红眼睛幽幽地看着这孤城
+
+如同苦笑挤出的高兴
+
+全城为我花光狠劲
+
+浮华盛世做分手布景
+
+传说中痴心的眼泪会倾城
+
+霓虹熄了世界渐冷清
+
+烟花会谢 笙歌会停
+
+显得这故事尾声更动听
+
+热情就算熄灭了
+
+分手这一晚也重要
+
+甜言蜜语谎话嬉笑
+
+多给我一点 不要缺少
+
+话题尽了也不紧要
+
+吻我至凄冷的深宵
+
+繁华闹市灯光普照
+
+然而共你已再没破晓
+
+红眼睛幽幽的看着这孤城
+
+如同苦笑挤出的高兴
+
+全城为我花光狠劲
+
+浮华盛世做分手布景
+
+传说中痴心的眼泪会倾城
+
+霓虹熄了世界渐冷清
+
+烟花会谢 笙歌会停
+
+显得这故事尾声更动听
+
+红眼睛幽幽的看着这孤城
+
+如同苦笑挤出的高兴
+
+琼楼玉宇倒了阵行
+
+来营造这绝世的风景
+
+传说中痴心的眼泪会倾城
+
+霓虹熄了世界渐冷清
+
+烟花会谢 笙歌会停
+
+显得这故事尾声更动听
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="music-tool-bar left">
+            <div class="music-tool" id="musicTool">
+                <div class="music-tool-control">
+                    推荐
+                </div>
+                <ul class="music-tool-list music-tool-recommend">
+                    <li class="active">
+                        <a href="#findMusic">
+                            <i class="fa fa-music"></i>
+                            &nbsp;&nbsp;发现音乐
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-podcast"></i>
+                            &nbsp;&nbsp;私人FM
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-youtube-play"></i>
+                            &nbsp;&nbsp;MV
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-user-o"></i>
+                            &nbsp;&nbsp;朋友
+                        </a>
+                    </li>
+                </ul>
+                <div class="music-tool-control">
+                    我的音乐
+                </div>
+                <ul class="music-tool-list music-tool-myMusic">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-music"></i>
+                            &nbsp;&nbsp;本地音乐
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-download"></i>
+                            &nbsp;&nbsp;下载管理
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-cloud"></i>
+                            &nbsp;&nbsp;我的音乐云盘
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-star-o"></i>
+                            &nbsp;&nbsp;我的收藏
+                        </a>
+                    </li>
+                </ul>
+                <div class="music-tool-control music-tool-control-do" id="createdMusicLists">
+                    创建的歌单
+                    <i class="fa fa-angle-right"></i>
+                </div>
+                <ul class="music-tool-list music-tool-myMusic">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-heart-o"></i>
+                            &nbsp;&nbsp;我喜欢的音乐
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-list-ul"></i>
+                            &nbsp;&nbsp;爵士
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-list-ul"></i>
+                            &nbsp;&nbsp;粤语
+                        </a>
+                    </li>
+                </ul>
+                <div class="music-tool-control music-tool-control-do" id="collectedMusicLists">
+                    收藏的歌单
+                    <i class="fa fa-angle-right"></i>
+                </div>
+                <ul class="music-tool-list music-tool-myMusic">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-list-ul"></i>
+                            &nbsp;&nbsp;粤语歌里的百年孤寂
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-list-ul"></i>
+                            &nbsp;&nbsp;老爵士，入味地听
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-list-ul"></i>
+                            &nbsp;&nbsp;咖啡馆里一本书,常导致客户的枯黄的撒
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="music-preview">
+                <div class="music-preview-pic left">
+                    <img src="images/singer_pic/singer01.jpg" alt="歌曲图片">
+                    <span>倾城</span>
+                    <span>许美静</span>
+
+                </div>
+                <div class="music-preview-extension left">
+                    <i class="fa fa-expand"></i>
+                </div>
+                <div class="music-preview-tool right">
+                    <a href="#">
+                        <i class="fa fa-heart-o"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-share-square"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="display-area">
+            <div id="findMusic" class="main-divider-block">
+                <ul class="nav-bar">
+                    <li class="active">
+                        <a href="#personalizedRecommendation">
+                            个性推荐
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#publicSongsLists">
+                            歌单
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            主播电台
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            排行榜
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            歌手
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            最新音乐
+                        </a>
+                    </li>
+                </ul>
+                <div class="findMusic-display-area">
+                    <div id="personalizedRecommendation" class="findMusic-display-area-block active">
+                        <div class="banner">
+                            <ul class="banner-show">
+                                <li class="active" id="a">
+                                    <a href="#">
+                                        <img src="images/banner/banner01.jpg" alt="">
+                                    </a>
+                                </li>
+                                <li class="next" id="b">
+                                    <a href="#">
+                                        <img src="images/banner/banner02.jpg" alt="">
+                                    </a>
+                                </li>
+                                <li class="" id="c">
+                                    <a href="#">
+                                        <img src="images/banner/banner03.jpg" alt="">
+                                    </a>
+                                </li>
+                                <li id="d" class="">
+                                    <a href="#">
+                                        <img src="images/banner/banner04.jpg" alt="">
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#">
+                                        <img src="images/banner/banner05.jpg" alt="">
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#">
+                                        <img src="images/banner/banner06.jpg" alt="">
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#">
+                                        <img src="images/banner/banner07.jpg" alt="">
+                                    </a>
+                                </li>
+                                <li class="pre">
+                                    <a href="#">
+                                        <img src="images/banner/banner08.jpg" alt="">
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="banner-index">
+                                <li class="active">
+                                    <a href="0"></a>
+                                </li>
+                                <li>
+                                    <a href="1"></a>
+                                </li>
+                                <li>
+                                    <a href="2"></a>
+                                </li>
+                                <li>
+                                    <a href="3"></a>
+                                </li>
+                                <li>
+                                    <a href="4"></a>
+                                </li>
+                                <li>
+                                    <a href="5"></a>
+                                </li>
+                                <li>
+                                    <a href="6"></a>
+                                </li>
+                                <li>
+                                    <a href="7"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="recommend-block">
+                            <p class="recommend-block-header">
+                                <span class="left">推荐歌单</span>
+                                <span class="right">
+                                    <a href="#">更多></a>
+                                </span>
+                            </p>
+                            <div class="recommend-block-body">
+                                <dl>
+                                    <dt>
+                                        <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                        <a href="#">
+                                            <img src="images/songLists/songList1.jpg" alt=""> 
+                                        </a>
+                                    </dt>
+                                    <dd>
+                                        <a href="#">粤语|愿花光所有运气，在有生瞬间能遇到你</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>
+                                        <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                        <a href="#">
+                                            <img src="images/songLists/songList2.jpg" alt="">
+                                        </a>
+                                    </dt>
+                                    <dd>
+                                        <a href="#">决胜高考，致敬青春：高考是一场青春的战役</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>
+                                        <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                        <a href="#">
+                                            <img src="images/songLists/songList3.jpg" alt="">
+                                        </a>
+                                    </dt>
+                                    <dd>
+                                        <a href="#">黄金年代的美国之歌•摇摆爵士乐</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>
+                                        <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                        <a href="#">
+                                            <img src="images/songLists/songList4.jpg" alt="">
+                                        </a>
+                                    </dt>
+                                    <dd>
+                                        <a href="#">民谣·现场 | 有酒有歌的Livehouse隐在城市</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>
+                                        <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                        <a href="#">
+                                            <img src="images/songLists/songList5.jpg" alt="">
+                                        </a>
+                                    </dt>
+                                    <dd>
+                                        <a href="#">老爵士，入味地听</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>
+                                        <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                        <a href="#">
+                                            <img src="images/songLists/songList6.jpg" alt="">
+                                        </a>
+                                    </dt>
+                                    <dd>
+                                        <a href="#">
+                                            咖啡馆里一本书，邂逅一首爵士</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>
+                                        <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                        <a href="#">
+                                            <img src="images/songLists/songList7.jpg" alt="">
+                                        </a>
+                                    </dt>
+                                    <dd>
+                                        <a href="#">粤语歌里的百年孤寂</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>
+                                        <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                        <a href="#">
+                                            <img src="images/songLists/songList8.jpg" alt="">
+                                        </a>
+                                    </dt>
+                                    <dd>
+                                        <a href="#">【自用】JAZZ&BLUES</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>
+                                        <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                        <a href="#">
+                                            <img src="images/songLists/songList9.jpg" alt="">
+                                        </a>
+                                    </dt>
+                                    <dd>
+                                        <a href="#">
+                                            那些不应该被忽视的中国纯音乐</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>
+                                        <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                        <a href="#">
+                                            <img src="images/songLists/songList10.jpg" alt="">
+                                        </a>
+                                    </dt>
+                                    <dd>
+                                        <a href="#">《爵士与鸡尾酒•Mojito》</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="publicSongsLists" class="findMusic-display-area-block">
+                        <div class="recommend-block">
+                            <div class="recommend-block-body">
+                                <div class="row">
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList1.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">粤语|愿花光所有运气，在有生瞬间能遇到你</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList2.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">决胜高考，致敬青春：高考是一场青春的战役</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList3.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">黄金年代的美国之歌•摇摆爵士乐</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList4.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">民谣·现场 | 有酒有歌的Livehouse隐在城市</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList5.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">老爵士，入味地听</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList6.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">
+                                                咖啡馆里一本书，邂逅一首爵士</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList7.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">粤语歌里的百年孤寂</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList8.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">【自用】JAZZ&BLUES</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList9.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">
+                                                那些不应该被忽视的中国纯音乐</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList10.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">《爵士与鸡尾酒•Mojito》</a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="row">
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList1.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">粤语|愿花光所有运气，在有生瞬间能遇到你</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList2.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">决胜高考，致敬青春：高考是一场青春的战役</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList3.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">黄金年代的美国之歌•摇摆爵士乐</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList4.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">民谣·现场 | 有酒有歌的Livehouse隐在城市</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList5.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">老爵士，入味地听</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList6.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">
+                                                咖啡馆里一本书，邂逅一首爵士</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList7.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">粤语歌里的百年孤寂</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList8.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">【自用】JAZZ&BLUES</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList9.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">
+                                                那些不应该被忽视的中国纯音乐</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList10.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">《爵士与鸡尾酒•Mojito》</a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="row">
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList1.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">粤语|愿花光所有运气，在有生瞬间能遇到你</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList2.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">决胜高考，致敬青春：高考是一场青春的战役</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList3.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">黄金年代的美国之歌•摇摆爵士乐</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList4.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">民谣·现场 | 有酒有歌的Livehouse隐在城市</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList5.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">老爵士，入味地听</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList6.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">
+                                                咖啡馆里一本书，邂逅一首爵士</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList7.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">粤语歌里的百年孤寂</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList8.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">【自用】JAZZ&BLUES</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList9.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">
+                                                那些不应该被忽视的中国纯音乐</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>
+                                            <span class="recommend-block-cover">根据你收藏的歌曲《海阔天空》推荐</span>
+                                            <a href="#">
+                                                <img src="images/songLists/songList10.jpg" alt="">
+                                            </a>
+                                        </dt>
+                                        <dd>
+                                            <a href="#">《爵士与鸡尾酒•Mojito》</a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer" class="clear">
+        <audio src="medias/许美静%20-%20倾城.mp3" autoplay id="music" loop></audio>
+        <div class="footer-left left">
+            <span>
+                <i class="fa fa-step-backward" id="prevMusic"></i>
+            </span>
+            <span class="play-pause" id="play_pause">
+                <i class="fa fa-pause"></i>
+            </span>
+            <span>
+                <i class="fa fa-step-forward" id="nextMusic"></i>
+            </span>
+        </div>
+        <div class="footer-right right">
+            <span id="volumeSilence" class="volume-silence">
+                <i class="fa fa-volume-up"></i>
+            </span>
+            <div class="progress-container progress-sound" id="volumeContainer">
+                <div id="volumeControl" class="play-progress left"></div>
+            </div>
+            <span class="footer-tool-right" id="playStatusControl">
+                <i class="fa fa-indent"></i>
+            </span>
+            <div class="footer-tool-right-list right">
+                <span>
+                    <i class="fa fa-file-text-o"></i>
+                </span>
+                <span class="list-count">
+                    26
+                </span>
+            </div>
+        </div>
+        <div class="footer-center">
+            <span id="musicCurrentTime" class="progress-time">00:00</span>
+            <div class="progress-container" id="progressContainer">
+                <div id="playProgress" class="play-progress left">
+                    <span class="progress-point right" id="progressControl">
+                        <span></span>
+                    </span>
+                </div>
+            </div>
+            <span id="musicDuration" class="progress-time">00:00</span>
+        </div>
+    </div>
+
+    <script src="rebuilt/global.js"></script>
+    <script src="rebuilt/header.js"></script>
+    <script src="rebuilt/player.js"></script>
+    <script src="rebuilt/musicTool.js"></script>
+    <script src="rebuilt/banner.js"></script>
+    <script src="rebuilt/index.js"></script>
+</body>
+</html>
