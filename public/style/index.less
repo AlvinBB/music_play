@@ -321,6 +321,7 @@ body{
       .shrink-stage{
         position:fixed;
         cursor:pointer;
+        z-index:10;
         top:80px;
         right:30px;
         width:50px;
@@ -407,7 +408,7 @@ body{
       padding:5px;
       position:relative;
       .music-preview-pic{
-        width:100px;
+        width:150px;
         height:40px;
         font-size:12px;
         img{
@@ -416,8 +417,9 @@ body{
         }
         span{
           float:left;
+          overflow:hidden;
           margin-left:5px;
-          width:40px;
+          width:90px;
           height:20px;
           line-height:20px;
         }
@@ -642,6 +644,68 @@ body{
     box-sizing:border-box;
     span{
       cursor:pointer;
+    }
+
+    //歌曲列表弹出框样式
+    .music-dialog{
+      position:fixed;
+      bottom:50px;
+      right:0;
+      z-index:20;
+      width:500px;
+      height:300px;
+      background:#fafafa;
+      box-shadow: -2px -2px 7px #ccc;
+      display:none;
+      div:first-child{
+        height:40px;
+        line-height:40px;
+        text-align:center;
+        font-size:14px;
+        background:#F2F2F4;
+      }
+      div:nth-child(2){
+        height:30px;
+        line-height:30px;
+        font-size:12px;
+        padding-left:30px;
+        border-bottom:1px solid #ddd;
+      }
+      ul{
+        overflow-x:hidden;
+        overflow-y:auto;
+        height:230px;
+        width:500px;
+        li{
+          box-sizing:border-box;
+          font-size:12px;
+          border-bottom:1px solid #ddd;
+          a{
+            display:block;
+            height:30px;
+            line-height:30px;
+            width:500px;
+            padding-left:30px;
+            span:last-child{
+              float:right;
+              width:150px;
+              text-align:left;
+            }
+          }
+          a:hover{
+            cursor:auto;
+          }
+        }
+        li.odd{
+          background:#F5F5F7;
+        }
+        li:hover{
+          background:#EBECED;
+        }
+      }
+    }
+    .music-dialog.active{
+      display:block;
     }
 
     //进度条样式

@@ -7,13 +7,20 @@
     'use strict';
     let player={
         music:$("#music").$,
+        /********歌单切换*********/
+        listChangeBtnContainer:".list-control",
+        //弹出框歌单容器
+        musicDialogList:"#musicDialogLists",
+        musicDialogTotal:".music-dialog .total",
+        musicDialogBtnTotal:".footer-tool-right-list .list-count",
+
         /********歌曲切换*********/
         //歌单内所有歌曲
         ListSongs:[],
         ListLength:0,
         ListIndex:0,
+        currentSongSRC:"",
 
-        currentSongSRC:"许美静%20-%20倾城.mp3",
         //暂停播放
         play_pause:"#play_pause",
         //前一首后一首
@@ -51,12 +58,105 @@
         timer_disc:null,
         degree:0,
         needlePic:'images/play_needle.png',
+        singerPicDir:"images/singer_pic/",
         singerPic:"images/singer_pic/singerXMJ.jpg",
         musicArea:".music-stage",
 
-        /**********播放暂停前一首后一首*********/
+        /*********歌曲preview*******/
+        singerPreviewPic:"#singerPreview",
+        previewSong:"#previewSong",
+        previewSinger:"#previewSinger",
+
+        /*********歌词区域*******/
+        lyricHeader:".lyric-header h1",
+
+        /********获取歌单所有歌曲*******/
+        //根据歌单id获取歌单
+        getListsSongs(lid){
+            let self=this;
+            $f.ajax({
+                type:'POST',
+                url:'/Lists',
+                data:{lid:lid},
+                success:(result)=>{
+                    let data=JSON.parse(result)
+                    console.log(data)
+                    if(data.code<0){
+                        alert(data.msg);
+                        return;
+                    }
+                    self.ListSongs=data;
+                    self.ListLength=data.length;
+                    self.ListIndex=0;
+                }
+            })
+        },
+        //更改歌单
+        changeLists(){
+            let container=$(this.listChangeBtnContainer);
+            let len=container.length;
+            if(len){
+                for(let i=0;i<len;i++){
+                    $(container.get[i]).bindEvent('click',(e)=>{
+                        e.preventDefault();
+                        //e.stopPropagation();
+                        if(e.target.nodeName!=='A')return;
+                        let src=e.target.href;
+                        let index=src.indexOf("#");
+                        let lid=src.slice(index+1);
+                        console.log(lid);
+                        this.getListsSongs(lid);
+                    })
+                }
+            }
+        },
+        //更新弹出歌单列表
+        updateDialogLists(){
+            let lists=this.ListSongs;
+            let isOdd=true;
+            let odd='';
+            let html='';
+            for(let i=0;i<lists.length;i++){
+                let songObj=lists[i];
+                (isOdd)?(odd='odd'):(odd='');
+                html+=`
+                    <li class="${odd}">
+                        <a href="#${i}">
+                            ${songObj.sname}
+                            <span>${songObj.singer}</span>
+                        </a>
+                    </li>
+                `;
+                isOdd=!isOdd
+            }
+            $(this.musicDialogList).$.innerHTML=html
+            $(this.musicDialogTotal).$.innerHTML=lists.length;
+            $(this.musicDialogBtnTotal).$.innerHTML=lists.length;
+        },
+        //绑定歌单内每首歌的单机事件
+        dialogSongDBLEvent(){
+            $(this.musicDialogList).bindEvent('dblclick',(e)=>{
+                e.preventDefault();
+                e.stopPropagation();
+                if(e.target.nodeName!=='A')return;
+                let src=e.target.href;
+                let index=src.indexOf("#");
+                let i=src.slice(index+1);
+                this.setCurrentSong(i)
+            })
+        },
+
+        /**********根据播放状态设置前进后退歌曲内容*********/
+        //控制歌曲播放状态
+        playStatusChange(){
+            $(this.playStatusControlBtn).bindEvent('click',()=>{
+                this.playStatus++;
+                this.playStatus>3&&(this.playStatus=1);
+                this.playStatusStyle()
+            })
+        },
         //根据SRC更新歌曲
-        updateCurrentSong:function(){
+        updateCurrentSong(){
             this.music.src="medias/"+this.currentSongSRC;
         },
         //切换播放暂停图标
@@ -72,8 +172,18 @@
                 icon.addClass('fa-play')
             }
         },
+        //更新当前歌曲preview图片,内容,以及stage区域的歌曲内容
+        updateSingerPreview(){
+            $(this.singerPreviewPic).$.src=this.singerPic;
+            $(this.previewSinger).$.innerHTML
+                =this.ListSongs[this.ListIndex].singer;
+            $(this.previewSong).$.innerHTML
+                =this.ListSongs[this.ListIndex].sname;
+            $(this.lyricHeader).$.innerHTML=
+                this.ListSongs[this.ListIndex].sname;
+        },
         //点击播放，暂停
-        clickPlayPause:function(){
+        clickPlayPause(){
             var play_pause=$(this.play_pause);
             var music=this.music;
             play_pause.bindEvent('click',()=>{
@@ -90,36 +200,45 @@
                 }
             })
         },
-        //获取歌单所有歌曲
-        getListsSongs:function(){
-            let self=this;
-            $f.ajax({
-                type:'POST',
-                url:'/Lists',
-                data:{lid:1},
-                success:(result)=>{
-                    let data=JSON.parse(result)
-                    console.log(data)
-                    self.ListSongs=data;
-                    self.ListLength=data.length;
-                }
-            })
-        },
-        //获取后一首歌曲SRC
-        getNextSong:function(){
-            let song=this.ListSongs[this.ListIndex];
+        //获得指定index的歌曲信息
+        getIndexSongObj(index){
+            let song=this.ListSongs[index];
             let picSRC=song.spic;
             let songSRC=song.ssrc;
-            this.ListIndex++;
-            (this.ListIndex>=this.ListLength)&&(this.ListIndex=0);
-            console.log(this.ListIndex,this.ListLength)
+
             return {
                 pic:picSRC,
                 song:songSRC
             };
         },
+        //获取后一首歌曲SRC,图片等信息(由状态1,2,3判断)
+        getNextSong(reverse){
+            if(this.playStatus===1){
+                reverse?(this.ListIndex--):(this.ListIndex++);  //如果reverse为true，则切换前一首
+            }else if(this.playStatus===3){      //如果状态是随机，则随机index
+                this.ListIndex=(Math.floor(Math.random()*(this.ListLength)))
+            }
+            (this.ListIndex<0)&&(this.ListIndex=this.ListLength-1);
+            (this.ListIndex>=this.ListLength)&&(this.ListIndex=0);
+
+            return this.getIndexSongObj(this.ListIndex)
+        },
+        //设置当前歌曲
+        setCurrentSong(index){
+            this.ListIndex=index;
+            let obj=this.getIndexSongObj(index)
+            this.currentSongSRC=obj.song;
+            this.singerPic=this.singerPicDir+obj.pic;
+            this.updateCurrentSong();
+            this.updateSingerPreview();
+            console.log(this.ListIndex)
+        },
+        //载入歌单后自动播放第一首歌
+        autoPlayFirstSong(){
+            this.setCurrentSong(0)
+        },
         //跳转歌曲,若当前歌曲暂停，则切换后自动播放
-        jumpToSong:function(elem,func,isPaused){
+        jumpToSong(elem,func,isPaused){
             $(elem).bindEvent('click',(e)=>{
                 //若此时暂停，则跳转歌曲后开始更新进度条
                 if(this.music.paused){
@@ -127,39 +246,44 @@
                 }
                 let obj=func.call(this);    //func隐式解绑，需要绑定this
                 this.currentSongSRC=obj.song;
-                this.singerPic="images/singer_pic/"+obj.pic;
-                console.log(this.singerPic)
+                this.singerPic=this.singerPicDir+obj.pic;
                 this.updateCurrentSong();
                 //点击后更新一次进度条，避免延迟
                 this.setCurrentTime();
                 this.togglePlayPauseIcon(isPaused);
+                this.updateSingerPreview()
             })
         },
-        jumpToNextSong:function(){
+        jumpToNextSong(){
             this.jumpToSong(
                 this.nextMusicBtn,
                 this.getNextSong,
                 true
             )
         },
-        jumpToPrevSong:function(){
+        jumpToPrevSong(){
             this.jumpToSong(
                 this.prevMusicBtn,
-                this.getNextSong,
+                function(){
+                    return this.getNextSong(true)
+                },
                 true
             )
         },
         //自动跳转歌曲，用于每次播放结束后自动播放下一曲
-        autoJumpToNextSong:function(){
+        autoJumpToNextSong(){
             if((this.currentTime/this.duration)>0.992&&(this.playStatus===1)){
-                this.currentSongSRC=this.getNextSong().song;
+                let obj=this.getNextSong()
+                this.currentSongSRC=obj.song;
+                this.singerPic=this.singerPicDir+obj.pic;
                 this.updateCurrentSong()
+                this.updateSingerPreview()
             }
         },
 
         /***********歌曲进度控制等设置***********/
         //时长转换为歌曲时长显示格式
-        timeToString:function(duration){
+        timeToString(duration){
             var m=Math.floor(duration/60);
             var s=Math.floor(duration%60);
             m=m>9?m:(m>0?("0"+m):"00");
@@ -167,7 +291,7 @@
             return (m+":"+s)
         },
         //更新总时长
-        updateDuration:function(){
+        updateDuration(){
             var duration=Math.ceil(this.music.duration);
             var durationStr=this.timeToString(duration);
             if(duration){
@@ -175,17 +299,17 @@
                 this.duration=duration;
             }
         },
-        setDuration:function(){
+        setDuration(){
             $(this.music).bindEvent('loadedmetadata',()=>{      //duration加载完成事件，若直接取duration取到的值为NaN
                 this.updateDuration()
             })
         },
         //获取当前时长
-        getCurrentTime:function(currentTime){
+        getCurrentTime(currentTime){
             return this.timeToString(currentTime)
         },
         //设置当前进度条
-        setCurrentTime:function(){
+        setCurrentTime(){
             var self=this;
             this.currentTime=Math.ceil(this.music.currentTime);
             this.progress=(this.currentTime/this.duration)*100+"%";
@@ -195,7 +319,7 @@
             $(this.currentTimeSpan).$.innerHTML=currentTimeStr;
         },
         //定时器每一秒更新一次进度条
-        setCurrentTimeInterval:function(){
+        setCurrentTimeInterval(){
             var self=this;
             this.timer=setInterval(()=>{
                 self.setCurrentTime()
@@ -203,11 +327,11 @@
             },1000)
         },
         //获取进度条总长度（宽度）
-        getWidth:function(elem){
+        getWidth(elem){
             return $(elem).getStyle("width");
         },
         //点击进度条切换进度
-        progressControl:function(){
+        progressControl(){
             var elem=this.progressContainer;
             this.musicTotalWidth=this.getWidth(elem);
             //点击进度条框获取鼠标X位置，并切换进度条
@@ -222,12 +346,12 @@
         },
 
         /****音量控制****/
-        updateVolume:function(){
+        updateVolume(){
             this.volume=this.music.volume;
             var percent=Math.floor(this.volume*100)+"%";
             $(this.volumeDiv).setStyle("width",percent);
         },
-        setVolume:function(){
+        setVolume(){
             this.updateVolume();
             var elem=this.volumeContainer;
             this.volumeTotalWidth=this.getWidth(elem);
@@ -243,7 +367,7 @@
             })
         },
         //控制静音
-        toggleSilence:function(){
+        toggleSilence(){
             $(this.volumeSilence).bindEvent('click',(e)=>{
                 e.preventDefault();
                 e.stopPropagation();
@@ -264,7 +388,7 @@
             })
         },
         //控制循环按钮样式
-        playStatusStyle:function(){
+        playStatusStyle(){
             $(this.playStatusControlBtn).removeClass("fa-repeat");
             $(this.playStatusControlBtn).removeClass("fa-random");
             $(this.playStatusControlBtn).removeClass("fa-indent");
@@ -276,23 +400,16 @@
                 $(this.playStatusControlBtn).addClass("fa-random");
             }
         },
-        //控制循环
-        playStatusChange:function(){
-            $(this.playStatusControlBtn).bindEvent('click',()=>{
-                this.playStatus++;
-                this.playStatus>3&&(this.playStatus=1);
-                this.playStatusStyle()
-            })
-        },
+
 
         /******音乐播放区显示、隐藏****/
         //展示，隐藏播放区
-        showMusicArea:function(){
+        showMusicArea(){
             $(this.previewBtn).bindEvent('click',()=>{
                 $(this.musicArea).addClass('active')
             })
         },
-        hideMusicArea:function(){
+        hideMusicArea(){
             $(this.hideBtn).bindEvent('click',()=>{
                 $(this.musicArea).removeClass('active')
             })
@@ -300,7 +417,7 @@
 
         /*********canvas绘制disc播放区********/
         //绘制disc旋转动画
-        discRotatingControl:function(){
+        discRotatingControl(){
             this.degree=0;
             let drawCircle=(radius,line_width,color)=>{
                 ctx.strokeStyle=color;
@@ -315,73 +432,83 @@
             let progress=0;
             let img_disc=new Image();
             let img_needle=new Image();
+            let canvas=()=>{
+                //唱片指针对象
+                let needle={
+                    img:img_needle,
+                    x:-48*0.4,
+                    y:-48*0.4,
+                    width:img_needle.width*0.4,
+                    height:img_needle.height*0.4
+                }
+                let needle_rotate=0;
+                self.timer_disc=setInterval(
+                    ()=>{
+                        ctx.save()
+                        if(!self.music.paused)self.degree+=0.3;
 
-            img_disc.src=this.singerPic;
-            img_needle.src=this.needlePic;
-            console.log(img_disc)
-            img_disc.onload=()=>{
-                img_needle.onload=()=>{
-                    //唱片指针对象
-                    let needle={
-                        img:img_needle,
-                        x:-48*0.4,
-                        y:-48*0.4,
-                        width:img_needle.width*0.4,
-                        height:img_needle.height*0.4
-                    }
-                    let needle_rotate=0;
-                    self.timer_disc=setInterval(
-                        ()=>{
-                            ctx.save()
-                            if(!self.music.paused)self.degree+=0.3;
+                        ctx.clearRect(0,0,500,500);
+                        ctx.translate(250,250);
+                        ctx.rotate(self.degree*Math.PI/180);
+                        ctx.drawImage(img_disc,-100,-100,200,200);
 
-                            ctx.clearRect(0,0,500,500);
-                            ctx.translate(250,250);
-                            ctx.rotate(self.degree*Math.PI/180);
-                            ctx.drawImage(img_disc,-100,-100,200,200);
-
-                            //唱片圆环
-                            drawCircle(100,8,'#000');
-                            let r=107
-                            let colorChange=true;
-                            for(var i=0;i<=22;i++){
-                                if(colorChange){
-                                    drawCircle(r,5,'#3C3D3D')
-                                    r+=4;
-                                }else{
-                                    drawCircle(r,2,'#434346')
-                                    r+=1;
-                                }
-                                colorChange=!colorChange
-                            }
-                            drawCircle(r-1,10,'#A8A8A8');
-
-                            ctx.rotate(-self.degree*Math.PI/180);
-                            ctx.translate(-250,-250);
-                            ctx.translate(250,0);
-                            if(self.music.paused){
-                                (needle_rotate<=35)&&(needle_rotate+=4)
+                        //唱片圆环
+                        drawCircle(100,8,'#000');
+                        let r=107
+                        let colorChange=true;
+                        for(var i=0;i<=22;i++){
+                            if(colorChange){
+                                drawCircle(r,5,'#3C3D3D')
+                                r+=4;
                             }else{
-                                (needle_rotate>0)&&(needle_rotate-=4)
+                                drawCircle(r,2,'#434346')
+                                r+=1;
                             }
-                            ctx.rotate(-needle_rotate*Math.PI/180)
-                            //唱片指针
-                            ctx.drawImage(
-                                needle.img,
-                                needle.x,
-                                needle.y,
-                                needle.width,
-                                needle.height
-                            )
+                            colorChange=!colorChange
+                        }
+                        drawCircle(r-1,10,'#A8A8A8');
 
-                            ctx.restore()
-                        },20
-                    )
+                        ctx.rotate(-self.degree*Math.PI/180);
+                        ctx.translate(-250,-250);
+                        ctx.translate(250,0);
+                        if(self.music.paused){
+                            (needle_rotate<=35)&&(needle_rotate+=4)
+                        }else{
+                            (needle_rotate>0)&&(needle_rotate-=4)
+                        }
+                        ctx.rotate(-needle_rotate*Math.PI/180)
+                        //唱片指针
+                        ctx.drawImage(
+                            needle.img,
+                            needle.x,
+                            needle.y,
+                            needle.width,
+                            needle.height
+                        )
+
+                        ctx.restore()
+                    },20
+                )
+
+            }
+
+            img_disc.onload=()=>{
+                progress+=50
+                if(progress>=100){
+                    canvas()
                 }
             }
+            img_needle.onload=()=>{
+                progress+=50
+                if(progress>=100){
+                    canvas()
+                }
+            }
+            img_disc.src=this.singerPic;
+            img_needle.src=this.needlePic;
         },
         //切换时销毁disc动画以便重新加载
-        changeCurrentDiscAnimation:function(){
+        changeCurrentDiscAnimation(){
             if(this.timer_disc!==null){
                 clearInterval(this.timer_disc);
                 this.timer_disc=null;
@@ -390,32 +517,47 @@
         },
 
         //初始化播放器
-        initialPlayer:function(){
-            this.getListsSongs()
+        initialPlayer(){
+            /***********请求歌单************/
+            //请求歌单
+            this.getListsSongs(1);
+            //监听歌单，一旦发生变化，则初始化第一首歌曲
+            $f.watch(player,"ListSongs",()=>{
+                this.autoPlayFirstSong()
+                this.updateDialogLists()
+            })
+            //更改歌单
+            this.changeLists();
+            //歌单内歌曲双击事件
+            this.dialogSongDBLEvent();
+
             /******播放暂停前进后退*****/
-            this.jumpToNextSong()
-            this.jumpToPrevSong()
-            this.clickPlayPause()
+                //控制歌曲状态：循环/顺序/随机
+            this.playStatusChange();
+            this.jumpToNextSong();
+            this.jumpToPrevSong();
+            this.clickPlayPause();
             /******音乐播放进度*****/
-            this.setDuration()
-            this.updateDuration()
-            this.setCurrentTimeInterval()
-            this.progressControl()
+            this.setDuration();
+            this.updateDuration();
+            this.setCurrentTimeInterval();
+            this.progressControl();
             /******声音*****/
-            this.setVolume()
-            this.toggleSilence()
-            //控制歌曲状态：循环/顺序/随机
-            this.playStatusChange()
+            this.setVolume();
+            this.toggleSilence();
+
 
             /******音乐播放区显示、隐藏****/
-            this.showMusicArea()
-            this.hideMusicArea()
+            this.showMusicArea();
+            this.hideMusicArea();
 
             /*********canvas绘制disc播放区********/
             //disc
-            this.discRotatingControl()
+            this.discRotatingControl();
             //监听disc图片，变化后重新创建
-            $f.watch(player,"singerPic",this.changeCurrentDiscAnimation.bind(player))
+            $f.watch(player,"singerPic",
+                this.changeCurrentDiscAnimation.bind(player)
+            )
         }
         /****destroyPlayer:function(){
             $(this.play_pause).unBindEvent('click');

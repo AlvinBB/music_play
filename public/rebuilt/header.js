@@ -15,7 +15,7 @@
         upwdInpue:"#upwd",
 
         //点击工具栏切换显示隐藏对话框
-        toggleDialog:function(){
+        toggleDialog(){
             $(this.barContainer).bindEvent('click',(e)=>{
                 e.preventDefault();
                 e.stopPropagation();
@@ -31,12 +31,12 @@
             })
         },
         //更新主题
-        updateTheme:function(){
+        updateTheme(){
             var color=localStorage['theme']||'red';
             $(this.themeLink).$.href='style/theme-'+color+".css";
         },
         //切换主题
-        changeTheme:function(){
+        changeTheme(){
             this.updateTheme();
             $(this.dialogTheme).bindEvent('click',(e)=>{
                 e.preventDefault();
@@ -53,7 +53,7 @@
         //初始化
 
         /**********用户登陆***********/
-        login:function(){
+        login(){
             let self=this;
             $(this.loginBtn).bindEvent('click',()=>{
                 let un=$(self.unameInput).$.value;
@@ -76,7 +76,7 @@
                 })
             })
         },
-        initialTool:function(){
+        initialTool(){
             this.toggleDialog()
             this.changeTheme()
             //登陆

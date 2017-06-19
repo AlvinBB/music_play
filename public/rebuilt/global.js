@@ -4,17 +4,19 @@
 
 ((global)=>{
     'use strict';
+    //创建myQuery类，用于简化操作,调用方法类似jQuery
     class myQuery {
         constructor(query){
             if(typeof query==='string'){
-                this.$=this.query(query);
+                this.$=this.query(query);      //若传入参数为字符串，则调用document.querySelectorAll，将返回的dom对象赋值给this.$
                 this.get=this.$;
                 this.length=this.$.length||0;   //这里length为0指的是查询到的dom对象只有一个
             }else{
-                this.$=query;
+                this.$=query;   //若传入的参数本身就是dom对象(不是字符串)，则直接赋值给this.$
                 this.length=this.$.length||0;
             }
         }
+        //查询query返回dom
         query(query){
             var elem=document.querySelectorAll(query);
             if(elem.length===1){
@@ -182,9 +184,9 @@
                 e.preventDefault();
                 e.stopPropagation();
                 if(e.target.tagName!="A")return;
-                var src=e.target.href;
-                var index=src.indexOf("#");
-                var id=src.slice(index);
+                let src=e.target.href;
+                let index=src.indexOf("#");
+                let id=src.slice(index);
                 if(id==="#")return;
                 console.log(id);
                 var siblings=$(id).siblings();
@@ -217,11 +219,13 @@
             this.setStyle(type,((scrollSize-offset)+'px'));
         }
     }
-    //在global对象上注册$类,该类查询节点的方式为document.querySelectorAll()
+
+    //在global对象上注册$类
     global.$=(query)=>{
         return (new myQuery(query))
     };
 
+    //不需要dom对象的通用函数，封装在$f对象中
     global.$f={
         //将函数添加至onload事件内
         addLoadEvent:(func)=>{
@@ -271,7 +275,7 @@
             }
             return str.slice(0,-1);
         },
-        //封装ajax对象(只支持)
+        //封装ajax对象(只支持XMLHttpRequest)
         ajax:(obj)=>{
             let xhr=new XMLHttpRequest();
             let data=null;

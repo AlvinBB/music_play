@@ -4,6 +4,7 @@
 const pool = require("./pool")
 
 module.exports = {
+    //获取歌曲列表
     getListsSongs:(req,res)=>{
         req.on('data',(buf)=>{
             let obj = JSON.parse(buf.toString())

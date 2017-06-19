@@ -246,7 +246,7 @@
                 <div class="music-tool-control">
                     我的音乐
                 </div>
-                <ul class="music-tool-list music-tool-myMusic">
+                <ul class="music-tool-list music-tool-myMusic list-control">
                     <li>
                         <a href="#">
                             <i class="fa fa-music"></i>
@@ -276,21 +276,21 @@
                     创建的歌单
                     <i class="fa fa-angle-right"></i>
                 </div>
-                <ul class="music-tool-list music-tool-myMusic">
+                <ul class="music-tool-list music-tool-myMusic list-control">
                     <li>
-                        <a href="#">
+                        <a href="#1">
                             <i class="fa fa-heart-o"></i>
                             &nbsp;&nbsp;我喜欢的音乐
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="#2">
                             <i class="fa fa-list-ul"></i>
                             &nbsp;&nbsp;爵士
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="#3">
                             <i class="fa fa-list-ul"></i>
                             &nbsp;&nbsp;粤语
                         </a>
@@ -300,21 +300,21 @@
                     收藏的歌单
                     <i class="fa fa-angle-right"></i>
                 </div>
-                <ul class="music-tool-list music-tool-myMusic">
+                <ul class="music-tool-list music-tool-myMusic list-control">
                     <li>
-                        <a href="#">
+                        <a href="#2">
                             <i class="fa fa-list-ul"></i>
-                            &nbsp;&nbsp;粤语歌里的百年孤寂
+                            &nbsp;&nbsp;U-87
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="#3">
                             <i class="fa fa-list-ul"></i>
                             &nbsp;&nbsp;老爵士，入味地听
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="#3">
                             <i class="fa fa-list-ul"></i>
                             &nbsp;&nbsp;咖啡馆里一本书,常导致客户的枯黄的撒
                         </a>
@@ -323,10 +323,9 @@
             </div>
             <div class="music-preview">
                 <div class="music-preview-pic left">
-                    <img src="images/singer_pic/singerXMJ.jpg" alt="歌曲图片">
-                    <span>倾城</span>
-                    <span>许美静</span>
-
+                    <img src="images/singer_pic/singerXMJ.jpg" alt="歌曲图片" id="singerPreview">
+                    <span id="previewSong">倾城</span>
+                    <span id="previewSinger">许美静</span>
                 </div>
                 <div class="music-preview-extension left">
                     <i class="fa fa-expand"></i>
@@ -924,16 +923,21 @@
     </div>
 
     <div id="footer" class="clear">
-        <audio src="medias/许美静%20-%20倾城.mp3" autoplay id="music" loop></audio>
+        <div class="music-dialog active scroll-bar-control">
+            <div>播放列表</div>
+            <div>总<span class="total"></span>首</div>
+            <ul id="musicDialogLists"></ul>
+        </div>
+        <audio src="" autoplay id="music" loop></audio>
         <div class="footer-left left">
-            <span>
-                <i class="fa fa-step-backward" id="prevMusic"></i>
+            <span id="prevMusic">
+                <i class="fa fa-step-backward"></i>
             </span>
             <span class="play-pause" id="play_pause">
                 <i class="fa fa-pause"></i>
             </span>
-            <span>
-                <i class="fa fa-step-forward" id="nextMusic"></i>
+            <span id="nextMusic">
+                <i class="fa fa-step-forward"></i>
             </span>
         </div>
         <div class="footer-right right">
