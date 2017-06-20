@@ -9,14 +9,22 @@
         music:$("#music").$,
         /********歌单切换*********/
         listChangeBtnContainer:".list-control",
+        musicDialogContainer:".music-dialog",
         //弹出框歌单容器
         musicDialogList:"#musicDialogLists",
         musicDialogTotal:".music-dialog .total",
+        musicDialogBtn:".footer-tool-right-list",
         musicDialogBtnTotal:".footer-tool-right-list .list-count",
+        //歌单详情页
+        listsDetailArea:"#listsDetailArea",
+        catchListContainer:"#catchListContainer",
+        listDetailAreaName:".lists-area-top-msg .lists-name",
+        listCoverPic:".lists-area-top-cover img",
 
         /********歌曲切换*********/
         //歌单内所有歌曲
         ListSongs:[],
+        ListSongsCatch:[],
         ListLength:0,
         ListIndex:0,
         currentSongSRC:"",
@@ -71,8 +79,8 @@
         lyricHeader:".lyric-header h1",
 
         /********获取歌单所有歌曲*******/
-        //根据歌单id获取歌单
-        getListsSongs(lid){
+        //根据歌单id获取歌单,并缓存
+        getListSongsCatch(lid){
             let self=this;
             $f.ajax({
                 type:'POST',
@@ -85,13 +93,46 @@
                         alert(data.msg);
                         return;
                     }
-                    self.ListSongs=data;
-                    self.ListLength=data.length;
-                    self.ListIndex=0;
+                    self.ListSongsCatch=data;
                 }
             })
         },
-        //更改歌单
+        //更新当前歌单
+        updateCurrentListSongs(){
+            this.ListSongs=this.ListSongsCatch;
+            this.ListLength=this.ListSongsCatch.length;
+            this.ListIndex=0;
+        },
+        //显示歌单详情页
+        showListsDetailArea(){
+            //歌单详情页显示，其他页隐藏
+            let siblings=$(this.listsDetailArea).siblings()
+            let len=siblings.length;
+            for(let i=0;i<len;i++){
+                $(siblings[i]).removeClass('active')
+            }
+            $(this.listsDetailArea).addClass('active')
+        },
+        //更新歌单详情页数据
+        updateListsDetailAreaData(){
+            let list=this.ListSongsCatch;
+            let html='';
+            for(let i=0;i<list.length;i++){
+                html+=`
+                    <tr>
+                        <td>0${i+1}</td>
+                        <td>
+                            <i class="fa fa-heart-o"></i>
+                        </td>
+                        <td>${list[i].sname}</td>
+                        <td>${list[i].singer}</td>
+                    </tr>
+                `
+            }
+            $(this.catchListContainer).$.innerHTML=html;
+            $(this.listCoverPic).$.src=this.singerPicDir+this.ListSongsCatch[0].spic
+        },
+        //更改歌单数据
         changeLists(){
             let container=$(this.listChangeBtnContainer);
             let len=container.length;
@@ -105,10 +146,20 @@
                         let index=src.indexOf("#");
                         let lid=src.slice(index+1);
                         console.log(lid);
-                        this.getListsSongs(lid);
+                        this.getListSongsCatch(lid);
+                        this.showListsDetailArea();
+                        //更新歌单详情页标题
+                        $(this.listDetailAreaName).$.innerHTML=e.target.innerText;
                     })
                 }
             }
+        },
+
+        //弹出歌单列表按钮控制
+        toggleMusicListsDialog(){
+            $(this.musicDialogBtn).bindEvent('click',()=>{
+                $(this.musicDialogContainer).toggleClass('active')
+            })
         },
         //更新弹出歌单列表
         updateDialogLists(){
@@ -519,8 +570,15 @@
         //初始化播放器
         initialPlayer(){
             /***********请求歌单************/
-            //请求歌单
-            this.getListsSongs(1);
+            //请求歌单缓存
+            this.getListSongsCatch(1);
+            //提取缓存歌单，更新为当前歌单
+            $f.watch(player,"ListSongsCatch",()=>{
+                this.updateCurrentListSongs();      //此处监听是为了页面一开始刷新的时候就提取缓存的歌单进行播放(ajax请求有延迟，所以有缓存数据才更新)
+                $f.watch(player,"ListSongsCatch",()=>{
+                    this.updateListsDetailAreaData()
+                })   //第一次刷新歌单自动播放后解除监听，避免后续缓存歌单变化就自动更新当前歌单
+            })
             //监听歌单，一旦发生变化，则初始化第一首歌曲
             $f.watch(player,"ListSongs",()=>{
                 this.autoPlayFirstSong()
@@ -528,6 +586,8 @@
             })
             //更改歌单
             this.changeLists();
+            //点击隐藏显示歌单列表
+            this.toggleMusicListsDialog()
             //歌单内歌曲双击事件
             this.dialogSongDBLEvent();
 

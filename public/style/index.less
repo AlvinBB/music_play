@@ -305,6 +305,7 @@ body{
   #main{
     font-size:13px;
     height:600px;
+
     //音乐播放去样式
     .music-stage{
       background:#fafafa;
@@ -335,7 +336,7 @@ body{
       }
       .stage-container{
         margin:0 80px;
-        height:2000px;
+        height:1200px;
         .canvas-area{
           width:900px;
           margin:0 auto;
@@ -467,24 +468,153 @@ body{
       overflow-x:hidden;
       overflow-y:auto;
       padding:0 20px 0 20px;
-      .nav-bar{
-        padding:0 10%;
-        li{
-          display:inline-block;
-          padding:10px;
-          width:16%;
-          box-sizing:border-box;
-          a{
-            text-align:center;
-            display:block;
-            font-size:16px;
+      /****主显示区块公共样式******/
+      .main-divider-block{
+        display:none;
+      }
+      .main-divider-block.active{
+        display:block;
+      }
+
+      /****主显示区块独立样式****/
+      //歌单页面样式
+      .song-lists-area{
+        background:#fafafa;
+        padding-top:20px;
+        box-sizing:border-box;
+        .lists-area-top:after{
+          content:"";
+          display:block;
+          clear:both;
+        }
+        .lists-area-top{
+          .lists-area-top-cover{
+            width:200px;
+            height:200px;
+            img{
+              width:100%;
+            }
+          }
+          .lists-area-top-msg{
+            margin-left:20px;
+            height:120px;
+            div:nth-child(2),div:nth-child(3){
+              height:40px;
+              line-height:40px;
+            }
+            .lists-msg-first{
+              height:30px;
+              vertical-align:top;
+              span{
+                display:inline-block;
+              }
+              .lists-type{
+                padding:5px 10px;
+                color:#fff;
+                border-radius:3px;
+              }
+              .lists-name{
+                font-size:18px;
+                font-weight:bold;
+                margin-left:10px;
+              }
+            }
+            .lists-msg-second{
+              span{
+                display:inline-block;
+                vertical-align: middle;
+              }
+              .lists-msg-head{
+                box-sizing:border-box;
+                height:40px;
+                line-height:40px;
+                padding-top:5px;
+                img{
+                  width:30px;
+                  height:30px;
+                  border-radius:50%;
+                }
+              }
+              .lists-msg-nickname{
+                margin-left:10px;
+                font-size:14px;
+              }
+            }
           }
         }
-        li.active{
-
+        .lists-area-body{
+          margin-top:100px;
+          .lists-area-body-head{
+            li{
+              display:inline-block;
+              a{
+                border-top-left-radius:3px;
+                border-top-right-radius:3px;
+                display:block;
+                width:80px;
+                text-align:center;
+                height:34px;
+                line-height:34px;
+                box-sizing:border-box;
+                border:1px solid #ddd;
+                border-bottom:none;
+              }
+            }
+            li.active a{
+              border:none;
+            }
+          }
+          .lists-area-body-songs{
+            width:100%;
+            text-align:left;
+            border-collapse: collapse;
+            thead{
+              tr{
+                height:30px;
+                th{
+                  padding-left:10px;
+                  border:1px solid #ddd;
+                }
+              }
+            }
+            tbody{
+              tr{
+                height:30px;
+                td{
+                  padding-left:10px;
+                  i.fa:hover{
+                    cursor:pointer;
+                  }
+                }
+              }
+              tr.even{
+                  background:#F5F5F7;
+              }
+              tr:hover{
+                background:#EBECED;
+              }
+            }
+          }
         }
       }
       #findMusic{
+        .nav-bar{
+          padding:0 10%;
+          li{
+            display:inline-block;
+            padding:10px;
+            width:16%;
+            box-sizing:border-box;
+            a{
+              text-align:center;
+              display:block;
+              font-size:16px;
+            }
+          }
+          li.active{
+
+          }
+        }
         .findMusic-display-area{
           max-width:1050px;
           margin:0 auto;
@@ -652,8 +782,8 @@ body{
       bottom:50px;
       right:0;
       z-index:20;
-      width:500px;
-      height:300px;
+      width:450px;
+      height:270px;
       background:#fafafa;
       box-shadow: -2px -2px 7px #ccc;
       display:none;
@@ -674,8 +804,8 @@ body{
       ul{
         overflow-x:hidden;
         overflow-y:auto;
-        height:230px;
-        width:500px;
+        height:200px;
+        width:450px;
         li{
           box-sizing:border-box;
           font-size:12px;
@@ -684,8 +814,10 @@ body{
             display:block;
             height:30px;
             line-height:30px;
-            width:500px;
+            width:450px;
             padding-left:30px;
+            color:#555;
+            cursor:default;
             span:last-child{
               float:right;
               width:150px;
@@ -693,7 +825,7 @@ body{
             }
           }
           a:hover{
-            cursor:auto;
+            cursor:default;
           }
         }
         li.odd{

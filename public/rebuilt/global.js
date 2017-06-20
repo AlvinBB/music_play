@@ -13,6 +13,7 @@
                 this.length=this.$.length||0;   //这里length为0指的是查询到的dom对象只有一个
             }else{
                 this.$=query;   //若传入的参数本身就是dom对象(不是字符串)，则直接赋值给this.$
+                this.get=this.$;
                 this.length=this.$.length||0;
             }
         }
@@ -263,7 +264,9 @@
                 },
                 set(val){
                     _value=val;
-                    callBack()
+                    if(callBack){
+                        callBack()
+                    }
                 }
             })
         },

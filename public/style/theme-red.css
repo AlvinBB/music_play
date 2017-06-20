@@ -61,6 +61,18 @@ body #main .music-tool-bar .music-preview {
 }
 body #main .display-area {
   background: #FAFAFA;
+  /***********************************新增样式**************************************/
+  /***********************************新增样式**************************************/
+}
+body #main .display-area .song-lists-area .lists-area-top .lists-area-top-msg .lists-msg-first .lists-type {
+  background: #C62F2F;
+}
+body #main .display-area .song-lists-area .lists-area-body .lists-area-body-head {
+  border-bottom: 1px solid #C62F2F;
+}
+body #main .display-area .song-lists-area .lists-area-body .lists-area-body-head li.active a {
+  color: #fff;
+  background: #C62F2F;
 }
 body #main .display-area .nav-bar {
   border-bottom: 1px solid #ebebef;

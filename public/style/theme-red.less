@@ -82,6 +82,32 @@ body{
 
     .display-area{
       background:@displayAreaBackground;
+
+
+      /***********************************新增样式**************************************/
+      .song-lists-area{
+        .lists-area-top{
+          .lists-area-top-msg{
+            .lists-msg-first{
+              .lists-type{
+                background:@themeColor;
+              }
+            }
+          }
+        }
+        .lists-area-body{
+          .lists-area-body-head{
+            border-bottom:1px solid @themeColor;
+            li.active a{
+              color:#fff;
+              background:@themeColor;
+            }
+          }
+        }
+      }
+      /***********************************新增样式**************************************/
+
+
       .nav-bar{
         border-bottom:1px solid @musicToolActive;
         li{
