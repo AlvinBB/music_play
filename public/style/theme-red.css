@@ -67,6 +67,9 @@ body #main .display-area {
 body #main .display-area .song-lists-area .lists-area-top .lists-area-top-msg .lists-msg-first .lists-type {
   background: #C62F2F;
 }
+body #main .display-area .song-lists-area .lists-area-top .lists-area-top-msg .lists-msg-third .list-play-all i.fa {
+  color: #C62F2F;
+}
 body #main .display-area .song-lists-area .lists-area-body .lists-area-body-head {
   border-bottom: 1px solid #C62F2F;
 }

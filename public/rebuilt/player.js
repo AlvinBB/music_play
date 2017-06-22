@@ -9,6 +9,7 @@
         music:$("#music").$,
         /********歌单切换*********/
         listChangeBtnContainer:".list-control",
+        listChangeByRecommendBlock:"#recommendListsContainer",
         musicDialogContainer:".music-dialog",
         //弹出框歌单容器
         musicDialogList:"#musicDialogLists",
@@ -20,6 +21,7 @@
         catchListContainer:"#catchListContainer",
         listDetailAreaName:".lists-area-top-msg .lists-name",
         listCoverPic:".lists-area-top-cover img",
+        listPlayAllBtn:".list-play-all",
 
         /********歌曲切换*********/
         //歌单内所有歌曲
@@ -28,6 +30,7 @@
         ListLength:0,
         ListIndex:0,
         currentSongSRC:"",
+        CatchIndex:0,   //提取缓存歌曲编号，便于切换歌单时播放指定歌曲
 
         //暂停播放
         play_pause:"#play_pause",
@@ -99,6 +102,10 @@
         },
         //更新当前歌单
         updateCurrentListSongs(){
+            if(!this.ListSongsCatch){
+                console.log('没有缓存歌单');
+                return;
+            }
             this.ListSongs=this.ListSongsCatch;
             this.ListLength=this.ListSongsCatch.length;
             this.ListIndex=0;
@@ -117,9 +124,10 @@
         updateListsDetailAreaData(){
             let list=this.ListSongsCatch;
             let html='';
+            let even='';
             for(let i=0;i<list.length;i++){
                 html+=`
-                    <tr>
+                    <tr class="${even}">
                         <td>0${i+1}</td>
                         <td>
                             <i class="fa fa-heart-o"></i>
@@ -128,31 +136,75 @@
                         <td>${list[i].singer}</td>
                     </tr>
                 `
+                even=(even===''?'even':'');
             }
             $(this.catchListContainer).$.innerHTML=html;
             $(this.listCoverPic).$.src=this.singerPicDir+this.ListSongsCatch[0].spic
         },
-        //更改歌单数据
-        changeLists(){
-            let container=$(this.listChangeBtnContainer);
+        //更改歌单详情页数据事件绑定
+        changeListsDetailData(containerElem,targetElem,isNotTarget){    //isNotTarget:如果e.target的父元素才是a元素，那么该值为true,用于获取a
+            let container=$(containerElem);
             let len=container.length;
+            console.log(container.length)
+            let bindContainer=(elem)=>{
+                $(elem).bindEvent('click',(e)=>{
+                    e.preventDefault();
+                    let target=e.target;
+                    if(isNotTarget){
+                       target=target.parentNode
+                    }
+                    if(target.nodeName!==targetElem.toUpperCase())return;
+                    let src=target.href;
+                    let index=src.indexOf("#");
+                    let lid=src.slice(index+1);
+                    console.log(lid);
+                    this.getListSongsCatch(lid);
+                    this.showListsDetailArea();
+                    //更新歌单详情页标题
+                    $(this.listDetailAreaName).$.innerHTML=target.innerText;
+                })
+            }
             if(len){
                 for(let i=0;i<len;i++){
-                    $(container.get[i]).bindEvent('click',(e)=>{
-                        e.preventDefault();
-                        //e.stopPropagation();
-                        if(e.target.nodeName!=='A')return;
-                        let src=e.target.href;
-                        let index=src.indexOf("#");
-                        let lid=src.slice(index+1);
-                        console.log(lid);
-                        this.getListSongsCatch(lid);
-                        this.showListsDetailArea();
-                        //更新歌单详情页标题
-                        $(this.listDetailAreaName).$.innerHTML=e.target.innerText;
-                    })
+                    bindContainer(container.get[i])
                 }
+            }else{
+                bindContainer(container.get)
             }
+        },
+        //更改歌单详情页数据事件绑定
+        changeListsDetailDataBind(){
+            //通过侧边栏音乐工具更改歌单详情页数据
+            this.changeListsDetailData(this.listChangeBtnContainer,'a')
+            //通过主页推荐歌单更改歌单详情页数据
+            this.changeListsDetailData(this.listChangeByRecommendBlock,'a',true)
+        },
+        //点击歌单详情页播放全部按钮，或双击歌单详情页歌曲，切换当前播放歌单
+        changeCurrentListSongs(){
+            $(this.listPlayAllBtn).bindEvent('click',()=>{
+                if(this.ListSongs===this.ListSongsCatch){
+                    this.autoPlayIndexSong(0);
+                    return;
+                }
+                if(confirm('是否替换当前播放列表')){
+                    this.updateCurrentListSongs();
+                }
+            })
+            $(this.catchListContainer).bindEvent('dblclick',(e)=>{
+                if(e.target.nodeName!=="TD")return;
+                let index=parseInt(e.target     //获取该行第一列序号，转换为index，存入缓存index
+                        .parentNode
+                        .firstElementChild
+                        .innerHTML)-1;
+                if(this.ListSongs===this.ListSongsCatch){       //如果缓存歌单与当前歌单内容相同，则直接播放index指定歌曲
+                    this.autoPlayIndexSong(index);
+                    return;
+                }
+                if(confirm('是否替换当前播放列表')){
+                    this.CatchIndex=index;
+                    this.updateCurrentListSongs();
+                }
+            })
         },
 
         //弹出歌单列表按钮控制
@@ -173,6 +225,7 @@
                 html+=`
                     <li class="${odd}">
                         <a href="#${i}">
+                            <i class="fa fa-pause"></i>
                             ${songObj.sname}
                             <span>${songObj.singer}</span>
                         </a>
@@ -184,7 +237,7 @@
             $(this.musicDialogTotal).$.innerHTML=lists.length;
             $(this.musicDialogBtnTotal).$.innerHTML=lists.length;
         },
-        //绑定歌单内每首歌的单机事件
+        //绑定歌单内每首歌的双击事件
         dialogSongDBLEvent(){
             $(this.musicDialogList).bindEvent('dblclick',(e)=>{
                 e.preventDefault();
@@ -271,7 +324,6 @@
             }
             (this.ListIndex<0)&&(this.ListIndex=this.ListLength-1);
             (this.ListIndex>=this.ListLength)&&(this.ListIndex=0);
-
             return this.getIndexSongObj(this.ListIndex)
         },
         //设置当前歌曲
@@ -282,11 +334,11 @@
             this.singerPic=this.singerPicDir+obj.pic;
             this.updateCurrentSong();
             this.updateSingerPreview();
-            console.log(this.ListIndex)
         },
-        //载入歌单后自动播放第一首歌
-        autoPlayFirstSong(){
-            this.setCurrentSong(0)
+        //自动播放第index首歌曲
+        autoPlayIndexSong(index){
+            index=index||0; //载入歌单后自动播放第一首歌
+            this.setCurrentSong(index)
         },
         //跳转歌曲,若当前歌曲暂停，则切换后自动播放
         jumpToSong(elem,func,isPaused){
@@ -578,18 +630,40 @@
                 $f.watch(player,"ListSongsCatch",()=>{
                     this.updateListsDetailAreaData()
                 })   //第一次刷新歌单自动播放后解除监听，避免后续缓存歌单变化就自动更新当前歌单
+                $f.watch(player,'ListIndex',()=>{
+                    if(this.ListSongs){
+                        let $i=$(this.musicDialogList+" li i")
+                        for(let i=0;i<$i.length;i++){
+                            $($i.$[i]).removeClass('fa-pause')
+                        }
+                        //console.log(this.ListIndex)
+                        $($i.$[this.ListIndex]).addClass('fa-pause')
+                        console.log("切换歌曲1",this.ListIndex)
+                    }
+                })
             })
             //监听歌单，一旦发生变化，则初始化第一首歌曲
             $f.watch(player,"ListSongs",()=>{
-                this.autoPlayFirstSong()
-                this.updateDialogLists()
+                if(this.CatchIndex){            //切换歌单时，如果点击不是第一首歌，则拿到该缓存歌index，播放该index歌曲
+                    this.autoPlayIndexSong(this.CatchIndex);
+                    console.log(this.ListIndex)
+                    this.CatchIndex=0;
+                }else{                          //否则切歌单时，播放第一首歌曲
+                    this.autoPlayIndexSong(0);
+                }
+                this.updateDialogLists();
+                //当前歌单中正在播放歌曲的状态小图标
             })
-            //更改歌单
-            this.changeLists();
+
+            //更改歌单事件绑定
+            this.changeListsDetailDataBind();
             //点击隐藏显示歌单列表
-            this.toggleMusicListsDialog()
+            this.toggleMusicListsDialog();
             //歌单内歌曲双击事件
             this.dialogSongDBLEvent();
+            //点击替换当前歌单
+            this.changeCurrentListSongs();
+
 
             /******播放暂停前进后退*****/
                 //控制歌曲状态：循环/顺序/随机

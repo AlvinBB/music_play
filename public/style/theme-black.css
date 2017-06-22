@@ -68,6 +68,19 @@ body #main .music-tool-bar .music-tool-list li.active {
 body #main .display-area {
   background: #FAFAFA;
 }
+body #main .display-area .song-lists-area .lists-area-top .lists-area-top-msg .lists-msg-first .lists-type {
+  background: #222225;
+}
+body #main .display-area .song-lists-area .lists-area-top .lists-area-top-msg .lists-msg-third .list-play-all i.fa {
+  color: #222225;
+}
+body #main .display-area .song-lists-area .lists-area-body .lists-area-body-head {
+  border-bottom: 1px solid #222225;
+}
+body #main .display-area .song-lists-area .lists-area-body .lists-area-body-head li.active a {
+  color: #fff;
+  background: #222225;
+}
 body #main .display-area .nav-bar {
   border-bottom: 1px solid #ebebef;
 }

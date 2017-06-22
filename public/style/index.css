@@ -538,6 +538,24 @@ body #main .display-area .song-lists-area .lists-area-top .lists-area-top-msg .l
   margin-left: 10px;
   font-size: 14px;
 }
+body #main .display-area .song-lists-area .lists-area-top .lists-area-top-msg .lists-msg-third .list-play-all {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background: #fff;
+}
+body #main .display-area .song-lists-area .lists-area-top .lists-area-top-msg .lists-msg-third .list-play-all i.fa {
+  font-size: 20px;
+  margin-top: -3px;
+  margin-right: 5px;
+}
+body #main .display-area .song-lists-area .lists-area-top .lists-area-top-msg .lists-msg-third .list-play-all:hover {
+  background: #fafafa;
+}
 body #main .display-area .song-lists-area .lists-area-body {
   margin-top: 100px;
 }
@@ -570,6 +588,15 @@ body #main .display-area .song-lists-area .lists-area-body .lists-area-body-song
 body #main .display-area .song-lists-area .lists-area-body .lists-area-body-songs thead tr th {
   padding-left: 10px;
   border: 1px solid #ddd;
+  border-top: none;
+}
+body #main .display-area .song-lists-area .lists-area-body .lists-area-body-songs thead tr th:first-child,
+body #main .display-area .song-lists-area .lists-area-body .lists-area-body-songs thead tr th:nth-child(2) {
+  width: 15%;
+}
+body #main .display-area .song-lists-area .lists-area-body .lists-area-body-songs thead tr th:nth-child(3),
+body #main .display-area .song-lists-area .lists-area-body .lists-area-body-songs thead tr th:nth-child(4) {
+  width: 35%;
 }
 body #main .display-area .song-lists-area .lists-area-body .lists-area-body-songs tbody tr {
   height: 30px;
@@ -787,8 +814,15 @@ body #footer .music-dialog ul {
 }
 body #footer .music-dialog ul li {
   box-sizing: border-box;
+  position: relative;
   font-size: 12px;
   border-bottom: 1px solid #ddd;
+}
+body #footer .music-dialog ul li i.fa {
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  font-size: 10px;
 }
 body #footer .music-dialog ul li a {
   display: block;

@@ -90,6 +90,34 @@ body{
 
     .display-area{
       background:@displayAreaBackground;
+
+      .song-lists-area{
+        .lists-area-top{
+          .lists-area-top-msg{
+            .lists-msg-first{
+              .lists-type{
+                background:@themeColor;
+              }
+            }
+            .lists-msg-third{
+              .list-play-all{
+                i.fa{
+                  color:@themeColor;
+                }
+              }
+            }
+          }
+        }
+        .lists-area-body{
+          .lists-area-body-head{
+            border-bottom:1px solid @themeColor;
+            li.active a{
+              color:#fff;
+              background:@themeColor;
+            }
+          }
+        }
+      }
       .nav-bar{
         border-bottom:1px solid @musicToolActive;
         li{

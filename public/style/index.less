@@ -540,6 +540,26 @@ body{
                 font-size:14px;
               }
             }
+            .lists-msg-third{
+              .list-play-all{
+                display:inline-block;
+                height:30px;
+                line-height:30px;
+                padding:0 10px;
+                cursor:pointer;
+                border:1px solid #ddd;
+                border-radius:3px;
+                background:#fff;
+                i.fa{
+                  font-size:20px;
+                  margin-top:-3px;
+                  margin-right:5px;
+                }
+              }
+              .list-play-all:hover{
+                background:#fafafa;
+              }
+            }
           }
         }
         .lists-area-body{
@@ -574,6 +594,13 @@ body{
                 th{
                   padding-left:10px;
                   border:1px solid #ddd;
+                  border-top:none;
+                }
+                th:first-child,th:nth-child(2){
+                  width:15%;
+                }
+                th:nth-child(3),th:nth-child(4){
+                  width:35%;
                 }
               }
             }
@@ -808,8 +835,15 @@ body{
         width:450px;
         li{
           box-sizing:border-box;
+          position:relative;
           font-size:12px;
           border-bottom:1px solid #ddd;
+          i.fa{
+            position:absolute;
+            left:5px;
+            top:10px;
+            font-size:10px;
+          }
           a{
             display:block;
             height:30px;
