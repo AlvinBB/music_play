@@ -101,14 +101,14 @@
             })
         },
         //更新当前歌单
-        updateCurrentListSongs(){
+        updateCurrentListSongs(index){
             if(!this.ListSongsCatch){
                 console.log('没有缓存歌单');
                 return;
             }
             this.ListSongs=this.ListSongsCatch;
             this.ListLength=this.ListSongsCatch.length;
-            this.ListIndex=0;
+            this.ListIndex=index;
         },
         //显示歌单详情页
         showListsDetailArea(){
@@ -138,14 +138,13 @@
                 `
                 even=(even===''?'even':'');
             }
-            $(this.catchListContainer).$.innerHTML=html;
+            $(this.catchListContainer).html(html);
             $(this.listCoverPic).$.src=this.singerPicDir+this.ListSongsCatch[0].spic
         },
         //更改歌单详情页数据事件绑定
         changeListsDetailData(containerElem,targetElem,isNotTarget){    //isNotTarget:如果e.target的父元素才是a元素，那么该值为true,用于获取a
             let container=$(containerElem);
             let len=container.length;
-            console.log(container.length)
             let bindContainer=(elem)=>{
                 $(elem).bindEvent('click',(e)=>{
                     e.preventDefault();
@@ -157,11 +156,10 @@
                     let src=target.href;
                     let index=src.indexOf("#");
                     let lid=src.slice(index+1);
-                    console.log(lid);
                     this.getListSongsCatch(lid);
                     this.showListsDetailArea();
                     //更新歌单详情页标题
-                    $(this.listDetailAreaName).$.innerHTML=target.innerText;
+                    $(this.listDetailAreaName).html(target.innerText);
                 })
             }
             if(len){
@@ -187,7 +185,7 @@
                     return;
                 }
                 if(confirm('是否替换当前播放列表')){
-                    this.updateCurrentListSongs();
+                    this.updateCurrentListSongs(0);
                 }
             })
             $(this.catchListContainer).bindEvent('dblclick',(e)=>{
@@ -202,7 +200,7 @@
                 }
                 if(confirm('是否替换当前播放列表')){
                     this.CatchIndex=index;
-                    this.updateCurrentListSongs();
+                    this.updateCurrentListSongs(index);
                 }
             })
         },
@@ -225,7 +223,7 @@
                 html+=`
                     <li class="${odd}">
                         <a href="#${i}">
-                            <i class="fa fa-pause"></i>
+                            <i class="fa"></i>
                             ${songObj.sname}
                             <span>${songObj.singer}</span>
                         </a>
@@ -233,9 +231,9 @@
                 `;
                 isOdd=!isOdd
             }
-            $(this.musicDialogList).$.innerHTML=html
-            $(this.musicDialogTotal).$.innerHTML=lists.length;
-            $(this.musicDialogBtnTotal).$.innerHTML=lists.length;
+            $(this.musicDialogList).html(html)
+            $(this.musicDialogTotal).html(lists.length);
+            $(this.musicDialogBtnTotal).html(lists.length);
         },
         //绑定歌单内每首歌的双击事件
         dialogSongDBLEvent(){
@@ -256,6 +254,7 @@
             $(this.playStatusControlBtn).bindEvent('click',()=>{
                 this.playStatus++;
                 this.playStatus>3&&(this.playStatus=1);
+                console.log("播放状态"+this.playStatus)
                 this.playStatusStyle()
             })
         },
@@ -279,12 +278,15 @@
         //更新当前歌曲preview图片,内容,以及stage区域的歌曲内容
         updateSingerPreview(){
             $(this.singerPreviewPic).$.src=this.singerPic;
-            $(this.previewSinger).$.innerHTML
-                =this.ListSongs[this.ListIndex].singer;
-            $(this.previewSong).$.innerHTML
-                =this.ListSongs[this.ListIndex].sname;
-            $(this.lyricHeader).$.innerHTML=
-                this.ListSongs[this.ListIndex].sname;
+            $(this.previewSinger).html(
+                this.ListSongs[this.ListIndex].singer
+            );
+            $(this.previewSong).html(
+                this.ListSongs[this.ListIndex].sname
+            );
+            $(this.lyricHeader).html(
+                this.ListSongs[this.ListIndex].sname
+            );
         },
         //点击播放，暂停
         clickPlayPause(){
@@ -324,6 +326,7 @@
             }
             (this.ListIndex<0)&&(this.ListIndex=this.ListLength-1);
             (this.ListIndex>=this.ListLength)&&(this.ListIndex=0);
+            console.log('下一首歌曲编号'+this.ListIndex)
             return this.getIndexSongObj(this.ListIndex)
         },
         //设置当前歌曲
@@ -375,7 +378,7 @@
         },
         //自动跳转歌曲，用于每次播放结束后自动播放下一曲
         autoJumpToNextSong(){
-            if((this.currentTime/this.duration)>0.992&&(this.playStatus===1)){
+            if((this.currentTime/this.duration)>0.992&&(this.playStatus!==2)){
                 let obj=this.getNextSong()
                 this.currentSongSRC=obj.song;
                 this.singerPic=this.singerPicDir+obj.pic;
@@ -398,7 +401,7 @@
             var duration=Math.ceil(this.music.duration);
             var durationStr=this.timeToString(duration);
             if(duration){
-                $(this.durationSpan).$.innerHTML=durationStr;
+                $(this.durationSpan).html(durationStr);
                 this.duration=duration;
             }
         },
@@ -419,7 +422,7 @@
             //更新进度条
             $(this.progressSpan).setStyle("width",self.progress);
             var currentTimeStr=this.getCurrentTime(this.currentTime);
-            $(this.currentTimeSpan).$.innerHTML=currentTimeStr;
+            $(this.currentTimeSpan).html(currentTimeStr);
         },
         //定时器每一秒更新一次进度条
         setCurrentTimeInterval(){
@@ -623,36 +626,36 @@
         initialPlayer(){
             /***********请求歌单************/
             //请求歌单缓存
-            this.getListSongsCatch(1);
+            this.getListSongsCatch(11111);
             //提取缓存歌单，更新为当前歌单
             $f.watch(player,"ListSongsCatch",()=>{
-                this.updateCurrentListSongs();      //此处监听是为了页面一开始刷新的时候就提取缓存的歌单进行播放(ajax请求有延迟，所以有缓存数据才更新)
+                this.updateCurrentListSongs(0);      //此处监听是为了页面一开始刷新的时候就提取缓存的歌单进行播放(ajax请求有延迟，所以有缓存数据才更新)
                 $f.watch(player,"ListSongsCatch",()=>{
                     this.updateListsDetailAreaData()
                 })   //第一次刷新歌单自动播放后解除监听，避免后续缓存歌单变化就自动更新当前歌单
+            })
+            //监听歌单，一旦发生变化，则初始化第一首歌曲
+            $f.watch(player,"ListSongs",()=>{
+                if(this.CatchIndex){            //切换歌单时，如果点击不是第一首歌，则拿到该缓存歌index，播放该index歌曲
+                    this.autoPlayIndexSong(this.CatchIndex);
+                    console.log("监听当前歌单变化:"+this.ListIndex)
+                    this.CatchIndex=0;
+                }else{                          //否则切歌单时，播放第一首歌曲
+                    this.autoPlayIndexSong(0);
+                }
+                this.updateDialogLists();
+                //当前歌单中正在播放歌曲的状态小图标(这里一个大坑fix了半天)
                 $f.watch(player,'ListIndex',()=>{
                     if(this.ListSongs){
                         let $i=$(this.musicDialogList+" li i")
                         for(let i=0;i<$i.length;i++){
                             $($i.$[i]).removeClass('fa-pause')
                         }
-                        //console.log(this.ListIndex)
-                        $($i.$[this.ListIndex]).addClass('fa-pause')
+                        let index=this.ListIndex>=this.ListLength?0:this.ListIndex  //防止越界（ListIndex在更新最后一首歌曲时先越界再回零然后切换歌曲，因此此处有越界）
+                        $($i.$[index]).addClass('fa-pause')
                         console.log("切换歌曲1",this.ListIndex)
                     }
                 })
-            })
-            //监听歌单，一旦发生变化，则初始化第一首歌曲
-            $f.watch(player,"ListSongs",()=>{
-                if(this.CatchIndex){            //切换歌单时，如果点击不是第一首歌，则拿到该缓存歌index，播放该index歌曲
-                    this.autoPlayIndexSong(this.CatchIndex);
-                    console.log(this.ListIndex)
-                    this.CatchIndex=0;
-                }else{                          //否则切歌单时，播放第一首歌曲
-                    this.autoPlayIndexSong(0);
-                }
-                this.updateDialogLists();
-                //当前歌单中正在播放歌曲的状态小图标
             })
 
             //更改歌单事件绑定

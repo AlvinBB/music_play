@@ -134,6 +134,14 @@
             }
             return siblings;
         }
+        //获取，设定元素innerHTML
+        html(str){
+            if(str){
+                this.$.innerHTML=str;
+            }else{
+                return this.$.innerHTML;
+            }
+        }
 
         /***以下为事件行为函数***/
         //绑定事件

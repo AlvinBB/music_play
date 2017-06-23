@@ -67,10 +67,10 @@
                         console.log(data)
                         if(data.code===1){
                             sessionStorage['uname']=data.uname;
-                            $("#nickname").$.innerHTML=data.uname;
+                            $("#nickname").html(data.uname);
                             $("#headPortrait img").$.src="images/"+data.uhead;
                         }else{
-                            $("#loginMsg").$.innerHTML="用户名或密码错误"
+                            $("#loginMsg").html("用户名或密码错误")
                         }
                     }
                 })

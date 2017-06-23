@@ -9,7 +9,7 @@ CREATE TABLE m_user(
     nickname VARCHAR(10) NOT NULL DEFAULT '',
     uhead VARCHAR(50) NOT NULL DEFAULT ''
 );
-INSERT INTO m_user VALUES(1,'alvinbb','123456','AlvinBB','loginHeadUser.jpg');
+INSERT INTO m_user VALUES(516516,'alvinbb','123456','AlvinBB','loginHeadUser.jpg');
 CREATE TABLE m_song(
     sid INT PRIMARY KEY AUTO_INCREMENT,
     singer VARCHAR(40) NOT NULL DEFAULT '',
@@ -31,29 +31,38 @@ INSERT INTO m_song VALUES
 (11,'陈奕迅','16月6日 晴','singerYS.jpg','陈奕迅%20-%2016月6日%20晴.mp3'),
 (12,'陈奕迅','怕死','singerYS.jpg','陈奕迅%20-%20怕死.mp3'),
 (13,'陈奕迅','新美人主义','singerYS.jpg','陈奕迅%20-%20新美人主义.mp3');
-CREATE TABLE m_list(
-    lid INT PRIMARY KEY AUTO_INCREMENT,
-    lname VARCHAR(50) NOT NULL DEFAULT ''
+CREATE TABLE m_list_pub(
+    lpid INT PRIMARY KEY AUTO_INCREMENT,
+    lpname VARCHAR(50) NOT NULL DEFAULT ''
 );
-INSERT INTO m_list VALUES(1,'我最爱的'),
-(2,'U-87');
+INSERT INTO m_list_pub VALUES(11111,'我最爱的'),
+(11112,'U-87');
+
+CREATE TABLE m_list_my(
+    lmid INT PRIMARY KEY AUTO_INCREMENT,
+    lmname VARCHAR(50) NOT NULL DEFAULT '',
+    uid INT NOT NULL DEFAULT 0,
+    lpid INT NOT NULL DEFAULT 0
+);
+INSERT INTO m_list_my VALUES(1,'我最爱的',516516,11111),
+(2,'U-87',516516,11112);
 
 CREATE TABLE m_list_song(
     lsid INT PRIMARY KEY AUTO_INCREMENT,
     sid INT NOT NULL DEFAULT 0,
     lid INT NOT NULL DEFAULT 0
 );
-INSERT INTO m_list_song VALUES(null,1,1),
-(null,2,1),
-(null,3,1),
-(null,4,1),
-(null,5,1),
-(null,6,1),
-(null,7,1),
-(null,8,1),
-(null,8,2),
-(null,9,2),
-(null,10,2),
-(null,11,2),
-(null,12,2),
-(null,13,2);
+INSERT INTO m_list_song VALUES(null,1,11111),
+(null,2,11111),
+(null,3,11111),
+(null,4,11111),
+(null,5,11111),
+(null,6,11111),
+(null,7,11111),
+(null,8,11112),
+(null,8,11112),
+(null,9,11112),
+(null,10,11112),
+(null,11,11112),
+(null,12,11112),
+(null,13,11112);

@@ -104,6 +104,9 @@ body #footer {
   border-bottom: 1px solid #ebebef;
   background: #F5F5F7;
 }
+body #footer .music-dialog i.fa {
+  color: #FAA2C5;
+}
 body #footer .progress-container {
   background: #ebebef;
 }

@@ -803,7 +803,7 @@ body #footer .music-dialog div:nth-child(2) {
   height: 30px;
   line-height: 30px;
   font-size: 12px;
-  padding-left: 30px;
+  padding-left: 40px;
   border-bottom: 1px solid #ddd;
 }
 body #footer .music-dialog ul {
@@ -820,7 +820,7 @@ body #footer .music-dialog ul li {
 }
 body #footer .music-dialog ul li i.fa {
   position: absolute;
-  left: 5px;
+  left: 15px;
   top: 10px;
   font-size: 10px;
 }
@@ -829,7 +829,7 @@ body #footer .music-dialog ul li a {
   height: 30px;
   line-height: 30px;
   width: 450px;
-  padding-left: 30px;
+  padding-left: 40px;
   color: #555;
   cursor: default;
 }
