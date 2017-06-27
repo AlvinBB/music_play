@@ -142,6 +142,26 @@
                 return this.$.innerHTML;
             }
         }
+        //获取a元素内的href
+        getHrefId(){
+            let target=this.$;
+            if(target.nodeName!=='A'){
+                console.log("target element nodeName is not 'A'");
+                return;
+            }
+            let src=target.href;
+            let index=src.indexOf("#");
+            return src.slice(index+1);
+        }
+        //显示目标隐藏兄弟
+        showTargetHideSiblings(){
+            let siblings = this.siblings();
+            let len = siblings.length;
+            for(let i=0;i<len;i++){
+                $(siblings[i]).removeClass('active')
+            }
+            this.addClass('active')
+        }
 
         /***以下为事件行为函数***/
         //绑定事件

@@ -153,11 +153,9 @@
                        target=target.parentNode
                     }
                     if(target.nodeName!==targetElem.toUpperCase())return;
-                    let src=target.href;
-                    let index=src.indexOf("#");
-                    let lid=src.slice(index+1);
+                    let lid=$(target).getHrefId();
                     this.getListSongsCatch(lid);
-                    this.showListsDetailArea();
+                    $(this.listsDetailArea).showTargetHideSiblings();
                     //更新歌单详情页标题
                     $(this.listDetailAreaName).html(target.innerText);
                 })
