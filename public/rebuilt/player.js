@@ -125,10 +125,12 @@
             let list=this.ListSongsCatch;
             let html='';
             let even='';
+            let p='0';
             for(let i=0;i<list.length;i++){
+                if(i>=9)p='';
                 html+=`
                     <tr class="${even}">
-                        <td>0${i+1}</td>
+                        <td>${p}${i+1}</td>
                         <td>
                             <i class="fa fa-heart-o"></i>
                         </td>
