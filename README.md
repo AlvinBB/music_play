@@ -1,4 +1,7 @@
 # music_play
+
+原生JS搭建类SPA
+
 静态页面展示: https://alvinbb.github.io/music_play/public/index.html
 
 ## 本地运行步骤
