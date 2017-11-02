@@ -57,7 +57,7 @@
         $(this.loginBtn).bindEvent('click', () => {
           let un = $(self.unameInput).$.value;
           let up = $(self.upwdInpue).$.value;
-          $f.ajax({
+          $.ajax({
             type:'POST',
             url:'/Login',
             data:{uname: un, upwd: up},
@@ -82,7 +82,7 @@
         this.login();
       }
   };
-  $f.addLoadEvent(()=>{
+  $.addLoadEvent(()=>{
     Toolbar.initialTool();
     $("#search").togglePlaceholder('搜索音乐，歌手，歌词，用户');
   });

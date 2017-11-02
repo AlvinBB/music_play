@@ -85,11 +85,11 @@
       //根据歌单id获取歌单,并缓存
       getListSongsCatch(lid){
         let self = this;
-        $f.ajax({
-          type:'POST',
-          url:'/Lists',
-          data:{lid:lid},
-          success:(result) => {
+        $.ajax({
+          type: 'POST',
+          url: '/Lists',
+          data: { lid: lid },
+          success: (result) => {
             let data = JSON.parse(result);
             console.log(data)
             if(data.code<0){
@@ -231,7 +231,7 @@
           `;
           isOdd = !isOdd;
         }
-        $(this.musicDialogList).html(html)
+        $(this.musicDialogList).html(html);
         $(this.musicDialogTotal).html(lists.length);
         $(this.musicDialogBtnTotal).html(lists.length);
       },
@@ -626,14 +626,14 @@
         //请求歌单缓存
         this.getListSongsCatch(11111);
         //提取缓存歌单，更新为当前歌单
-        $f.watch(player, "ListSongsCatch", () => {
+        $.watch(player, "ListSongsCatch", () => {
           this.updateCurrentListSongs(0);      //此处监听是为了页面一开始刷新的时候就提取缓存的歌单进行播放(ajax请求有延迟，所以有缓存数据才更新)
-          $f.watch(player, "ListSongsCatch", () => {
+          $.watch(player, "ListSongsCatch", () => {
               this.updateListsDetailAreaData();
           });   //第一次刷新歌单自动播放后解除监听，避免后续缓存歌单变化就自动更新当前歌单
         });
         //监听歌单，一旦发生变化，则初始化第一首歌曲
-        $f.watch(player, "ListSongs", () => {
+        $.watch(player, "ListSongs", () => {
           if(this.CatchIndex){            //切换歌单时，如果点击不是第一首歌，则拿到该缓存歌index，播放该index歌曲
             this.autoPlayIndexSong(this.CatchIndex);
             console.log("监听当前歌单变化:"+this.ListIndex)
@@ -643,7 +643,7 @@
           }
           this.updateDialogLists();
           //当前歌单中正在播放歌曲的状态小图标(这里一个大坑fix了半天)
-          $f.watch(player, 'ListIndex', () => {
+          $.watch(player, 'ListIndex', () => {
             if(this.ListSongs){
               let $i = $(this.musicDialogList+" li i");
               for(let i = 0;i<$i.length;i++){
@@ -691,7 +691,7 @@
         //disc
         this.discRotatingControl();
         //监听disc图片，变化后重新创建
-        $f.watch(player, "singerPic",
+        $.watch(player, "singerPic",
           this.changeCurrentDiscAnimation.bind(player)
         );
       }
@@ -705,8 +705,8 @@
           $(this.volumeSilence).unBindEvent('click');
       }****/
   };
-  $f.addLoadEvent(() => {player.initialPlayer();});
-  /****$f.addResizeEvent(() => {
+  $.addLoadEvent(() => {player.initialPlayer();});
+  /****$.addResizeEvent(() => {
       player.destroyPlayer();
   })****/
 })();

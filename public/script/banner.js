@@ -139,8 +139,8 @@ $("#findMusic .nav-bar").togglePages('li a');
     }
   }
   var ban=new banner();
-  $f.addLoadEvent(() => {ban.initialResponseBanner();});
-  $f.addResizeEvent(() => {
+  $.addLoadEvent(() => {ban.initialResponseBanner();});
+  $.addResizeEvent(() => {
       clearInterval(ban.timer);
       ban.timer = null;
       ban.initialResponseBanner();

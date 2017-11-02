@@ -250,75 +250,75 @@
     return (new Query(query));
   };
 
-  //不需要dom对象的通用函数，封装在$f对象中
-  global.$f = {
-    //将函数添加至onload事件内
-    addLoadEvent:(func) => {
-      let oldonload = window.onload;
-      if(typeof window.onload !== 'function'){
-        window.onload = func;
+  //对$对象函数进行扩展
+  global.$.extend = (funcName, func) => {
+    global.$[funcName] = func;
+  };
+  //将函数添加至onload事件内
+  global.$.addLoadEvent = (func) => {
+    let oldonload = window.onload;
+    if(typeof window.onload !== 'function'){
+      window.onload = func;
+    } else {
+      window.onload = function(){
+        oldonload();
+        func();
+      };
+    }
+  };
+  global.$.addResizeEvent = (callBack) => {
+    let resizeEvent = () =>  {
+      let oldResize  =  window.onresize;
+      if (typeof window.onresize  !==  'function') {
+        window.onresize  =  callBack;
       } else {
-        window.onload = function(){
-          oldonload();
-          func();
+        window.onresize  =  () => {
+          oldResize();
+          callBack();
         };
       }
-    },
-    //窗口大小改变时触发
-    addResizeEvent:(callBack) => {
-      let resizeEvent = () =>  {
-        let oldResize  =  window.onresize;
-        if (typeof window.onresize  !==  'function') {
-          window.onresize  =  callBack;
-        } else {
-          window.onresize  =  () => {
-            oldResize();
-            callBack();
-          };
+    };
+    $.addLoadEvent(resizeEvent);
+  };
+  //属性监听函数
+  global.$.watch = (obj, attr, callBack) => {
+    let _value;
+    Object.defineProperty(obj, attr, {
+      get(){
+        return _value;
+      },
+      set(val){
+        _value = val;
+        if(callBack){
+          callBack();
         }
-      };
-      $f.addLoadEvent(resizeEvent);
-    },
-    //属性监听函数
-    watch:(obj, attr, callBack) => {
-      let _value;
-      Object.defineProperty(obj, attr, {
-        get(){
-          return _value;
-        },
-        set(val){
-          _value = val;
-          if(callBack){
-            callBack();
-          }
-        }
-      });
-    },
-    //序列化对象
-    serialize:(obj) => {
-      let str = "";
-      for(let key in obj){
-        str += (key + ' = ' + obj[key] + "&");
       }
-      return str.slice(0, -1);
-    },
-    //封装ajax对象(只支持XMLHttpRequest)
-    ajax:(obj) => {
-      let xhr = new XMLHttpRequest(),
-          data = null;
-      xhr.onreadystatechange = () => {
-        if(xhr.readyState == 4){
-          if(xhr.status === 200){
-            let data = JSON.parse(xhr.responseText);
-            obj.success(data);
-          }
-        }
-      };
-      xhr.open(obj.type, obj.url, true);
-      (obj.type === "POST")&&(xhr.setRequestHeader("Content-Type", "application/json"));
-      (!obj.data) && (data = null);
-      (obj.data) && (data = JSON.stringify(obj.data));
-      xhr.send(data);
+    });
+  };
+  //序列化对象
+  global.$.serialize = (obj) => {
+    let str = "";
+    for(let key in obj){
+      str += (key + ' = ' + obj[key] + "&");
     }
+    return str.slice(0, -1);
+  };
+  //封装ajax对象(只支持XMLHttpRequest)
+  global.$.ajax = (obj) => {
+    let xhr = new XMLHttpRequest(),
+        data = null;
+    xhr.onreadystatechange = () => {
+      if(xhr.readyState == 4){
+        if(xhr.status === 200){
+          let data = JSON.parse(xhr.responseText);
+          obj.success(data);
+        }
+      }
+    };
+    xhr.open(obj.type, obj.url, true);
+    (obj.type === "POST")&&(xhr.setRequestHeader("Content-Type", "application/json"));
+    (!obj.data) && (data = null);
+    (obj.data) && (data = JSON.stringify(obj.data));
+    xhr.send(data);
   };
 })(window);
